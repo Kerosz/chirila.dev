@@ -15,7 +15,9 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.4.1",
+    "@types/classnames": "^2.3.1",
     "@types/react": "17.0.14",
+    "classnames": "^2.3.1",
     "autoprefixer": "^10.3.1",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",

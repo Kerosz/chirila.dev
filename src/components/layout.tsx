@@ -5,6 +5,7 @@ import Header from './header';
 import Footer from './footer';
 //types
 import type { ReactNode, ReactElement } from 'react';
+import Banner from './banner';
 
 export interface ILayout {
   children: ReactNode;
@@ -18,7 +19,15 @@ function Layout({ children, title }: ILayout): ReactElement {
         <title>{title}</title>
       </Head>
 
-      <Header />
+      <Header
+        preHeader={
+          <Banner
+            link='#'
+            text='Welcome to my new space on the internet'
+            cta='Learn more about the new version'
+          />
+        }
+      />
       <main>{children}</main>
       <Footer />
     </>

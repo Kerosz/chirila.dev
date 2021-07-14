@@ -18,8 +18,14 @@ module.exports = {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
-
-    extend: {},
+    extend: {
+      colors: {
+        'light-accent': '#9B2C2C',
+      },
+      fontSize: {
+        '10xl': ['9.7rem', 1],
+      },
+    },
   },
   variants: {
     extend: {},
