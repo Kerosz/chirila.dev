@@ -3,6 +3,28 @@
 @tailwind utilities;
 
 @layer base {
+  ::selection {
+    @apply bg-cyan;
+    @apply text-gray-900
+  }
+
+  * {
+    cursor: none;
+  }
+
+  html {
+    -ms-overflow-style: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-gray-50;
+  }
+
   @font-face {
     font-family: 'Graphik';
     font-weight: 300;

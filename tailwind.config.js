@@ -20,7 +20,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'light-accent': '#9B2C2C',
+        cyan: '#7eeaf2',
       },
       fontSize: {
         '10xl': ['9.7rem', 1],

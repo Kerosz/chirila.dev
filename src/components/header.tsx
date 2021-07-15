@@ -17,25 +17,25 @@ function Header({ preHeader }: IHeader): JSX.Element {
         as='header'
         className='h-20 flex justify-between items-center border-b border-gray-900'>
         <Link href='/' className='flex items-center'>
-          <Logo className='w-10' />
+          <Logo className='w-12' />
         </Link>
 
         <nav>
           <ul className='flex space-x-10 font-medium'>
             <li>
-              <Link href='/about' className='py-4 hover:text-gray-600'>
+              <Link href='/about' className='py-4 hover:text-red-800'>
                 About
               </Link>
             </li>
 
             <li>
-              <Link href='/blog' className='py-4 hover:text-gray-600'>
+              <Link href='/blog' className='py-4 hover:text-red-800'>
                 Blog
               </Link>
             </li>
 
             <li>
-              <Link href='/contact' className='py-4 hover:text-gray-600'>
+              <Link href='/contact' className='py-4 hover:text-red-800'>
                 Contact
               </Link>
             </li>

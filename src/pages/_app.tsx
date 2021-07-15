@@ -1,17 +1,16 @@
-// packages
-import { Fragment } from 'react';
+// components
+import Cursor from '../components/cursor';
 // types
 import type { AppProps } from 'next/app';
 
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const Layout = (Component as any).Layout || Fragment;
-
   return (
-    <Layout>
+    <>
+      <Cursor />
       <Component {...pageProps} />
-    </Layout>
+    </>
   );
 }
 export default MyApp;

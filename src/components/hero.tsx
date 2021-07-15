@@ -4,12 +4,9 @@ import { Container, Link, Typography } from './ui';
 function Hero(): JSX.Element {
   return (
     <Container as='section' className='h-[550px] pt-36 flex flex-col'>
-      <Typography as='h1' className='text-10xl text-gray-900 font-black pb-12'>
-        Chirila
+      <Typography as='h1' className='text-10xl text-gray-900 font-black pb-14'>
+        A. Chirila
       </Typography>
-      <Link href='mailto:andrei@chirila.dev' className='text-lg ml-2 mb-3'>
-        andrei@chirila.dev
-      </Link>
 
       <div className='flex w-full justify-between items-end'>
         <div className='flex flex-col'>
@@ -28,6 +25,15 @@ function Hero(): JSX.Element {
             Get in touch for availability.
           </Typography>
           <ul className='flex space-x-5'>
+            <li>
+              <Link
+                href='https://twitter.com/chirila_'
+                className='text-gray-500 text-sm hover:text-gray-900 hover:underline'
+                external>
+                Twitter
+              </Link>
+            </li>
+
             <li>
               <Link
                 href='https://www.linkedin.com/in/c-andrei'

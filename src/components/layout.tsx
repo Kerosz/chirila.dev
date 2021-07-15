@@ -9,10 +9,12 @@ import Banner from './banner';
 
 export interface ILayout {
   children: ReactNode;
-  title: string;
+  title?: string;
 }
 
 function Layout({ children, title }: ILayout): ReactElement {
+  title = title || 'Andrei Chirila – Developer, writer.';
+
   return (
     <>
       <Head>

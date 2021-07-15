@@ -4,7 +4,9 @@ import Layout from '../components/layout';
 import Container from '../components/ui/container';
 
 export default function Home() {
-  return <Hero />;
+  return (
+    <Layout>
+      <Hero />;
+    </Layout>
+  );
 }
-
-Home.Layout = Layout;
