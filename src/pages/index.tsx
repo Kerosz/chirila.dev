@@ -6,7 +6,7 @@ import Container from '../components/ui/container';
 export default function Home() {
   return (
     <Layout>
-      <Hero />;
+      <Hero />
     </Layout>
   );
 }

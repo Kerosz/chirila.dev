@@ -1,13 +1,14 @@
 // packages
 import gsap from 'gsap';
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 // components
+import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import { Container, Link, Typography } from './ui';
 
 function Hero(): JSX.Element {
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     gsap.fromTo(
       heroRef.current,
       { y: 300, opacity: 0 },
@@ -17,17 +18,23 @@ function Hero(): JSX.Element {
 
   return (
     <Container as='section' className='pt-36 pb-8 flex flex-col' ref={heroRef}>
-      <Typography as='h1' className='text-10xl text-gray-900 font-black pb-14'>
+      <Typography
+        as='h1'
+        className='sm:text-10xl text-18vw text-gray-900 font-black pb-14'>
         A. Chirila
       </Typography>
 
-      <div className='flex w-full justify-between items-end'>
-        <div className='flex flex-col'>
-          <Typography className='font-medium text-2xl ml-2 text-gray-900' reset>
+      <div className='flex w-full sm:flex-row flex-col justify-between sm:items-center'>
+        <div className='flex flex-col sm:pb-0 pb-8'>
+          <Typography
+            className='font-medium text-2xl sm:ml-2 text-gray-900'
+            reset>
             /Fullstack Developer
           </Typography>
 
-          <Typography className='font-medium text-2xl ml-2 text-gray-900' reset>
+          <Typography
+            className='font-medium text-2xl sm:ml-2 text-gray-900'
+            reset>
             /Writer
           </Typography>
         </div>

@@ -1,10 +1,11 @@
 // packages
-import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useRef } from 'react';
 // components
-import { Link, Typography } from './ui';
+import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import Container from './ui/container';
 import ArrowRight from '../assets/icons/arrow-right';
+import { Link, Typography } from './ui';
 
 export interface IBanner {
   link: string;
@@ -13,9 +14,9 @@ export interface IBanner {
 }
 
 function Banner({ link = '#', text, cta }: IBanner): JSX.Element {
-  const bannerRef = useRef(null);
+  const bannerRef = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     gsap.fromTo(
       bannerRef.current,
       { y: -70 },

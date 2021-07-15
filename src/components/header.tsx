@@ -1,7 +1,8 @@
 // packages
 import gsap from 'gsap';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef } from 'react';
 // components
+import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import Logo from '../assets/icons/logo';
 import { Container, Link } from './ui';
 // types
@@ -13,9 +14,9 @@ export interface IHeader {
 }
 
 function Header({ preHeader }: IHeader): JSX.Element {
-  const headerRef = useRef(null);
+  const headerRef = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     gsap.fromTo(
       headerRef.current,
       { y: -150 },

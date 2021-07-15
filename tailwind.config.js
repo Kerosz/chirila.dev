@@ -18,12 +18,13 @@ module.exports = {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
+    fontSize: {
+      '10xl': ['9.7rem', 1],
+      '18vw': ['25vw', 1],
+    },
     extend: {
       colors: {
         cyan: '#7eeaf2',
-      },
-      fontSize: {
-        '10xl': ['9.7rem', 1],
       },
     },
   },

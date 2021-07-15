@@ -1,7 +1,8 @@
 // packages
 import cn from 'classnames';
+import { forwardRef } from 'react';
 // types
-import type { ComponentPropsWithoutRef, JSXElementConstructor } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 enum Component {
   p,
@@ -21,29 +22,31 @@ export interface ITypography
   reset?: boolean;
 }
 
-function Typography(props: ITypography): JSX.Element {
-  const { as, component = 'p', className, children, reset, ...rest } = props;
+const Typography = forwardRef<HTMLDivElement, ITypography>(
+  (props, ref): JSX.Element => {
+    const { as, component = 'p', className, children, reset, ...rest } = props;
 
-  const Element = as || component;
+    const Element = as || component;
 
-  const rootClass = cn(
-    {
-      'text-4xl font-bold': Element === 'h1' && !reset,
-      'text-3xl font-bold': Element === 'h2' && !reset,
-      'text-2xl font-bold': Element === 'h3' && !reset,
-      'text-xl font-medium': Element === 'h4' && !reset,
-      'text-lg font-medium': Element === 'h5' && !reset,
-      'text-lg font-base': Element === 'h6' && !reset,
-      'text-base font-base': Element === 'p' && !reset,
-    },
-    className
-  );
+    const rootClass = cn(
+      {
+        'text-4xl font-bold': Element === 'h1' && !reset,
+        'text-3xl font-bold': Element === 'h2' && !reset,
+        'text-2xl font-bold': Element === 'h3' && !reset,
+        'text-xl font-medium': Element === 'h4' && !reset,
+        'text-lg font-medium': Element === 'h5' && !reset,
+        'text-lg font-base': Element === 'h6' && !reset,
+        'text-base font-base': Element === 'p' && !reset,
+      },
+      className
+    );
 
-  return (
-    <Element className={rootClass} {...rest}>
-      {children}
-    </Element>
-  );
-}
+    return (
+      <Element ref={ref} className={rootClass} {...rest}>
+        {children}
+      </Element>
+    );
+  }
+);
 
 export default Typography;
