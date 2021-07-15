@@ -67,8 +67,8 @@ function Cursor(): JSX.Element {
         positionRef.current.destinationX = mouseX;
         positionRef.current.destinationY = mouseY;
       } else {
-        positionRef.current.distanceX = (mouseX - destinationX) * 0.2;
-        positionRef.current.distanceY = (mouseY - destinationY) * 0.2;
+        positionRef.current.distanceX = (mouseX - destinationX) * 0.18;
+        positionRef.current.distanceY = (mouseY - destinationY) * 0.18;
         if (
           Math.abs(positionRef.current.distanceX) +
             Math.abs(positionRef.current.distanceY) <
@@ -91,16 +91,15 @@ function Cursor(): JSX.Element {
   return (
     <>
       <div
-        className='fixed z-50 rounded-full w-[4.5rem] h-[4.5rem] border border-gray-900 overflow-hidden pointer-events-none'
+        className='fixed z-50 rounded-full w-20 h-20 border border-gray-900 overflow-hidden pointer-events-none'
         ref={outerCursorRef}
       />
       <div
-        className='fixed z-50 rounded-full w-7 h-7 bg-white overflow-hidden pointer-events-none'
+        className='fixed z-50 rounded-full w-7 h-7 bg-white overflow-hidden pointer-events-none mix-blend-difference'
         style={{
-          transform: `translate3d(${MOUSE_START_X_POS + 20}px, ${
-            MOUSE_START_Y_POS + 20
+          transform: `translate3d(${MOUSE_START_X_POS + 26}px, ${
+            MOUSE_START_Y_POS + 26
           }px, 0)`,
-          mixBlendMode: 'difference',
         }}
         ref={innerCursorRef}
       />

@@ -1,3 +1,6 @@
+// packages
+import gsap from 'gsap';
+import { useRef, useLayoutEffect } from 'react';
 // components
 import Logo from '../assets/icons/logo';
 import { Container, Link } from './ui';
@@ -10,12 +13,23 @@ export interface IHeader {
 }
 
 function Header({ preHeader }: IHeader): JSX.Element {
+  const headerRef = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      headerRef.current,
+      { y: -150 },
+      { y: 0, duration: 0.32, ease: 'expo.out', delay: 1.6 }
+    );
+  }, []);
+
   return (
     <>
       {preHeader && preHeader}
       <Container
         as='header'
-        className='h-20 flex justify-between items-center border-b border-gray-900'>
+        className='h-20 flex justify-between items-center border-b border-gray-900 z-30'
+        ref={headerRef}>
         <Link href='/' className='flex items-center'>
           <Logo className='w-12' />
         </Link>

@@ -1,9 +1,22 @@
+// packages
+import gsap from 'gsap';
+import { useLayoutEffect, useRef } from 'react';
 // components
 import { Container, Link, Typography } from './ui';
 
 function Hero(): JSX.Element {
+  const heroRef = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      heroRef.current,
+      { y: 300, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.15, ease: 'power4.inOut' }
+    );
+  }, []);
+
   return (
-    <Container as='section' className='h-[550px] pt-36 flex flex-col'>
+    <Container as='section' className='pt-36 pb-8 flex flex-col' ref={heroRef}>
       <Typography as='h1' className='text-10xl text-gray-900 font-black pb-14'>
         A. Chirila
       </Typography>

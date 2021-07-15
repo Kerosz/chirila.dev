@@ -1,48 +1,52 @@
 // packages
 import cn from 'classnames';
+import { forwardRef } from 'react';
 // types
 import type {
+  ComponentPropsWithRef,
   ComponentType,
   HTMLAttributes,
   JSXElementConstructor,
 } from 'react';
 
-export interface IContainer extends HTMLAttributes<HTMLDivElement> {
+export interface IContainer extends ComponentPropsWithRef<'div'> {
   as?: string | JSXElementConstructor<any>;
   component?: string | JSXElementConstructor<any>;
   reset?: boolean;
   maxW?: string;
 }
 
-function Container(props: IContainer): JSX.Element {
-  const {
-    as,
-    component = 'div',
-    className,
-    children,
-    reset,
-    maxW = '',
-    ...rest
-  } = props;
+const Container = forwardRef<HTMLDivElement, IContainer>(
+  (props, ref): JSX.Element => {
+    const {
+      as,
+      component = 'div',
+      className,
+      children,
+      reset,
+      maxW = '',
+      ...rest
+    } = props;
 
-  const Element = (as || component) as ComponentType<
-    HTMLAttributes<HTMLDivElement>
-  >;
+    const Element = (as || component) as ComponentType<
+      HTMLAttributes<HTMLDivElement>
+    >;
 
-  const rootClass = cn(
-    maxW,
-    {
-      'lg:px-14 md:px-12 px-3 mx-auto w-full': !reset,
-      'max-w-screen-xl': !maxW,
-    },
-    className
-  );
+    const rootClass = cn(
+      maxW,
+      {
+        'lg:px-14 md:px-12 px-3 mx-auto w-full': !reset,
+        'max-w-screen-xl': !maxW,
+      },
+      className
+    );
 
-  return (
-    <Element className={rootClass} {...rest}>
-      {children}
-    </Element>
-  );
-}
+    return (
+      <Element ref={ref} className={rootClass} {...rest}>
+        {children}
+      </Element>
+    );
+  }
+);
 
 export default Container;
