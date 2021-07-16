@@ -35,8 +35,8 @@ const Container = forwardRef<HTMLDivElement, IContainer>(
     const rootClass = cn(
       maxW,
       {
-        'lg:px-14 md:px-12 px-3 mx-auto w-full': !reset,
-        'max-w-screen-xl': !maxW,
+        'lg:px-14 md:px-12 px-4 mx-auto w-full': !reset,
+        'max-w-screen-3xl': !maxW,
       },
       className
     );

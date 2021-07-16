@@ -25,7 +25,7 @@ function Banner({ link = '#', text, cta }: IBanner): JSX.Element {
   }, []);
 
   return (
-    <div className='bg-red-800 hover:bg-red-900 z-40' ref={bannerRef}>
+    <div className='bg-red-800 hover:bg-red-900 z-40 relative' ref={bannerRef}>
       <Link href={link} className='h-full'>
         <Container className='flex flex-col sm:flex-row h-full justify-center items-center text-white font-medium py-2 sm:py-3'>
           <Typography>{text}.&nbsp;</Typography>

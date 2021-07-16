@@ -1,6 +1,6 @@
 // packages
 import gsap from 'gsap';
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 // components
 import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import Logo from '../assets/icons/logo';
@@ -29,33 +29,37 @@ function Header({ preHeader }: IHeader): JSX.Element {
       {preHeader && preHeader}
       <Container
         as='header'
-        className='h-20 flex justify-between items-center border-b border-gray-900 z-30'
+        className='h-[5.5rem] sticky top-0 z-30 bg-faded backdrop-blur-md'
         ref={headerRef}>
-        <Link href='/' className='flex items-center'>
-          <Logo className='w-12' />
-        </Link>
+        <div className='flex h-full justify-between items-center border-b border-gray-900'>
+          <Link href='/' className='flex items-center'>
+            <Logo className='w-14' />
+          </Link>
 
-        <nav>
-          <ul className='flex space-x-10 font-medium'>
-            <li>
-              <Link href='/about' className='py-4 hover:text-red-800'>
-                About
-              </Link>
-            </li>
+          <nav>
+            <ul className='flex xs:space-x-10 space-x-6 font-medium'>
+              <li>
+                <Link href='/about' className='py-4 text-lg hover:text-red-800'>
+                  About
+                </Link>
+              </li>
 
-            <li>
-              <Link href='/blog' className='py-4 hover:text-red-800'>
-                Blog
-              </Link>
-            </li>
+              <li>
+                <Link href='/blog' className='py-4 text-lg hover:text-red-800'>
+                  Blog
+                </Link>
+              </li>
 
-            <li>
-              <Link href='/contact' className='py-4 hover:text-red-800'>
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
+              <li>
+                <Link
+                  href='/contact'
+                  className='py-4 text-lg hover:text-red-800'>
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </Container>
     </>
   );

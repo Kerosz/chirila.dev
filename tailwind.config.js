@@ -13,18 +13,21 @@ module.exports = {
       lg: '976px',
       xl: '1280px',
       '2xl': '1440px',
+      '3xl': '1600px',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
-    fontSize: {
-      '10xl': ['9.7rem', 1],
-      '18vw': ['25vw', 1],
-    },
+
     extend: {
       colors: {
         cyan: '#7eeaf2',
+        faded: 'rgba(255, 255, 255, 0.78)',
+      },
+      fontSize: {
+        '10xl': ['10rem', 1],
+        '25vw': ['25vw', 1],
       },
     },
   },

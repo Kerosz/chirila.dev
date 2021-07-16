@@ -17,38 +17,44 @@ function Hero(): JSX.Element {
   }, []);
 
   return (
-    <Container as='section' className='pt-36 pb-8 flex flex-col' ref={heroRef}>
+    <Container
+      as='section'
+      className='sm:pt-36 pt-28 pb-24 flex flex-col'
+      ref={heroRef}>
       <Typography
         as='h1'
-        className='sm:text-10xl text-18vw text-gray-900 font-black pb-14'>
+        className='sm:text-10xl text-25vw text-gray-900 font-black pb-16'>
         A. Chirila
       </Typography>
 
       <div className='flex w-full sm:flex-row flex-col justify-between sm:items-center'>
-        <div className='flex flex-col sm:pb-0 pb-8'>
+        <div className='flex flex-col sm:pb-0 pb-10'>
           <Typography
-            className='font-medium text-2xl sm:ml-2 text-gray-900'
-            reset>
+            className='font-medium text-3xl pb-1 sm:ml-2 text-gray-900'
+            resetStyles>
             /Fullstack Developer
           </Typography>
 
           <Typography
-            className='font-medium text-2xl sm:ml-2 text-gray-900'
-            reset>
+            className='font-medium text-3xl sm:ml-2 text-gray-900'
+            resetStyles>
             /Writer
           </Typography>
         </div>
 
         <div>
-          <Typography>Based in Romania, BH.</Typography>
-          <Typography className='pb-4'>
+          <Typography className='text-lg' resetStyles>
+            Based in Romania, BH.
+          </Typography>
+          <Typography className='pb-4 text-lg' resetStyles>
             Get in touch for availability.
           </Typography>
+
           <ul className='flex space-x-5'>
             <li>
               <Link
                 href='https://twitter.com/chirila_'
-                className='text-gray-500 text-sm hover:text-gray-900 hover:underline'
+                className='text-gray-500 hover:text-gray-900 hover:underline'
                 external>
                 Twitter
               </Link>
@@ -57,7 +63,7 @@ function Hero(): JSX.Element {
             <li>
               <Link
                 href='https://www.linkedin.com/in/c-andrei'
-                className='text-gray-500 text-sm hover:text-gray-900 hover:underline'
+                className='text-gray-500 hover:text-gray-900 hover:underline'
                 external>
                 LinkedIn
               </Link>
@@ -66,7 +72,7 @@ function Hero(): JSX.Element {
             <li>
               <Link
                 href='https://github.com/Kerosz'
-                className='text-gray-500 text-sm hover:text-gray-900 hover:underline'
+                className='text-gray-500 hover:text-gray-900 hover:underline'
                 external>
                 Github
               </Link>

@@ -22,7 +22,8 @@
   }
 
   body {
-    @apply bg-gray-50;
+    @apply bg-white;
+    @apply overflow-x-hidden
   }
 
   @font-face {
