@@ -11,7 +11,7 @@ function MoreWork(): JSX.Element {
         <div className='lg:w-1/2 lg:mb-0 mb-10'>
           <Typography
             as='h2'
-            className='text-8xl font-black fill-color pb-1'
+            className='xs:text-8xl text-22vw font-black fill-color pb-1'
             resetStyles>
             More <br /> &nbsp;&nbsp;&nbsp;Work
           </Typography>
@@ -19,13 +19,17 @@ function MoreWork(): JSX.Element {
 
         <div className='lg:w-1/2'>
           <Typography className='text-xl pb-10' resetStyles>
-            Some more of my projects I&apos;ve developed and designed in the
+            Some more of the projects I&apos;ve developed and designed in the
             past.
           </Typography>
 
           {moreProjectsData.map((project) => {
             return (
-              <Link href={project.link} key={project.title} className='group'>
+              <Link
+                href={project.link}
+                key={project.title}
+                external
+                className='group'>
                 <header className='flex justify-between mb-1 mt-10'>
                   <Typography className='text-3xl' resetStyles>
                     {project.title}

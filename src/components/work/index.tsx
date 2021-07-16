@@ -12,7 +12,7 @@ function Work(): JSX.Element {
       <Container>
         <Typography
           as='h2'
-          className='text-right sm:text-8xl text-22vw font-black fill-color pb-5'
+          className='text-right xs:text-8xl text-22vw font-black fill-color pb-5'
           resetStyles>
           Case Studies <br /> & Projects
         </Typography>
