@@ -19,7 +19,7 @@ function Hero(): JSX.Element {
   return (
     <Container
       as='section'
-      className='sm:pt-36 pt-28 pb-24 flex flex-col'
+      className='sm:pt-36 pt-28 pb-20 flex flex-col'
       ref={heroRef}>
       <Typography
         as='h1'

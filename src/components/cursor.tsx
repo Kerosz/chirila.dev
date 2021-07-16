@@ -91,7 +91,7 @@ function Cursor(): JSX.Element {
   return (
     <>
       <div
-        className='fixed z-50 rounded-full w-20 h-20 border border-gray-900 overflow-hidden pointer-events-none'
+        className='fixed z-50 rounded-full w-20 h-20 border border-white overflow-hidden pointer-events-none mix-blend-difference'
         ref={outerCursorRef}
       />
       <div

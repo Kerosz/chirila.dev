@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import cn from 'classnames';
 // types
 import type { LinkProps as NextLinkProps } from 'next/link';
-import type { AnchorHTMLAttributes } from 'react';
+import { AnchorHTMLAttributes, forwardRef } from 'react';
 
 interface ILink
   extends NextLinkProps,
@@ -12,15 +12,17 @@ interface ILink
   fixPosition?: boolean;
 }
 
-function Link({
-  href,
-  replace,
-  children,
-  className,
-  external = false,
-  fixPosition = false,
-  ...rest
-}: ILink): JSX.Element {
+const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
+  const {
+    href,
+    replace,
+    children,
+    className,
+    external = false,
+    fixPosition = false,
+    ...rest
+  } = props;
+
   const rootClass = cn(
     {
       flex: fixPosition,
@@ -33,6 +35,7 @@ function Link({
     return (
       <a
         className={rootClass}
+        ref={ref}
         href={href as string}
         rel='noopener noreferrer'
         target='_blank'
@@ -44,11 +47,11 @@ function Link({
 
   return (
     <NextLink href={href} replace={replace}>
-      <a className={rootClass} {...rest}>
+      <a ref={ref} className={rootClass} {...rest}>
         {children}
       </a>
     </NextLink>
   );
-}
+});
 
 export default Link;

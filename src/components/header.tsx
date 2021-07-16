@@ -27,40 +27,45 @@ function Header({ preHeader }: IHeader): JSX.Element {
   return (
     <>
       {preHeader && preHeader}
-      <Container
-        as='header'
+      <header
         className='h-[5.5rem] sticky top-0 z-30 bg-faded backdrop-blur-md'
         ref={headerRef}>
-        <div className='flex h-full justify-between items-center border-b border-gray-900'>
-          <Link href='/' className='flex items-center'>
-            <Logo className='w-14' />
-          </Link>
+        <Container className='h-full'>
+          <div className='flex h-full justify-between items-center border-b border-gray-900'>
+            <Link href='/' className='flex items-center'>
+              <Logo className='w-14' />
+            </Link>
 
-          <nav>
-            <ul className='flex xs:space-x-10 space-x-6 font-medium'>
-              <li>
-                <Link href='/about' className='py-4 text-lg hover:text-red-800'>
-                  About
-                </Link>
-              </li>
+            <nav>
+              <ul className='flex xs:space-x-10 space-x-6 font-medium'>
+                <li>
+                  <Link
+                    href='/about'
+                    className='py-4 text-lg hover:text-red-800'>
+                    About
+                  </Link>
+                </li>
 
-              <li>
-                <Link href='/blog' className='py-4 text-lg hover:text-red-800'>
-                  Blog
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    href='/blog'
+                    className='py-4 text-lg hover:text-red-800'>
+                    Blog
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  href='/contact'
-                  className='py-4 text-lg hover:text-red-800'>
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </Container>
+                <li>
+                  <Link
+                    href='/snippets'
+                    className='py-4 text-lg hover:text-red-800'>
+                    Snippets
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </Container>
+      </header>
     </>
   );
 }
