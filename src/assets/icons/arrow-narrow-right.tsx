@@ -1,9 +1,7 @@
 // types
 import type { ComponentPropsWithoutRef } from 'react';
 
-export interface IArrowNarrowRight extends ComponentPropsWithoutRef<'svg'> {
-  strokeWidth?: number;
-}
+export interface IArrowNarrowRight extends ComponentPropsWithoutRef<'svg'> {}
 
 function ArrowNarrowRight({
   strokeWidth = 2,

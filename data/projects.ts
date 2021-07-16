@@ -4,32 +4,36 @@ export interface IProjectData {
   tags: string[];
   summary: string;
   srcName: string;
+  link: string;
 }
 
 const projectData: IProjectData[] = [
   {
-    title: 'Unitech Pest',
-    scope: 'UX/UI Design. Website Development',
-    tags: ['gatsby', 'styled-components', 'contentful'],
-    summary:
-      'Unitech Pest and Control was a full revamp of 2 websites for a pest control company based in Saint Louis, Missouri. Working with latest technologies on the market we were able to solve all the problems that were presented in the initial discussion with the representatives of the company',
-    srcName: 'example-1.jpg',
-  },
-  {
     title: 'Nectbox',
-    scope: 'Website Development',
+    scope: 'UX/UI Design. Website Development',
     tags: ['nextjs', 'styled-components', 'typescript'],
     summary:
       'After some independent work I decided to form an agency which will facilitate the working process with local clients from early consulting and design stages all the way up to development and marketing of their products and ideas.',
     srcName: 'example-2.jpg',
+    link: 'https://blog.chirila.dev/study-case/nectbox',
   },
   {
-    title: 'Reddit Client',
-    scope: 'UX/UI Design. Website Development',
-    tags: ['react', 'material-ui', 'typescript', 'redux-toolkit'],
+    title: 'Montex',
+    scope: 'UX/UI Design. Web App Development',
+    tags: ['nextjs', 'tailwindcss', 'supabase'],
     summary:
-      'Adapting to different trends and designs as a company that impact millions of users is difficult. Reddit Client Redesign is the unofficial Reddit front-end app concept to simplify and tune the browsing experience of the users. ',
+      "Montex it's the easiest way to add comments or reviews to your blog or personal website. Implementing a feedback system into your website was never that easy.",
+    srcName: 'example-1.jpg',
+    link: 'https://blog.chirila.dev/study-case/montex',
+  },
+  {
+    title: 'Margatsni',
+    scope: 'Web App Development',
+    tags: ['react', 'tailwindcss', 'firebase', 'cloudinary'],
+    summary:
+      'Margatsni is an unofficial web application build of the famous Instagram by Facebook, providing a full social media experience in the browser.',
     srcName: 'example-3.jpg',
+    link: 'https://blog.chirila.dev/study-case/margatsni',
   },
 ];
 

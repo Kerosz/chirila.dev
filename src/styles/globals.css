@@ -26,6 +26,12 @@
     @apply overflow-x-hidden
   }
 
+  .fill-color {
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+
   @font-face {
     font-family: 'Graphik';
     font-weight: 300;

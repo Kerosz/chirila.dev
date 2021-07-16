@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 // components
 import ArrowNarrowRight from '../../assets/icons/arrow-narrow-right';
 import useSafeLayoutEffect from '../../hooks/use-safe-layout-effect';
-import { Container, Typography, Badge, Link } from '../ui';
+import { Typography, Badge, Link } from '../ui';
 // types
 import type { IProjectData } from '../../../data/projects';
 
@@ -71,46 +71,54 @@ function Project({
   }, []);
 
   return (
-    <div className='project py-20' ref={containerRef}>
-      <Container className='flex w-full xl:flex-row flex-col items-center h-full'>
-        <div className='xl:w-5/12 pr-10 xl:mb-0 mb-8'>
-          <div ref={topRef}>
-            <Typography
-              as='h3'
-              className='text-lg font-medium uppercase pb-8'
-              resetStyles>
-              Project – 00{number}
-            </Typography>
-            <Typography as='h2' className='text-6xl font-bold pb-4' resetStyles>
-              {title}
-            </Typography>
-            <Typography className='text-lg pb-3.5' resetStyles>
-              {scope}
-            </Typography>
-            <div className='pb-10 flex flex-wrap'>
-              {tags.map((tag) => (
-                <Badge key={tag} text={tag} className='mr-3 mb-3' />
-              ))}
-            </div>
-          </div>
-
-          <Typography ref={summaryRef} className='text-lg pb-10' resetStyles>
-            {summary}
+    <div
+      className='py-20 flex w-full xl:flex-row flex-col items-center h-full'
+      ref={containerRef}>
+      <div className='xl:w-5/12 pr-10 xl:mb-0 mb-8'>
+        <div ref={topRef}>
+          <Typography
+            as='h4'
+            className='text-lg font-medium uppercase pb-8'
+            resetStyles>
+            Project – 00{number}
           </Typography>
-
-          <Link
-            href='/'
-            className='flex uppercase text-gray-500 hover:text-red-800 text-lg font-medium max-w-max link-animation'
-            ref={exploreRef}>
-            Explore project{' '}
-            <ArrowNarrowRight className='w-11 -mt-1 pl-2' strokeWidth={1} />
-          </Link>
+          <Typography as='h3' className='text-6xl font-bold pb-4' resetStyles>
+            {title}
+          </Typography>
+          <Typography className='text-lg pb-3.5' resetStyles>
+            {scope}
+          </Typography>
+          <div className='pb-10 flex flex-wrap'>
+            {tags.map((tag) => (
+              <Badge key={tag} text={tag} className='mr-3 mb-3' />
+            ))}
+          </div>
         </div>
 
-        <div className='xl:w-7/12' ref={imgContainer}>
-          <Image src={require(`../../assets/images/${srcName}`)} alt={title} />
-        </div>
-      </Container>
+        <Typography ref={summaryRef} className='text-lg pb-10' resetStyles>
+          {summary}
+        </Typography>
+
+        <Link
+          href='/'
+          className='flex uppercase text-gray-500 hover:text-red-800 text-lg font-medium max-w-max link-animation group'
+          ref={exploreRef}>
+          <Typography className='pr-2'>Explore project</Typography>
+          <ArrowNarrowRight
+            className='w-9 -mt-1.5 group-hover:transform-gpu group-hover:translate-x-3 transition-all duration-150'
+            strokeWidth={1}
+          />
+        </Link>
+      </div>
+
+      <div className='xl:w-7/12' ref={imgContainer}>
+        <Image
+          src={require(`../../assets/images/${srcName}`)}
+          alt={title}
+          priority
+          placeholder='blur'
+        />
+      </div>
     </div>
   );
 }

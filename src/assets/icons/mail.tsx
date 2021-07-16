@@ -1,9 +1,9 @@
 // types
 import type { ComponentPropsWithoutRef } from 'react';
 
-export interface IArrowRight extends ComponentPropsWithoutRef<'svg'> {}
+export interface IMail extends ComponentPropsWithoutRef<'svg'> {}
 
-function ArrowRight({ strokeWidth = 2, ...rest }: IArrowRight): JSX.Element {
+function Mail({ strokeWidth = 2, ...rest }: IMail): JSX.Element {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -15,10 +15,10 @@ function ArrowRight({ strokeWidth = 2, ...rest }: IArrowRight): JSX.Element {
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth={strokeWidth}
-        d='M14 5l7 7m0 0l-7 7m7-7H3'
+        d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
       />
     </svg>
   );
 }
 
-export default ArrowRight;
+export default Mail;
