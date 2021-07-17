@@ -3,7 +3,7 @@ import AboutPromo from '../components/about-promo';
 import Hero from '../components/hero';
 import Layout from '../components/layout';
 import Work from '../components/work';
-import MoreWork from '../components/work/more';
+import MoreWork from '../components/more-work';
 
 export default function HomePage() {
   return (

@@ -19,7 +19,7 @@ function Work(): JSX.Element {
         {projectData.map((project, index) => (
           <Project
             key={project.title + '__' + index}
-            number={index + 1}
+            index={index + 1}
             {...project}
           />
         ))}

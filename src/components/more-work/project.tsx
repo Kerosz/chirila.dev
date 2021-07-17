@@ -1,0 +1,54 @@
+// components
+import ArrowNarrowRight from '../../assets/icons/arrow-narrow-right';
+import { Typography, Badge, Link } from '../ui';
+// types
+import type { Dispatch, SetStateAction } from 'react';
+import type { IProjectData } from '../../../data/projects';
+
+export interface IProject extends IProjectData {
+  index: number;
+  setActiveIndex: Dispatch<SetStateAction<number>>;
+}
+
+function Project({
+  title,
+  link,
+  tags,
+  summary,
+  index,
+  setActiveIndex,
+}: IProject): JSX.Element {
+  return (
+    <Link
+      href={link}
+      key={title}
+      external
+      className='group'
+      onMouseEnter={() => setActiveIndex(index)}
+      onMouseLeave={() => setActiveIndex(-1)}>
+      <header className='flex justify-between mb-1 mt-10'>
+        <Typography className='xs:text-4xl text-3xl font-seri' resetStyles>
+          {title}
+        </Typography>
+        <ArrowNarrowRight
+          className='w-9 -mt-1.5 group-hover:-rotate-45 group-hover:text-red-800 transition-all duration-200'
+          strokeWidth={1}
+        />
+      </header>
+      <div className='pb-10 border-b border-gray-300'>
+        {tags.map((tag, index) => (
+          <span key={tag} className='text-sm pr-2 text-gray-500'>
+            {index !== 0 && <span className='pr-2'>⦿</span>}
+            {tag}
+          </span>
+        ))}
+
+        <Typography className='mt-5 text-gray-800' resetStyles>
+          {summary}
+        </Typography>
+      </div>
+    </Link>
+  );
+}
+
+export default Project;

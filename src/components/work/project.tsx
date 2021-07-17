@@ -11,7 +11,7 @@ import { Typography, Badge, Link } from '../ui';
 import type { IProjectData } from '../../../data/projects';
 
 export interface IProject extends IProjectData {
-  number: number;
+  index: number;
 }
 
 function Project({
@@ -20,7 +20,7 @@ function Project({
   tags,
   summary,
   srcName,
-  number,
+  index,
 }: IProject): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const topRef = useRef<HTMLDivElement | null>(null);
@@ -80,7 +80,7 @@ function Project({
             as='h4'
             className='text-lg font-medium uppercase pb-8'
             resetStyles>
-            Project – 00{number}
+            Project – 00{index}
           </Typography>
           <Typography as='h3' className='text-6xl font-bold pb-4' resetStyles>
             {title}
