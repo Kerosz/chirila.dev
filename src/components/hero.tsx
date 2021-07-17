@@ -1,12 +1,11 @@
 // packages
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { useRef } from 'react';
 // components
 import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import { Container, Link, Typography } from './ui';
 // data
 import heroData from '../../data/hero';
-import Mail from '../assets/icons/mail';
 
 function Hero(): JSX.Element {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -25,20 +24,25 @@ function Hero(): JSX.Element {
       className='sm:pt-24 pt-20 pb-20 flex flex-col'
       ref={heroRef}>
       <div className='flex flex-col pb-2'>
-      {heroData.tags.map((tag) =>  (
-            <Typography key={tag} className='font-medium text-3xl pb-1 sm:ml-9 fill-color' resetStyles>
+        {heroData.tags.map((tag) => (
+          <Typography
+            key={tag}
+            className='font-medium text-3xl pb-1 sm:ml-9 fill-color'
+            resetStyles>
             /{tag}
           </Typography>
-          ))}
+        ))}
       </div>
       <Typography
         as='h1'
-        className='sm:text-10xl text-25vw text-gray-900 font-black pb-8'>
+        className='sm:text-10xl text-26vw text-gray-900 font-black pb-8'>
         {heroData.title}
       </Typography>
 
       <div className='flex w-full sm:flex-row flex-col justify-between'>
-        <Link href={`mailto:${heroData.contact}`} className="text-xl font-medium pl-1 hover:text-red-800">
+        <Link
+          href={`mailto:${heroData.contact}`}
+          className='text-xl font-medium sm:pl-1 hover:text-red-800 max-w-max sm:pb-0 pb-6'>
           {heroData.contact}
         </Link>
 

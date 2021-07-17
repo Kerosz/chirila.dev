@@ -11,7 +11,7 @@ const moreProjectsData: IProjectData[] = [
     link: 'https://unitech.chirila.dev',
   },
   {
-    title: 'Persoanl Website v1',
+    title: 'Persoanl Space v1',
     scope: 'UX/UI Design. Website Development',
     tags: ['nextjs', 'styled-components', 'typescript'],
     summary:

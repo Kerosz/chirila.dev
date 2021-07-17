@@ -6,7 +6,7 @@ import moreProjectsData from '../../../data/more-projects';
 
 function MoreWork(): JSX.Element {
   return (
-    <section className='pt-6 pb-20'>
+    <section className='pt-14 pb-20'>
       <Container className='flex lg:flex-row flex-col'>
         <div className='lg:w-1/2 lg:mb-0 mb-10'>
           <Typography
@@ -31,7 +31,9 @@ function MoreWork(): JSX.Element {
                 external
                 className='group'>
                 <header className='flex justify-between mb-1 mt-10'>
-                  <Typography className='text-3xl' resetStyles>
+                  <Typography
+                    className='xs:text-4xl text-3xl font-serif'
+                    resetStyles>
                     {project.title}
                   </Typography>
                   <ArrowNarrowRight

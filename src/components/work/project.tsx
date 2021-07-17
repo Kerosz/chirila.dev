@@ -95,7 +95,10 @@ function Project({
           </div>
         </div>
 
-        <Typography ref={summaryRef} className='text-lg pb-10' resetStyles>
+        <Typography
+          ref={summaryRef}
+          className='text-lg pb-10 font-serif'
+          resetStyles>
           {summary}
         </Typography>
 

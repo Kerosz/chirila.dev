@@ -1,5 +1,5 @@
 const heroData = {
-  tags: ['Freelancer', 'Writer', 'Fullstack Developer'],
+  tags: ['Fullstack Developer', 'Freelancer', 'Technical Writer'],
   title: 'A. Chirila',
   contact: 'andrei@chirila.dev',
 };
