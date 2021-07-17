@@ -21,7 +21,7 @@ function Hero(): JSX.Element {
   return (
     <Container
       as='section'
-      className='sm:pt-24 pt-20 pb-20 flex flex-col'
+      className='sm:pt-24 pt-20 pb-20 flex flex-col relative z-10'
       ref={heroRef}>
       <div className='flex flex-col pb-2'>
         {heroData.tags.map((tag) => (

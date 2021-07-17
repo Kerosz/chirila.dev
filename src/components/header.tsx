@@ -28,7 +28,7 @@ function Header({ preHeader }: IHeader): JSX.Element {
     <>
       {preHeader && preHeader}
       <header
-        className='h-[5.5rem] sticky top-0 z-30 bg-faded backdrop-blur-md'
+        className='h-[5.25rem] sticky top-0 z-30 bg-faded backdrop-blur-md'
         ref={headerRef}>
         <Container className='h-full'>
           <div className='flex h-full justify-between items-center border-b border-gray-900'>

@@ -26,24 +26,26 @@ function Project({
       className='group'
       onMouseEnter={() => setActiveIndex(index)}
       onMouseLeave={() => setActiveIndex(-1)}>
-      <header className='flex justify-between mb-1 mt-10'>
-        <Typography className='xs:text-4xl text-3xl font-seri' resetStyles>
+      <header className='flex justify-between mb-1 pt-10'>
+        <Typography
+          className='xs:text-4xl text-3xl font-seri text-white'
+          resetStyles>
           {title}
         </Typography>
         <ArrowNarrowRight
-          className='w-9 -mt-1.5 group-hover:-rotate-45 group-hover:text-red-800 transition-all duration-200'
+          className='w-9 -mt-1.5 group-hover:-rotate-45 text-white transition-all duration-200'
           strokeWidth={1}
         />
       </header>
       <div className='pb-10 border-b border-gray-300'>
         {tags.map((tag, index) => (
-          <span key={tag} className='text-sm pr-2 text-gray-500'>
+          <span key={tag} className='text-sm pr-2 text-gray-400'>
             {index !== 0 && <span className='pr-2'>⦿</span>}
             {tag}
           </span>
         ))}
 
-        <Typography className='mt-5 text-gray-800' resetStyles>
+        <Typography className='mt-5 text-gray-300' resetStyles>
           {summary}
         </Typography>
       </div>

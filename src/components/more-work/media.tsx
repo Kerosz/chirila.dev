@@ -1,6 +1,8 @@
 // packages
 import cn from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+// components
+import useDelayMouseMovement from '../../hooks/use-delay-mouse-movement';
 // types
 import type { ComponentPropsWithoutRef } from 'react';
 
@@ -10,38 +12,35 @@ export interface IMedia extends ComponentPropsWithoutRef<'img'> {
   active: boolean;
 }
 
-export interface IPoint {
-  x: number;
-  y: number;
-}
-
-// Setting `x` to `-1000` to be completely out of the screen
-const DEFAULT_STATE: IPoint = { x: -1000, y: 0 };
-
 function Media({ title, src, className, active }: IMedia): JSX.Element {
-  const [{ x, y }, setMousePosition] = useState<IPoint>(DEFAULT_STATE);
-
   const ref = useRef<HTMLImageElement | null>(null);
 
+  const position = useDelayMouseMovement<HTMLImageElement>({
+    elementRef: ref,
+  });
+
   const rootClass = cn(
-    `transition-opacity ease-in duration-150 object-cover fixed top-0 left-0 z-10`,
+    `transition-opacity ease-in duration-150 object-cover absolute pointer-events-none`,
     {
-      'block visible opacity-80': active,
-      'hidden invisible': !active,
+      'opacity-195': active,
+      'opacity-0': !active,
     },
     className
   );
 
+  const updateMousePosition = (event: MouseEvent) => {
+    const { clientX, clientY } = event;
+
+    const mouseX = clientX;
+    const mouseY = clientY;
+
+    if (ref.current) {
+      position.mouseX = mouseX - ref.current!.clientWidth / 2;
+      position.mouseY = mouseY - ref.current!.clientHeight / 2;
+    }
+  };
+
   useEffect(() => {
-    const updateMousePosition = (event: MouseEvent) => {
-      const x = event.clientX;
-      const y = event.clientY;
-
-      if (ref.current) {
-        setMousePosition({ x, y });
-      }
-    };
-
     window.addEventListener('mousemove', updateMousePosition);
 
     return () => window.removeEventListener('mousemove', updateMousePosition);
@@ -54,13 +53,12 @@ function Media({ title, src, className, active }: IMedia): JSX.Element {
       ref={ref}
       src={`/images/${src}`}
       alt={title}
-      width={165}
+      width={175}
       className={rootClass}
-      decoding='async'
-      loading='eager'
-      style={{
-        transform: `translate3d(${x - 120 / 2}px, ${y - 290 / 2}px, 0)`,
-      }}
+      loading='lazy'
+      // style={{
+      //   transform: `translate3d(${x - 120 / 2}px, ${y - 290 / 2}px, 0)`,
+      // }}
     />
   );
 }

@@ -16,34 +16,34 @@ function MoreWork(): JSX.Element {
         <div className='lg:w-1/2 lg:mb-0 mb-10'>
           <Typography
             as='h2'
-            className='xs:text-8xl text-22vw font-black fill-color pb-1'
+            className='xs:text-8xl text-22vw font-black fill-color pb-1 relative z-10'
             resetStyles>
             More <br /> &nbsp;&nbsp;&nbsp;Work
           </Typography>
         </div>
 
         <div className='lg:w-1/2'>
-          <Typography className='text-xl pb-10' resetStyles>
+          <Typography className='text-xl pb-10 relative z-10' resetStyles>
             Some more of the projects I&apos;ve developed and designed in the
             past.
           </Typography>
 
-          {moreProjectsData.map(({ srcName, title }, index) => {
-            const isActive = index === activeProjectIndexState;
+          <div className='fixed top-0 left-0 w-full h-full z-0'>
+            {moreProjectsData.map(({ srcName, title }, index) => {
+              const isActive = index === activeProjectIndexState;
 
-            return (
-              isActive && (
+              return (
                 <Media
                   key={title}
                   src={srcName}
                   title={title}
                   active={isActive}
                 />
-              )
-            );
-          })}
+              );
+            })}
+          </div>
 
-          <div className='z-10 relative'>
+          <div className='z-10 relative mix-blend-difference'>
             {moreProjectsData.map((project, index) => (
               <Project
                 key={project.title}
