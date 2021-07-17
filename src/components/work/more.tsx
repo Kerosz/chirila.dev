@@ -32,12 +32,12 @@ function MoreWork(): JSX.Element {
                 className='group'>
                 <header className='flex justify-between mb-1 mt-10'>
                   <Typography
-                    className='xs:text-4xl text-3xl font-serif'
+                    className='xs:text-4xl text-3xl font-serif group-hover:text-red-800'
                     resetStyles>
                     {project.title}
                   </Typography>
                   <ArrowNarrowRight
-                    className='w-9 -mt-1.5 group-hover:-rotate-45 transition-all duration-200'
+                    className='w-9 -mt-1.5 group-hover:-rotate-45 group-hover:text-red-800 transition-all duration-200'
                     strokeWidth={1}
                   />
                 </header>

@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Work from '../components/work';
 import MoreWork from '../components/work/more';
 
-export default function Home() {
+export default function HomePage() {
   return (
     <Layout>
       <Hero />

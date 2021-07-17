@@ -20,7 +20,7 @@ function Banner({ link = '#', text, cta }: IBanner): JSX.Element {
     gsap.fromTo(
       bannerRef.current,
       { y: -70 },
-      { y: 0, duration: 1, ease: 'power4.in', delay: 0.5 }
+      { y: 0, duration: 1, ease: 'power4.in' }
     );
   }, []);
 

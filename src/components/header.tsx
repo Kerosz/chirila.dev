@@ -20,7 +20,7 @@ function Header({ preHeader }: IHeader): JSX.Element {
     gsap.fromTo(
       headerRef.current,
       { y: -150 },
-      { y: 0, duration: 0.32, ease: 'expo.out', delay: 1.6 }
+      { y: 0, duration: 0.32, ease: 'expo.out', delay: 1.1 }
     );
   }, []);
 
@@ -48,8 +48,9 @@ function Header({ preHeader }: IHeader): JSX.Element {
 
                 <li>
                   <Link
-                    href='/blog'
-                    className='py-4 text-lg hover:text-red-800'>
+                    href='https://blog.chiria.dev'
+                    className='py-4 text-lg hover:text-red-800'
+                    external>
                     Blog
                   </Link>
                 </li>
