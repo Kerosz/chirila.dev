@@ -1,9 +1,12 @@
 // packages
 import NextLink from 'next/link';
 import cn from 'classnames';
+import { forwardRef } from 'react';
+// components
+import { useCursor } from '../cursor/curosr-context';
 // types
 import type { LinkProps as NextLinkProps } from 'next/link';
-import { AnchorHTMLAttributes, forwardRef } from 'react';
+import type { AnchorHTMLAttributes } from 'react';
 
 interface ILink
   extends NextLinkProps,
@@ -20,8 +23,15 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
     className,
     external = false,
     fixPosition = false,
+    onMouseEnter,
+    onMouseLeave,
     ...rest
   } = props;
+
+  const { setCursor } = useCursor();
+
+  const handleMouseEnter = () => setCursor('link');
+  const handleMouseLeave = () => setCursor('default');
 
   const rootClass = cn(
     {
@@ -39,6 +49,8 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
         href={href as string}
         rel='noopener noreferrer'
         target='_blank'
+        onMouseEnter={onMouseEnter || handleMouseEnter}
+        onMouseLeave={onMouseLeave || handleMouseLeave}
         {...rest}>
         {children}
       </a>
@@ -47,7 +59,12 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
 
   return (
     <NextLink href={href} replace={replace}>
-      <a ref={ref} className={rootClass} {...rest}>
+      <a
+        ref={ref}
+        className={rootClass}
+        onMouseEnter={onMouseEnter || handleMouseEnter}
+        onMouseLeave={onMouseLeave || handleMouseLeave}
+        {...rest}>
         {children}
       </a>
     </NextLink>

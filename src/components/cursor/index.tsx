@@ -1,9 +1,11 @@
 // packages
+import cn from 'classnames';
 import { useEffect, useRef } from 'react';
 // components
-import useDelayMouseMovement from '../hooks/use-delay-mouse-movement';
+import useDelayMouseMovement from '~/hooks/use-delay-mouse-movement';
+import { useCursor } from './curosr-context';
 
-const INITIAL_MOUSE_POS = { x: 200, y: 200 };
+const INITIAL_MOUSE_POS = { x: 400, y: 145 };
 
 function Cursor(): JSX.Element {
   const outerCursorRef = useRef<HTMLDivElement | null>(null);
@@ -14,6 +16,8 @@ function Cursor(): JSX.Element {
     mousePosition: INITIAL_MOUSE_POS,
     delay: 0.18,
   });
+
+  const { type } = useCursor();
 
   const onMouseMove = (event: MouseEvent) => {
     const { clientX, clientY } = event;
@@ -40,21 +44,23 @@ function Cursor(): JSX.Element {
   }, []);
 
   return (
-    <>
+    <div className={`cursor-${type}`}>
       <div
-        className='fixed z-50 rounded-full w-20 h-20 border border-white overflow-hidden pointer-events-none mix-blend-difference'
-        ref={outerCursorRef}
-      />
-      <div
-        className='fixed z-50 rounded-full w-7 h-7 bg-white overflow-hidden pointer-events-none mix-blend-difference'
+        className='fixed z-50 pointer-events-none mix-blend-difference'
         style={{
           transform: `translate3d(${INITIAL_MOUSE_POS.x + 26}px, ${
             INITIAL_MOUSE_POS.y + 26
           }px, 0)`,
         }}
-        ref={innerCursorRef}
-      />
-    </>
+        ref={innerCursorRef}>
+        <span className='block rounded-full w-7 h-7 bg-white inner-cursor' />
+      </div>
+      <div
+        className='fixed z-50 pointer-events-none mix-blend-difference'
+        ref={outerCursorRef}>
+        <span className='block rounded-full w-20 h-20 border border-white outer-cursor' />
+      </div>
+    </div>
   );
 }
 

@@ -17,6 +17,7 @@ export interface IProject extends IProjectData {
 function Project({
   title,
   scope,
+  link,
   tags,
   summary,
   srcName,
@@ -82,9 +83,11 @@ function Project({
             resetStyles>
             Project – 00{index}
           </Typography>
+
           <Typography as='h3' className='text-6xl font-bold pb-4' resetStyles>
             {title}
           </Typography>
+
           <Typography className='text-lg pb-3.5' resetStyles>
             {scope}
           </Typography>
@@ -103,7 +106,8 @@ function Project({
         </Typography>
 
         <Link
-          href='/'
+          href={link}
+          external
           className='flex uppercase text-gray-500 hover:text-red-800 text-lg font-medium max-w-max link-animation group'
           ref={exploreRef}>
           <Typography className='pr-2'>Explore project</Typography>
@@ -115,12 +119,14 @@ function Project({
       </div>
 
       <div className='xl:w-7/12' ref={imgContainer}>
-        <Image
-          src={require(`../../assets/images/${srcName}`)}
-          alt={title}
-          priority
-          placeholder='blur'
-        />
+        <Link href={link} external>
+          <Image
+            src={require(`../../assets/images/${srcName}`)}
+            alt={title}
+            priority
+            placeholder='blur'
+          />
+        </Link>
       </div>
     </div>
   );

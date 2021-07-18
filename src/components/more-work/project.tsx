@@ -1,6 +1,7 @@
 // components
 import ArrowNarrowRight from '../../assets/icons/arrow-narrow-right';
 import { Typography, Badge, Link } from '../ui';
+import { useCursor } from '../cursor/curosr-context';
 // types
 import type { Dispatch, SetStateAction } from 'react';
 import type { IProjectData } from '../../../data/projects';
@@ -18,14 +19,26 @@ function Project({
   index,
   setActiveIndex,
 }: IProject): JSX.Element {
+  const { setCursor } = useCursor();
+
+  const handleMouseEnter = () => {
+    setCursor('none');
+    setActiveIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setCursor('default');
+    setActiveIndex(-1);
+  };
+
   return (
     <Link
       href={link}
       key={title}
       external
       className='group'
-      onMouseEnter={() => setActiveIndex(index)}
-      onMouseLeave={() => setActiveIndex(-1)}>
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
       <header className='flex justify-between mb-1 pt-10'>
         <Typography
           className='xs:text-4xl text-3xl font-seri text-white'

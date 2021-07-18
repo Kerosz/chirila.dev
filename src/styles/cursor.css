@@ -1,0 +1,78 @@
+.cursor-link .outer-cursor {
+  animation: fadeOut 750ms cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-link .inner-cursor {
+  animation: scaleUp 775ms cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-none .outer-cursor {
+  animation: fadeOut 750ms cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-none .inner-cursor {
+  animation: scaleDownFull 775ms cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-default .outer-cursor {
+  animation: fadeIn 775ms cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-default .inner-cursor {
+  animation: scaleDown 775ms cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(3);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(3);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDownFull {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
