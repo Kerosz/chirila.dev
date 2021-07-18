@@ -1,9 +1,10 @@
 // components
-import AboutPromo from '../components/about-promo';
-import Hero from '../components/hero';
-import Layout from '../components/layout';
-import Work from '../components/work';
-import MoreWork from '../components/more-work';
+import AboutPromo from '~/components/about-promo';
+import Hero from '~/components/hero';
+import Layout from '~/components/layout';
+import Work from '~/components/work';
+import MoreWork from '~/components/more-work';
+import Contact from '~/components/contact';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Work />
       <AboutPromo />
       <MoreWork />
+      <Contact />
     </Layout>
   );
 }

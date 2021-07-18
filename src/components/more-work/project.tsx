@@ -50,7 +50,7 @@ function Project({
           strokeWidth={1}
         />
       </header>
-      <div className='pb-10 border-b border-gray-300'>
+      <div className='pb-10'>
         {tags.map((tag, index) => (
           <span key={tag} className='text-sm pr-2 text-gray-400'>
             {index !== 0 && <span className='pr-2'>⦿</span>}

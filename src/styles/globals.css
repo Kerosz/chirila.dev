@@ -5,11 +5,6 @@
 @import "./cursor.css";
 
 @layer base {
-  ::selection {
-    @apply bg-cyan;
-    @apply text-gray-900
-  }
-
   * {
     cursor: none;
   }
@@ -24,14 +19,11 @@
   }
 
   body {
-    @apply bg-white;
-    @apply overflow-x-hidden
+    @apply bg-white overflow-x-hidden;
   }
 
-  .fill-color {
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+  ::selection {
+    @apply bg-cyan text-gray-900;
   }
 
   @font-face {
@@ -79,5 +71,19 @@
     font-family: 'Merriweather';
     font-weight: 900;
     src: url("../assets/fonts/Merriweather-Black.ttf") format("TrueType");
+  }
+}
+
+@layer utilities {
+    .fill-color {
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+
+  .fill-color-dark {
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
   }
 }
