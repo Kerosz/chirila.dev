@@ -1,5 +1,3 @@
-// packages
-import { useRef } from 'react';
 // components
 import Project from './project';
 import { Container, Typography } from '../ui';
@@ -12,9 +10,9 @@ function Work(): JSX.Element {
       <Container>
         <Typography
           as='h2'
-          className='text-right xs:text-8xl text-22vw font-black fill-color pb-5'
+          className='text-right xs:text-8xl text-22vw font-black fill-color pb-7'
           resetStyles>
-          Case Studies <br /> & Projects
+          Case Studies <br /> & Work
         </Typography>
         {projectData.map((project, index) => (
           <Project

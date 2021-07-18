@@ -47,7 +47,7 @@ function Media({ title, src, className, active }: IMedia): JSX.Element {
   }, []);
 
   return (
-    // Cannot use next/image as they don't pass the `style` attr to the img
+    // Cannot use next/image as they don't pass the `ref` attr to the img
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
@@ -56,9 +56,6 @@ function Media({ title, src, className, active }: IMedia): JSX.Element {
       width={175}
       className={rootClass}
       loading='lazy'
-      // style={{
-      //   transform: `translate3d(${x - 120 / 2}px, ${y - 290 / 2}px, 0)`,
-      // }}
     />
   );
 }

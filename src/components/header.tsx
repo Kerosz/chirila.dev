@@ -1,6 +1,6 @@
 // packages
 import gsap from 'gsap';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 // components
 import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import Logo from '../assets/icons/logo';

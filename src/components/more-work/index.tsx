@@ -11,9 +11,9 @@ function MoreWork(): JSX.Element {
   const [activeProjectIndexState, setActiveProjectIndex] = useState<number>(-1);
 
   return (
-    <section className='pt-14 pb-20'>
+    <section className='pt-12 pb-20'>
       <Container className='flex lg:flex-row flex-col'>
-        <div className='lg:w-1/2 lg:mb-0 mb-10'>
+        <div className='lg:w-2/5 lg:mb-0 mb-10'>
           <Typography
             as='h2'
             className='xs:text-9xl text-22vw font-black fill-color pb-1 relative z-10'
@@ -22,7 +22,7 @@ function MoreWork(): JSX.Element {
           </Typography>
         </div>
 
-        <div className='lg:w-1/2'>
+        <div className='lg:w-3/5 lg:pl-6 lg:pt-3'>
           <Typography className='text-xl pb-10 relative z-10' resetStyles>
             Some more of the projects I&apos;ve developed and designed in the
             past.
