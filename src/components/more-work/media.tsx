@@ -53,7 +53,7 @@ function Media({ title, src, className, active }: IMedia): JSX.Element {
       ref={ref}
       src={`/images/${src}`}
       alt={title}
-      width={175}
+      width={185}
       className={rootClass}
       loading='lazy'
     />

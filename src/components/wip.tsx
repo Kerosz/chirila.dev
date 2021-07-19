@@ -19,7 +19,7 @@ function WorkInProgress({
           {title} – {description}
         </Typography>
         <Link
-          href='/about'
+          href='/'
           className='w-28 h-28 rounded-full bg-black text-gray-50 flex items-center justify-center hover:bg-red-800 hover:text-black hover:-rotate-12 transition-all duration-200 font-medium'>
           To Home
         </Link>

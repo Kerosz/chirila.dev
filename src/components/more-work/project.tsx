@@ -46,7 +46,7 @@ function Project({
           {title}
         </Typography>
         <ArrowNarrowRight
-          className='w-9 -mt-1.5 group-hover:-rotate-45 text-white transition-all duration-200'
+          className='w-9 -mt-1.5 group-hover:-rotate-45 group-hover:scale-110 text-white transition-all duration-300 ease-in-out'
           strokeWidth={1}
         />
       </header>
