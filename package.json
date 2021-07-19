@@ -13,7 +13,8 @@
     "next": "^11.0.2-canary.16",
     "react": "17.0.2",
     "react-device-detect": "^1.17.0",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "zustand": "^3.5.7"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.4.1",

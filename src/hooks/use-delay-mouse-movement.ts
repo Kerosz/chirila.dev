@@ -17,12 +17,14 @@ export interface IMouseMovementOptions<T> {
     y: number;
   };
   delay?: number;
+  deps?: unknown[];
 }
 
 function useDelayMouseMovement<T extends HTMLDivElement = HTMLDivElement>({
   elementRef,
   mousePosition,
   delay = 0.15,
+  deps = [],
 }: IMouseMovementOptions<T>) {
   const positionRef = React.useRef<IMouseMovementPosition>({
     mouseX: mousePosition?.x || 0,
@@ -74,7 +76,7 @@ function useDelayMouseMovement<T extends HTMLDivElement = HTMLDivElement>({
     if (elementRef.current) {
       calculateMousePosition();
     }
-  }, []);
+  }, deps);
 
   return positionRef.current;
 }

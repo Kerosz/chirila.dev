@@ -1,7 +1,7 @@
 // components
 import ArrowNarrowRight from '../../assets/icons/arrow-narrow-right';
 import { Typography, Badge, Link } from '../ui';
-import { useCursor } from '../cursor/curosr-context';
+import { useStore } from '~/store';
 // types
 import type { Dispatch, SetStateAction } from 'react';
 import type { IProjectData } from '../../../data/projects';
@@ -19,7 +19,7 @@ function Project({
   index,
   setActiveIndex,
 }: IProject): JSX.Element {
-  const { setCursor } = useCursor();
+  const { setCursor } = useStore();
 
   const handleMouseEnter = () => {
     setCursor('none');

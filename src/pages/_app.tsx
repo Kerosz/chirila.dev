@@ -1,10 +1,10 @@
-// components
+// packages
 import dynamic from 'next/dynamic';
 // components
-import CursorManager from '~components/cursor/cursor-manager';
-const Cursor = dynamic(() => import('~/components/cursor'), {
+const Cursor = dynamic(() => import('~components/cursor'), {
   ssr: false,
 });
+import Preloader from '~/components/preloader';
 // types
 import type { AppProps } from 'next/app';
 
@@ -12,10 +12,11 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CursorManager>
+    <>
+      <Preloader />
       <Cursor />
       <Component {...pageProps} />
-    </CursorManager>
+    </>
   );
 }
 export default MyApp;

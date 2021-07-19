@@ -1,12 +1,14 @@
 // packages
-import cn from 'classnames';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 // components
 import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
 import useScrollPosition from '~hooks/use-scroll-position';
 import Logo from '~icons/logo';
 import { Container, Link } from '~ui/index';
+import { useStore } from '~/store';
+// data
+import navLinksData from '~data/nav-links';
 // types
 import type { JSXElementConstructor, ReactNode, ReactElement } from 'react';
 
@@ -17,25 +19,36 @@ export interface IHeader {
 
 function Header({ preHeader }: IHeader): JSX.Element {
   const headerRef = useRef<HTMLDivElement | null>(null);
+  const [localAnimationComplete, setLocalAnimationComplete] =
+    useState<boolean>(false);
+  const { y, prevY } = useScrollPosition();
+  const { introComplete } = useStore();
 
-  const { y: yOffset, prevY: prevYOffset } = useScrollPosition();
-  const showHeader = yOffset < 100 || prevYOffset > yOffset;
+  const showHeader = y < 110 || prevY > y;
 
   useSafeLayoutEffect(() => {
-    gsap.fromTo(
-      headerRef.current,
-      { y: -150 },
-      { y: 0, duration: 0.32, ease: 'expo.out', delay: 0.7 }
-    );
-  }, []);
+    if (introComplete) {
+      const tl = gsap.timeline();
+
+      tl.to(headerRef.current, {
+        y: 0,
+        duration: 0.1,
+        ease: 'expo.out',
+        delay: 0.1,
+      });
+      tl.then(() => setLocalAnimationComplete(true));
+    }
+  }, [introComplete]);
 
   return (
     <>
       {preHeader && preHeader}
       <header
-        className='h-[5.25rem] sticky top-0 z-30 bg-faded backdrop-blur-md transition-transform duration-500 ease-in-out delay-150'
+        className='h-[5.25rem] sticky top-0 z-30 bg-faded backdrop-blur-md transition-transform duration-700 ease-in-out delay-150 transform-gpu -translate-y-36'
         style={{
-          transform: `translate3d(0, ${showHeader ? '0' : '-100%'}, 0)`,
+          transform: `translate3d(0, ${
+            showHeader && localAnimationComplete ? '0' : '-144px'
+          }, 0)`,
         }}
         ref={headerRef}>
         <Container className='h-full'>
@@ -46,30 +59,16 @@ function Header({ preHeader }: IHeader): JSX.Element {
 
             <nav>
               <ul className='flex xs:space-x-10 space-x-6 font-medium translate'>
-                <li>
-                  <Link
-                    href='/about'
-                    className='py-4 text-lg hover:text-red-800'>
-                    About
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    href='https://blog.chiria.dev'
-                    className='py-4 text-lg hover:text-red-800'
-                    external>
-                    Blog
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    href='/snippets'
-                    className='py-4 text-lg hover:text-red-800'>
-                    Snippets
-                  </Link>
-                </li>
+                {navLinksData.map(({ label, path, isExternal }) => (
+                  <li key={label}>
+                    <Link
+                      href={path}
+                      className='py-4 text-lg hover:text-red-800'
+                      external={isExternal}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>

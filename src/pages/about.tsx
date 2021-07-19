@@ -1,11 +1,11 @@
 // components
-import Layout from '../components/layout';
-import { Typography } from '../components/ui';
+import Layout from '~components/layout';
+import WorkInProgress from '~/components/wip';
 
 export default function AboutPage() {
   return (
     <Layout>
-      <Typography as='h1'>ABOUT: Under development</Typography>
+      <WorkInProgress title='ABOUT PAGE' />
     </Layout>
   );
 }

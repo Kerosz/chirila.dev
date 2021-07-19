@@ -1,11 +1,11 @@
 // components
-import Layout from '../components/layout';
-import { Typography } from '../components/ui';
+import Layout from '~/components/layout';
+import WorkInProgress from '~/components/wip';
 
 export default function SnippetsPage() {
   return (
     <Layout>
-      <Typography as='h1'>SNIPPETS: Under development</Typography>
+      <WorkInProgress title='SNIPPETS PAGE' />
     </Layout>
   );
 }

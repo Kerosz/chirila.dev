@@ -2,8 +2,8 @@
 import NextLink from 'next/link';
 import cn from 'classnames';
 import { forwardRef } from 'react';
-// components
-import { useCursor } from '../cursor/curosr-context';
+// utils
+import { useStore } from '~/store';
 // types
 import type { LinkProps as NextLinkProps } from 'next/link';
 import type { AnchorHTMLAttributes } from 'react';
@@ -28,7 +28,7 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
     ...rest
   } = props;
 
-  const { setCursor } = useCursor();
+  const { setCursor } = useStore();
 
   const handleMouseEnter = () => setCursor('link');
   const handleMouseLeave = () => setCursor('default');

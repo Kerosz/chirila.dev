@@ -20,6 +20,7 @@
       "~ui/*": ["./src/components/ui/*"],
       "~icons/*": ["./src/assets/icons/*"],
       "~hooks/*": ["./src/hooks/*"],
+      "~data/*": ["./data/*"],
       "~utils/*": ["./src/utils/*"]
     }
   },

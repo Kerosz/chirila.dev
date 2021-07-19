@@ -4,24 +4,29 @@ import { useRef } from 'react';
 // components
 import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
 import { Container, Link, Typography } from './ui';
+import { useStore } from '~/store';
 // data
 import heroData from '../../data/hero';
 
 function Hero(): JSX.Element {
   const heroRef = useRef<HTMLDivElement | null>(null);
+  const { introComplete } = useStore();
 
   useSafeLayoutEffect(() => {
-    gsap.fromTo(
-      heroRef.current,
-      { y: 300, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.15, ease: 'power4.inOut' }
-    );
-  }, []);
+    if (introComplete) {
+      gsap.to(heroRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 1.15,
+        ease: 'power4.inOut',
+      });
+    }
+  }, [introComplete]);
 
   return (
     <Container
       as='section'
-      className='sm:pt-32 pt-20 pb-20 flex flex-col relative z-10'
+      className='sm:pt-32 pt-20 pb-20 flex flex-col relative z-10 opacity-0 transform-gpu translate-y-80'
       ref={heroRef}>
       <div className='flex flex-col pb-2'>
         {heroData.tags.map((tag) => (
