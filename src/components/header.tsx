@@ -34,7 +34,7 @@ function Header({ preHeader }: IHeader): JSX.Element {
         y: 0,
         duration: 0.1,
         ease: 'expo.out',
-        delay: 0.1,
+        delay: 0.11,
       });
       tl.then(() => setLocalAnimationComplete(true));
     }
@@ -44,10 +44,10 @@ function Header({ preHeader }: IHeader): JSX.Element {
     <>
       {preHeader && preHeader}
       <header
-        className='h-[5.25rem] sticky top-0 z-30 bg-faded backdrop-blur-md transition-transform duration-700 ease-in-out delay-150 transform-gpu -translate-y-36'
+        className='h-[5.25rem] sticky top-0 z-30 bg-faded backdrop-blur-md transition-transform duration-700 ease-in-out delay-150 transform-gpu -translate-y-40'
         style={{
           transform: `translate3d(0, ${
-            showHeader && localAnimationComplete ? '0' : '-144px'
+            showHeader && localAnimationComplete ? '0' : '-160px'
           }, 0)`,
         }}
         ref={headerRef}>

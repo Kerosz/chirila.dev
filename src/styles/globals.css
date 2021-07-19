@@ -19,7 +19,7 @@
   }
 
   body {
-    @apply bg-white overflow-x-hidden;
+    @apply bg-white overflow-y-auto;
   }
 
   ::selection {

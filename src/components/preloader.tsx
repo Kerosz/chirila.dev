@@ -15,7 +15,7 @@ export default function Preloader() {
       opacity: 0,
       scale: 0.7,
       duration: 1.3,
-      delay: 0.9,
+      delay: 1.8,
       ease: 'power4.out',
     });
     tl.to('.loader-container', {

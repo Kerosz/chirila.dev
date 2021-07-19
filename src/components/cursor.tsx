@@ -1,11 +1,12 @@
 // packages
+import dynamic from 'next/dynamic';
 import { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 // components
 import useDelayMouseMovement from '~hooks/use-delay-mouse-movement';
 import { useStore } from '~/store';
 
-const INITIAL_MOUSE_POS = { x: 400, y: 145 };
+const INITIAL_MOUSE_POS = { x: -1000, y: -10 };
 
 function Cursor(): JSX.Element | null {
   const outerCursorRef = useRef<HTMLDivElement | null>(null);
@@ -69,4 +70,6 @@ function Cursor(): JSX.Element | null {
   return null;
 }
 
-export default Cursor;
+export default dynamic(() => Promise.resolve(Cursor), {
+  ssr: false,
+});
