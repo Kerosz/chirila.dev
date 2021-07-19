@@ -1,13 +1,13 @@
 // packages
-import cn from 'classnames';
 import { useEffect, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
 // components
 import useDelayMouseMovement from '~/hooks/use-delay-mouse-movement';
 import { useCursor } from './curosr-context';
 
 const INITIAL_MOUSE_POS = { x: 400, y: 145 };
 
-function Cursor(): JSX.Element {
+function Cursor(): JSX.Element | null {
   const outerCursorRef = useRef<HTMLDivElement | null>(null);
   const innerCursorRef = useRef<HTMLDivElement | null>(null);
 
@@ -43,7 +43,7 @@ function Cursor(): JSX.Element {
     return () => document.removeEventListener('mousemove', onMouseMove);
   }, []);
 
-  return (
+  return !isMobile ? (
     <div className={`cursor-${type}`}>
       <div
         className='fixed z-50 pointer-events-none mix-blend-difference'
@@ -61,7 +61,7 @@ function Cursor(): JSX.Element {
         <span className='block rounded-full w-20 h-20 border border-white outer-cursor' />
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default Cursor;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface IPosition {
+export interface IMouseMovementPosition {
   mouseX: number;
   mouseY: number;
   destinationX: number;
@@ -24,7 +24,7 @@ function useDelayMouseMovement<T extends HTMLDivElement = HTMLDivElement>({
   mousePosition,
   delay = 0.15,
 }: IMouseMovementOptions<T>) {
-  const positionRef = React.useRef<IPosition>({
+  const positionRef = React.useRef<IMouseMovementPosition>({
     mouseX: mousePosition?.x || 0,
     mouseY: mousePosition?.y || 0,
     destinationX: 0,

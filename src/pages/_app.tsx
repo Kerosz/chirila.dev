@@ -1,6 +1,10 @@
 // components
-import Cursor from '~/components/cursor';
+import dynamic from 'next/dynamic';
+// components
 import CursorManager from '~components/cursor/cursor-manager';
+const Cursor = dynamic(() => import('~/components/cursor'), {
+  ssr: false,
+});
 // types
 import type { AppProps } from 'next/app';
 

@@ -17,7 +17,10 @@
     "paths": {
       "~/*": ["./src/*"],
       "~components/*": ["./src/components/*"],
-      "~hooks/*": ["./src/hooks/*"]
+      "~ui/*": ["./src/components/ui/*"],
+      "~icons/*": ["./src/assets/icons/*"],
+      "~hooks/*": ["./src/hooks/*"],
+      "~utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
