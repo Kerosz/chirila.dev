@@ -1,4 +1,6 @@
+// components
 import { Container, Typography, Link } from '~ui/index';
+import FadeIntoView from './animations/fade-into-view';
 
 export interface IWorkInProgress {
   title?: string;
@@ -10,8 +12,10 @@ function WorkInProgress({
   description = 'Under development',
 }: IWorkInProgress): JSX.Element {
   return (
-    <section className='h-[75vh] w-full relative z-10 py-20'>
-      <Container className='flex flex-col h-full justify-center items-center'>
+    <section className='h-[75vh] w-full relative z-10 py-20 bg-white'>
+      <FadeIntoView
+        as={Container}
+        className='flex flex-col h-full justify-center items-center'>
         <Typography
           as='h1'
           className='font-black text-5xl text-center fill-color pb-12'
@@ -23,7 +27,7 @@ function WorkInProgress({
           className='w-28 h-28 rounded-full bg-black text-gray-50 flex items-center justify-center hover:bg-red-800 hover:text-black hover:-rotate-12 transition-all duration-200 font-medium'>
           To Home
         </Link>
-      </Container>
+      </FadeIntoView>
     </section>
   );
 }

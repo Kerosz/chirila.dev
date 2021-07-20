@@ -58,7 +58,7 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
   }
 
   return (
-    <NextLink href={href} replace={replace}>
+    <NextLink href={href} replace={replace} passHref>
       <a
         ref={ref}
         className={rootClass}

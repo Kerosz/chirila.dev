@@ -3,26 +3,26 @@ import { useState } from 'react';
 // components
 import Project from './project';
 import Media from './media';
-import { Container, Typography } from '../ui';
+import { Container, Typography } from '~ui/index';
 // data
-import moreProjectsData from '../../../data/more-projects';
+import moreProjectsData from '~data/more-projects';
 
 function MoreWork(): JSX.Element {
   const [activeProjectIndexState, setActiveProjectIndex] = useState<number>(-1);
 
   return (
-    <section className='pt-12 pb-20'>
+    <section className='pt-12 pb-20 bg-white'>
       <Container className='flex lg:flex-row flex-col'>
-        <div className='lg:w-2/5 lg:mb-0 mb-10'>
+        <div className='xl:w-2/5 lg:w-[45%] lg:mb-0 mb-10'>
           <Typography
             as='h2'
-            className='xs:text-9xl text-22vw font-black fill-color pb-1 relative z-10'
+            className='xs:text-9xl lg:text-[7.2rem] xl:text-9xl text-22vw font-black fill-color pb-1 relative z-10'
             resetStyles>
             More <br /> &nbsp;&nbsp;&nbsp;Work
           </Typography>
         </div>
 
-        <div className='lg:w-3/5 lg:pl-6 lg:pt-3'>
+        <div className='xl:w-3/5 lg:w-[55%] lg:pl-6 lg:pt-3'>
           <Typography className='text-xl pb-10 relative z-10' resetStyles>
             Some more of the projects I&apos;ve developed and designed in the
             past.

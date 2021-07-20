@@ -3,11 +3,12 @@ import Project from './project';
 import { Container, Typography } from '../ui';
 // utils
 import projectData from '../../../data/projects';
+import FadeIntoView from '../animations/fade-into-view';
 
 function Work(): JSX.Element {
   return (
     <section className='bg-gray-50 py-20 relative z-10'>
-      <Container>
+      <FadeIntoView as={Container}>
         <Typography
           as='h2'
           className='text-right xs:text-8xl text-22vw font-black fill-color pb-7'
@@ -21,7 +22,7 @@ function Work(): JSX.Element {
             {...project}
           />
         ))}
-      </Container>
+      </FadeIntoView>
     </section>
   );
 }

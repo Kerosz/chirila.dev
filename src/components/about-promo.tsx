@@ -1,11 +1,11 @@
-import { Link, Typography } from './ui';
-import Container from './ui/container';
+// components
+import { Container, Link, Typography } from '~ui/index';
 
 export interface IAboutPromo {}
 
 function AboutPromo(): JSX.Element {
   return (
-    <section className='py-20 relative z-10'>
+    <section className='py-20 relative z-10 bg-white'>
       <Container className='flex flex-col items-center'>
         <Typography
           className='max-w-xl w-full text-gray-800 text-center sm:text-[1.9rem] text-2xl leading-10 pb-12'
