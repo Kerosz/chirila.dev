@@ -35,7 +35,7 @@ function Project({
     const tl = gsap.timeline();
     const scrollTrigger = {
       trigger: containerRef.current,
-      start: '-7% center',
+      start: '-38% center',
       end: '+=210px',
       scrub: 2,
     };
@@ -60,14 +60,14 @@ function Project({
       opacity: 0,
       duration: 3,
       ease: 'power4.inOut',
-      scrollTrigger: { ...scrollTrigger, start: '9% center' },
+      scrollTrigger: { ...scrollTrigger, start: '-22% center' },
     });
     tl.from(exploreRef.current, {
       x: -450,
       opacity: 0,
       duration: 1.3,
       ease: 'back.inOut',
-      scrollTrigger: { ...scrollTrigger, start: '18% center' },
+      scrollTrigger: { ...scrollTrigger, start: '-25% center' },
     });
   }, []);
 
