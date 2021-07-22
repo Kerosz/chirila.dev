@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import { useStore } from '~/store';
 import { isBrowser } from '~/utils/dom';
 
-export default function useScrollToTop(): void {
+export default function useRouterControl(): void {
   const router = useRouter();
-  const { setCursor } = useStore();
+  const { setCursor, bodyColorChangePaths } = useStore();
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -26,4 +26,14 @@ export default function useScrollToTop(): void {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
+
+  useEffect(() => {
+    if (isBrowser) {
+      if (bodyColorChangePaths.includes(router.pathname)) {
+        document.body.style.backgroundColor = '#00030A';
+      } else {
+        document.body.style.backgroundColor = '#F3F4F6';
+      }
+    }
+  }, [router.pathname]);
 }

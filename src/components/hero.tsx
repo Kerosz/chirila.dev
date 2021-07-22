@@ -6,7 +6,7 @@ import heroData from '~data/hero';
 
 function Hero(): JSX.Element {
   return (
-    <section className='relative z-10 bg-white sm:pt-32 pt-20 pb-20'>
+    <section className='relative z-10 bg-gray-100 sm:pt-32 pt-20 pb-20'>
       <FadeIntoView as={Container} className='flex flex-col'>
         <div className='flex flex-col pb-2'>
           {heroData.tags.map((tag) => (
@@ -40,7 +40,7 @@ function Hero(): JSX.Element {
               Get in touch for availability.
             </Typography>
 
-            <ul className='flex space-x-5 text-gray-500'>
+            <ul className='flex space-x-5 text-gray-600'>
               <li>
                 <Link
                   href='https://twitter.com/chirila_'

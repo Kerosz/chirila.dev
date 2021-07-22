@@ -11,7 +11,7 @@ function MoreWork(): JSX.Element {
   const [activeProjectIndexState, setActiveProjectIndex] = useState<number>(-1);
 
   return (
-    <section className='pt-12 pb-20 bg-white'>
+    <section className='pt-12 pb-20 bg-gray-100'>
       <Container className='flex lg:flex-row flex-col'>
         <div className='xl:w-2/5 lg:w-[45%] lg:mb-0 mb-10'>
           <Typography

@@ -5,7 +5,7 @@ export interface IAboutPromo {}
 
 function AboutPromo(): JSX.Element {
   return (
-    <section className='py-20 relative z-10 bg-white'>
+    <section className='py-20 relative z-10 bg-gray-100'>
       <Container className='flex flex-col items-center'>
         <Typography
           className='max-w-xl w-full text-gray-800 text-center sm:text-[1.9rem] text-2xl leading-10 pb-12'

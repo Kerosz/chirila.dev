@@ -4,7 +4,7 @@ import { Container, Link, Typography } from './ui';
 
 function Footer(): JSX.Element {
   return (
-    <footer className='bg-black text-gray-50 lg:pt-16 xs:pt-6 pt-0 pb-16 relative z-10'>
+    <footer className='bg-black-tone text-gray-50 lg:pt-16 xs:pt-6 pt-0 pb-16 relative z-10'>
       <Container>
         <span className='block border-t border-gray-800 pb-8' />
         <div className='flex md:flex-row flex-col-reverse'>
@@ -67,7 +67,8 @@ function Footer(): JSX.Element {
                   href='https://www.linkedin.com/in/c-andrei/'
                   external
                   className='py-4 text-gray-400 hover:text-red-800'>
-                  Business related on LinkedIn
+                  Business related on{' '}
+                  <span className='font-medium'>LinkedIn</span>
                 </Link>
               </li>
 
@@ -76,7 +77,8 @@ function Footer(): JSX.Element {
                   href='https://github.com/Kerosz'
                   external
                   className='py-4 text-gray-400 hover:text-red-800'>
-                  Open source & WIPs on GitHub
+                  Open source & WIPs on{' '}
+                  <span className='font-medium'>GitHub</span>
                 </Link>
               </li>
 
@@ -85,7 +87,7 @@ function Footer(): JSX.Element {
                   href='https://www.twitter.com/chirila_'
                   className='py-4 text-gray-400 hover:text-red-800'
                   external>
-                  Thoughts on Twitter
+                  Thoughts on <span className='font-medium'>Twitter</span>
                 </Link>
               </li>
             </ul>

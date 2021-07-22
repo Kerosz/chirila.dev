@@ -27,7 +27,7 @@ export default function Preloader() {
   }, []);
 
   return (
-    <div className='fixed top-0 h-full w-full z-50 bg-gray-100 flex items-center justify-center loader-container'>
+    <div className='fixed top-0 h-full w-full z-50 bg-gray-200 flex items-center justify-center loader-container'>
       <Logo className='w-96 loader-logo opacity-1' />
     </div>
   );

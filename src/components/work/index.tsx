@@ -7,7 +7,7 @@ import FadeIntoView from '../animations/fade-into-view';
 
 function Work(): JSX.Element {
   return (
-    <section className='bg-gray-50 py-20 relative z-10'>
+    <section className='bg-gray-100 py-20 relative z-10'>
       <FadeIntoView as={Container}>
         <Typography
           as='h2'

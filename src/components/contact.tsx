@@ -3,7 +3,7 @@ import ArrowNarrowRight from '../assets/icons/arrow-narrow-right';
 
 function Contact(): JSX.Element {
   return (
-    <section className='py-20 bg-black text-gray-50 relative z-10'>
+    <section className='py-20 bg-black-tone text-gray-50 relative z-10'>
       <Container>
         <Typography
           as='h2'

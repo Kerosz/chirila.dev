@@ -12,7 +12,7 @@ function WorkInProgress({
   description = 'Under development',
 }: IWorkInProgress): JSX.Element {
   return (
-    <section className='h-[75vh] w-full relative z-10 py-20 bg-white'>
+    <section className='h-[75vh] w-full relative z-10 py-20 bg-gray-100'>
       <FadeIntoView
         as={Container}
         className='flex flex-col h-full justify-center items-center'>

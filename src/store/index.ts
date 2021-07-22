@@ -8,6 +8,7 @@ export const useStore = create(
     {
       cursorType: 'default' as CursorType,
       introComplete: false,
+      bodyColorChangePaths: ['/about'],
     },
     (set) => ({
       setCursor: (type: CursorType) => set({ cursorType: type }),

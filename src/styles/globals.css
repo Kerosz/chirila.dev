@@ -19,7 +19,7 @@
   }
 
   body {
-    @apply bg-white overflow-y-auto;
+    @apply bg-gray-100 overflow-y-auto;
   }
 
   ::selection {
@@ -76,14 +76,14 @@
 
 @layer utilities {
     .fill-color {
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: #F3F4F6;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: #070001;
   }
 
   .fill-color-dark {
-    -webkit-text-fill-color: black;
+    -webkit-text-fill-color: #070001;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-color: #F3F4F6;
   }
 }
