@@ -1,5 +1,6 @@
 // components
-import { Container, Link, Typography } from '~ui/index';
+import Link from '~components/common/link';
+import { Container, Typography } from '~ui/index';
 
 export interface IAboutPromo {}
 

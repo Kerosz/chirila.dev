@@ -4,9 +4,10 @@ import { gsap } from 'gsap';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 // components
-import useSafeLayoutEffect from '../hooks/use-safe-layout-effect';
+import Link from '~components/common/link';
 import ArrowRight from '~icons/arrow-right';
-import { Container, Link, Typography } from '~ui/index';
+import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
+import { Container, Typography } from '~ui/index';
 import { useStore } from '~/store';
 
 export interface IBanner {

@@ -4,11 +4,12 @@ import { useRef } from 'react';
 import { gsap } from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 // components
-import ArrowNarrowRight from '../../assets/icons/arrow-narrow-right';
-import useSafeLayoutEffect from '../../hooks/use-safe-layout-effect';
-import { Typography, Badge, Link } from '../ui';
+import Link from '~components/common/link';
+import ArrowNarrowRight from '~icons/arrow-narrow-right';
+import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
+import { Typography, Badge } from '~ui/index';
 // types
-import type { IProjectData } from '../../../data/projects';
+import type { IProjectData } from '~data/projects';
 
 export interface IProject extends IProjectData {
   index: number;
@@ -121,7 +122,7 @@ function Project({
       <div className='xl:w-7/12' ref={imgContainer}>
         <Link href={link} external>
           <Image
-            src={require(`../../assets/images/${srcName}`)}
+            src={require(`../../../assets/images/${srcName}`)}
             alt={title}
             priority
             placeholder='blur'

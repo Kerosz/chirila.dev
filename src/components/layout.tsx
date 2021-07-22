@@ -1,11 +1,11 @@
 // packages
 import Head from 'next/head';
 // components
-import Header from './header';
-import Footer from './footer';
+import Header from '~components/common/header';
+import Footer from '~components/common/footer';
+import Banner from '~components/common/banner';
 //types
 import type { ReactNode, ReactElement } from 'react';
-import Banner from './banner';
 
 export interface ILayout {
   children: ReactNode;

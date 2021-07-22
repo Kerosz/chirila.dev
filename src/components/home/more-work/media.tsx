@@ -2,7 +2,7 @@
 import cn from 'classnames';
 import { useEffect, useRef } from 'react';
 // components
-import useDelayMouseMovement from '../../hooks/use-delay-mouse-movement';
+import useDelayMouseMovement from '../../../hooks/use-delay-mouse-movement';
 // types
 import type { ComponentPropsWithoutRef } from 'react';
 

@@ -1,6 +1,6 @@
 // components
 import Layout from '~/components/layout';
-import WorkInProgress from '~/components/wip';
+import WorkInProgress from '~/components/common/wip';
 
 export default function SnippetsPage() {
   return (

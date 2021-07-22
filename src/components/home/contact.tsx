@@ -1,5 +1,7 @@
-import { Container, Typography, Link } from './ui';
-import ArrowNarrowRight from '../assets/icons/arrow-narrow-right';
+// components
+import Link from '~components/common/link';
+import ArrowNarrowRight from '~icons/arrow-narrow-right';
+import { Container, Typography } from '../ui';
 
 function Contact(): JSX.Element {
   return (

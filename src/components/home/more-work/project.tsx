@@ -1,10 +1,11 @@
 // components
-import ArrowNarrowRight from '../../assets/icons/arrow-narrow-right';
-import { Typography, Badge, Link } from '../ui';
+import Link from '~components/common/link';
+import ArrowNarrowRight from '~icons/arrow-narrow-right';
+import { Typography } from '~ui/index';
 import { useStore } from '~/store';
 // types
 import type { Dispatch, SetStateAction } from 'react';
-import type { IProjectData } from '../../../data/projects';
+import type { IProjectData } from '../../../../data/projects';
 
 export interface IProject extends IProjectData {
   index: number;

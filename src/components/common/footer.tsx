@@ -1,6 +1,7 @@
 // components
-import Logo from '../assets/icons/logo';
-import { Container, Link, Typography } from './ui';
+import Logo from '~icons/logo';
+import Link from '~components/common/link';
+import { Container, Typography } from '../ui';
 
 function Footer(): JSX.Element {
   return (

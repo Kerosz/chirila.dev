@@ -1,6 +1,7 @@
 // components
-import { Container, Typography, Link } from '~ui/index';
-import FadeIntoView from './animations/fade-into-view';
+import Link from '~components/common/link';
+import FadeIntoView from '~animations/fade-into-view';
+import { Container, Typography } from '~ui/index';
 
 export interface IWorkInProgress {
   title?: string;

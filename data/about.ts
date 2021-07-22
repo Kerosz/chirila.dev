@@ -7,6 +7,8 @@ const aboutData = {
     caption: 'What I do & how I work',
     title:
       'I provide product strategy, and software development using cutting edge technologies.',
+    description:
+      'Every project is a new story, yet some things never change. I picked a set of tools for each story we might get the oportunity to tell.',
     process: [
       {
         title: 'Build',

@@ -4,16 +4,17 @@ import { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useRouter } from 'next/router';
 // components
-import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
-import useScrollPosition from '~hooks/use-scroll-position';
 import Logo from '~icons/logo';
-import { Container, Link, Typography } from '~ui/index';
+import Link from '~components/common/link';
+import useScrollPosition from '~hooks/use-scroll-position';
+import ArrowNarrowLeft from '~/assets/icons/arrow-narrow-left';
+import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
+import { Container, Typography } from '~ui/index';
 import { useStore } from '~/store';
 // data
 import navLinksData from '~data/nav-links';
 // types
 import type { JSXElementConstructor, ReactNode, ReactElement } from 'react';
-import ArrowNarrowLeft from '~/assets/icons/arrow-narrow-left';
 
 export interface IHeader {
   preHeader?: JSXElementConstructor<any> | ReactElement;

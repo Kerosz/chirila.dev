@@ -1,6 +1,6 @@
 // components
-import Preloader from '~/components/preloader';
-import Cursor from '~/components/cursor';
+import Preloader from '~/components/common/preloader';
+import Cursor from '~/components/common/cursor';
 import useRouterControl from '~/hooks/use-router-control';
 // types
 import type { AppProps } from 'next/app';

@@ -1,6 +1,7 @@
 // components
 import FadeIntoView from '~animations/fade-into-view';
-import { Container, Link, Typography } from '~ui/index';
+import Link from '~components/common/link';
+import { Container, Typography } from '~ui/index';
 // data
 import heroData from '~data/hero';
 
