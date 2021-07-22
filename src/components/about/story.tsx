@@ -26,7 +26,7 @@ export default function Story() {
         <div className='flex flex-col mt-6'>
           <div className='flex lg:flex-row flex-col-reverse pb-12 text-gray-200'>
             <Typography
-              className='text-xl font-medium font-serif leading-9 text-justify lg:w-3/5'
+              className='text-xl font-medium font-serif leading-9 xs:text-justify lg:w-3/5'
               resetStyles>
               {aboutData.thirdSection.bio.intro[1]}
             </Typography>
@@ -43,7 +43,7 @@ export default function Story() {
           <div className='flex lg:flex-row flex-col-reverse pb-12 text-gray-200'>
             <div className='lg:w-3/5'>
               <Typography
-                className='text-xl font-medium font-serif leading-9 text-justify'
+                className='text-xl font-medium font-serif leading-9 xs:text-justify'
                 resetStyles>
                 {aboutData.thirdSection.bio.spareTime[1]}
               </Typography>
@@ -73,7 +73,7 @@ export default function Story() {
 
           <div className='flex lg:flex-row flex-col-reverse pb-12'>
             <Typography
-              className='text-xl text-gray-200 font-medium font-serif leading-9 text-justify lg:w-3/5'
+              className='text-xl text-gray-200 font-medium font-serif leading-9 xs:text-justify lg:w-3/5'
               resetStyles>
               {aboutData.thirdSection.bio.hobbies[1]}
             </Typography>
@@ -89,7 +89,7 @@ export default function Story() {
 
           <div className='flex lg:flex-row flex-col-reverse'>
             <Typography
-              className='text-xl text-gray-200 font-medium font-serif leading-9 text-justify lg:w-3/5'
+              className='text-xl text-gray-200 font-medium font-serif leading-9 xs:text-justify lg:w-3/5'
               resetStyles>
               {aboutData.thirdSection.bio.mantra[1]}
             </Typography>

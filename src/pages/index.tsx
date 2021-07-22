@@ -1,5 +1,6 @@
 // components
 import Layout from '~/components/layout';
+import Newsletter from '~/components/common/newsletter';
 import {
   Hero,
   SelectedWord,
@@ -16,6 +17,7 @@ export default function HomePage() {
       <AboutPromo />
       <MoreWork />
       <Contact />
+      <Newsletter />
     </Layout>
   );
 }

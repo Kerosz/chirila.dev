@@ -5,7 +5,7 @@ import { Container, Typography } from '../ui';
 
 function Footer(): JSX.Element {
   return (
-    <footer className='bg-black-tone text-gray-50 lg:pt-16 xs:pt-6 pt-0 pb-16 relative z-10'>
+    <footer className='bg-black-tone pb-32 pt-6 text-gray-50 relative z-10'>
       <Container>
         <span className='block border-t border-gray-800 pb-8' />
         <div className='flex md:flex-row flex-col-reverse'>
