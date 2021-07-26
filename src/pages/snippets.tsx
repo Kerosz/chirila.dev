@@ -4,7 +4,7 @@ import WorkInProgress from '~/components/common/wip';
 
 export default function SnippetsPage() {
   return (
-    <Layout>
+    <Layout title='Snippets | Andrei Chirila'>
       <WorkInProgress title='SNIPPETS PAGE' />
     </Layout>
   );

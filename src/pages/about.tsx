@@ -5,7 +5,7 @@ import { Intro, Process, Story } from '~components/about/index';
 
 export default function AboutPage() {
   return (
-    <Layout>
+    <Layout title='About | Andrei Chirila'>
       <Intro />
       <Process />
       <Story />

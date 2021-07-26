@@ -1,6 +1,5 @@
-// packages
-import Head from 'next/head';
 // components
+import Head from '~components/common/head';
 import Header from '~components/common/header';
 import Footer from '~components/common/footer';
 import Banner from '~components/common/banner';
@@ -10,17 +9,13 @@ import type { ReactNode, ReactElement } from 'react';
 export interface ILayout {
   children: ReactNode;
   title?: string;
+  description?: string;
 }
 
-function Layout({ children, title }: ILayout): ReactElement {
-  title = title || 'Andrei Chirila – Developer, writer.';
-
+function Layout({ children, ...customMeta }: ILayout): ReactElement {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
-
+      <Head {...customMeta} />
       <Header
         preHeader={
           <Banner
@@ -35,7 +30,5 @@ function Layout({ children, title }: ILayout): ReactElement {
     </>
   );
 }
-
-
 
 export default Layout;
