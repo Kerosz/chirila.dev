@@ -53,13 +53,13 @@
   }
 
   to {
-    transform: scale(3);
+    transform: scale(2.75);
   }
 }
 
 @keyframes scaleDown {
   from {
-    transform: scale(3);
+    transform: scale(2.75);
   }
 
   to {

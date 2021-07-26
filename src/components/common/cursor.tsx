@@ -56,7 +56,7 @@ function Cursor(): JSX.Element | null {
             }px, 0)`,
           }}
           ref={innerCursorRef}>
-          <span className='block rounded-full w-7 h-7 bg-white inner-cursor' />
+          <span className='block rounded-full w-8 h-8 bg-white inner-cursor' />
         </div>
         <div
           className='fixed z-50 pointer-events-none mix-blend-difference'

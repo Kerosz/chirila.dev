@@ -74,7 +74,7 @@ function Project({
 
   return (
     <div
-      className='py-20 flex w-full xl:flex-row flex-col items-center h-full'
+      className='py-20 flex w-full xl:flex-row flex-col text-black-tone items-center h-full'
       ref={containerRef}>
       <div className='xl:w-5/12 pr-10 xl:mb-0 mb-8'>
         <div ref={topRef}>
