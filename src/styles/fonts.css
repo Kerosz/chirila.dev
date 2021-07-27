@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'Graphik';
+  font-weight: 300;
+  src: url("../assets/fonts/GraphikLight.otf") format("OpenType");
+}
+@font-face {
+  font-family: 'Graphik';
+  font-weight: 400;
+  src: url("../assets/fonts/GraphikRegular.otf") format("OpenType");
+}
+@font-face {
+  font-family: 'Graphik';
+  font-weight: 500;
+  src: url("../assets/fonts/GraphikMedium.otf") format("OpenType");
+}
+@font-face {
+  font-family: 'Graphik';
+  font-weight: 700;
+  src: url("../assets/fonts/GraphikBold.otf") format("OpenType");
+}
+@font-face {
+  font-family: 'Graphik';
+  font-weight: 900;
+  src: url("../assets/fonts/GraphikBlack.otf") format("OpenType");
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 300;
+  src: url("../assets/fonts/Merriweather-Light.ttf") format("TrueType");
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 400;
+  src: url("../assets/fonts/Merriweather-Regular.ttf") format("TrueType");
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 700;
+  src: url("../assets/fonts/Merriweather-Bold.ttf") format("TrueType");
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 900;
+  src: url("../assets/fonts/Merriweather-Black.ttf") format("TrueType");
+}

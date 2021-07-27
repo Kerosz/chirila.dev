@@ -6,8 +6,8 @@ const navLinksData = [
   },
   {
     label: 'Blog',
-    path: 'https://blog.chiria.dev',
-    isExternal: true,
+    path: '/blog',
+    isExternal: false,
   },
   {
     label: 'Snippets',

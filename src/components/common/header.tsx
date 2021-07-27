@@ -9,7 +9,7 @@ import Link from '~components/common/link';
 import useScrollPosition from '~hooks/use-scroll-position';
 import ArrowNarrowLeft from '~/assets/icons/arrow-narrow-left';
 import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
-import { Container, Typography } from '~ui/index';
+import { Button, Container, Typography } from '~ui/index';
 import { useStore } from '~/store';
 // data
 import navLinksData from '~data/nav-links';
@@ -27,11 +27,11 @@ function Header({ preHeader }: IHeader): JSX.Element {
     useState<boolean>(false);
   const { introComplete, bodyColorChangePaths } = useStore();
   const { y, prevY } = useScrollPosition();
-  const { pathname } = useRouter();
+  const router = useRouter();
 
   const showHeader: boolean = y < 110 || prevY > y;
-  const isDarkBody: boolean = bodyColorChangePaths.includes(pathname);
-  const isHome = pathname === '/';
+  const isDarkBody: boolean = bodyColorChangePaths.includes(router.pathname);
+  const isHome = router.pathname === '/';
 
   useSafeLayoutEffect(() => {
     if (introComplete) {
@@ -95,12 +95,15 @@ function Header({ preHeader }: IHeader): JSX.Element {
                   ))}
                 </ul>
               ) : (
-                <Link href='/' className={backLinkClass}>
+                <Button
+                  className={backLinkClass}
+                  onClick={() => router.back()}
+                  reset>
                   <ArrowNarrowLeft className='w-6 mr-1 group-hover:transform-gpu group-hover:-translate-x-1.5 transition-all duration-300' />
                   <Typography className='font-medium text-lg' resetStyles>
-                    Back home
+                    Back
                   </Typography>
-                </Link>
+                </Button>
               )}
             </nav>
           </div>

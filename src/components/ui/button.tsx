@@ -51,12 +51,12 @@ const Button = forwardRef<HTMLButtonElement, IButton>((props, ref) => {
         !reset,
     },
     {
-      'bg-gray-100 text-gray-900': scheme === 'light',
-      'bg-black-tone text-gray-50': scheme === 'dark',
-      'hover:bg-green-700': scheme === 'light' && !disabled,
-      'hover:bg-red-800': scheme === 'dark' && !disabled,
+      'bg-gray-100 text-gray-900': scheme === 'light' && !reset,
+      'bg-black-tone text-gray-50': scheme === 'dark' && !reset,
+      'hover:bg-green-700': scheme === 'light' && !disabled && !reset,
+      'hover:bg-red-800': scheme === 'dark' && !disabled && !reset,
       'hover:-rotate-12 transition-all duration-200 hover:text-black':
-        !disabled,
+        !disabled && !reset,
       'opacity-70': disabled,
     },
     className

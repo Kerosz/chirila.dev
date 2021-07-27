@@ -1,5 +1,5 @@
 // components
-import Layout from '~/components/layout';
+import Layout from '~/components/layouts/base';
 import Newsletter from '~/components/common/newsletter';
 import {
   Hero,

@@ -41,7 +41,10 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
     className
   );
 
-  if (external) {
+  const matchInternal =
+    String(href).startsWith('/') || String(href).startsWith('#');
+
+  if (external || !matchInternal) {
     return (
       <a
         className={rootClass}
