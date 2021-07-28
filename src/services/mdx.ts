@@ -4,6 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { serialize } from 'next-mdx-remote/serialize';
+import { parseISO } from 'date-fns';
 // types
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
@@ -21,14 +22,20 @@ export interface IFrontMatter {
   excerpt: string;
   media: string;
   author: string;
+  tags: string[];
 }
+
+export type FrontMatterWithoutMeta = Omit<IFrontMatter, 'meta'>;
 
 export interface IFileResult {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: IFrontMatter;
 }
 
-export type FrontMatterWithoutMeta = Omit<IFrontMatter, 'meta'>;
+export interface IRecommandPosts {
+  next: FrontMatterWithoutMeta | null;
+  prev: FrontMatterWithoutMeta | null;
+}
 
 const rootDir = process.cwd();
 
@@ -81,18 +88,60 @@ export async function getAllFilesMeta(
 ): Promise<FrontMatterWithoutMeta[]> {
   const files = fs.readdirSync(path.join(rootDir, 'data', dir));
 
-  return files.reduce((allPosts: any, postSlug) => {
-    const source = fs.readFileSync(
-      path.join(rootDir, 'data', dir, postSlug),
-      'utf8'
-    );
-    const { data } = matter(source);
+  const posts: FrontMatterWithoutMeta[] = files.reduce(
+    (allPosts: any, postSlug) => {
+      const source = fs.readFileSync(
+        path.join(rootDir, 'data', dir, postSlug),
+        'utf8'
+      );
+      const { data } = matter(source);
 
-    const post = {
-      ...data,
-      slug: postSlug.replace(/\.mdx/, ''),
-    } as FrontMatterWithoutMeta;
+      const post = {
+        ...data,
+        slug: postSlug.replace(/\.mdx/, ''),
+      } as FrontMatterWithoutMeta;
 
-    return [post, ...allPosts];
-  }, []);
+      return [post, ...allPosts];
+    },
+    []
+  );
+
+  return posts.sort((a, b) => {
+    const dateA = parseISO(a.publishedAt);
+    const dateb = parseISO(b.publishedAt);
+
+    if (dateA > dateb) return -1;
+    if (dateA < dateb) return 1;
+
+    return 0;
+  });
+}
+
+export async function getRecommandationBySlug(
+  slug: string
+): Promise<IRecommandPosts> {
+  const allPosts = await getAllFilesMeta();
+
+  const currentPostIndex = allPosts.findIndex((el) => el.slug === slug);
+
+  function getNextPost(idx: number) {
+    if (idx !== -1 && idx - 1 >= 0) {
+      return allPosts[idx - 1];
+    }
+
+    return null;
+  }
+
+  function getPrevPost(idx: number) {
+    if (idx !== -1 && idx + 1 <= allPosts.length - 1) {
+      return allPosts[idx + 1];
+    }
+
+    return null;
+  }
+
+  return {
+    next: getNextPost(currentPostIndex),
+    prev: getPrevPost(currentPostIndex),
+  };
 }

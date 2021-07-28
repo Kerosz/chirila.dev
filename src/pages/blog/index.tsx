@@ -1,16 +1,16 @@
 // packages
-import { parseISO, format } from 'date-fns';
+import { useState } from 'react';
+import { parseISO } from 'date-fns';
 // components
-import Link from '~/components/common/link';
+import BlogCard from '~/components/blog/card';
 import Layout from '~/components/layouts/base';
-import ArrowRight from '~/assets/icons/arrow-right';
+import BlogSearchBar from '~/components/blog/search';
 import Newsletter from '~/components/common/newsletter';
 import FadeIntoView from '~/components/animations/fade-into-view';
 import { Container, Typography } from '~/components/ui';
 import { FrontMatterWithoutMeta, getAllFilesMeta } from '~/services/mdx';
 // types
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
-import BlogCard from '~/components/blog/card';
 
 interface IStaticProps {
   posts: FrontMatterWithoutMeta[];
@@ -18,16 +18,23 @@ interface IStaticProps {
 }
 
 export default function BlogPage({ posts, total }: IStaticProps) {
-  console.log(posts);
+  const [blogPosts, setBlogPosts] = useState<IStaticProps['posts']>(posts);
 
   return (
-    <Layout>
+    <Layout title='Blog | Andrei Chirila'>
       <FadeIntoView as={Container} className='text-black-tone pt-28 pb-20'>
-        <Typography as='h1' className='text-7xl font-bold pb-20' resetStyles>
-          Writting
-        </Typography>
+        <div className='flex md:flex-row flex-col justify-between pb-20'>
+          <Typography
+            as='h1'
+            className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
+            resetStyles>
+            Writting
+          </Typography>
 
-        {posts.map((p) => (
+          <BlogSearchBar initialPosts={posts} setPosts={setBlogPosts} />
+        </div>
+
+        {blogPosts.map((p) => (
           <BlogCard key={p.slug} {...p} />
         ))}
       </FadeIntoView>

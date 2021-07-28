@@ -4,20 +4,23 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 // components
 import Layout from './base';
 import Link from '../common/link';
+import BlogRecommand from '../blog/recommand';
+import Newsletter from '../common/newsletter';
 import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
-import type { IFrontMatter } from '~/services/mdx';
-import Newsletter from '../common/newsletter';
+import type { IFrontMatter, IRecommandPosts } from '~/services/mdx';
 
 export interface IPostLayout {
   children: ReactNode;
   frontMatter: IFrontMatter;
+  recommand: IRecommandPosts;
 }
 
 export default function PostLayout({
   children,
   frontMatter,
+  recommand,
 }: IPostLayout): JSX.Element {
   const publishedAt = parseISO(frontMatter.publishedAt);
   const publishedAtFormat = format(publishedAt, 'EEEE, LLLL do yyyy');
@@ -79,17 +82,22 @@ export default function PostLayout({
           {children}
         </div>
 
-        {frontMatter.slug ? (
-          <div className='text-sm text-gray-700 py-3 text-right'>
-            <Link href={discussUrl(frontMatter.slug)} external>
-              Discuss on Twitter
-            </Link>
-            {` • `}
-            <Link href={editUrl(frontMatter.slug)} external>
-              Edit on GitHub
-            </Link>
-          </div>
-        ) : null}
+        <div className='flex justify-between pt-6 space-x-6'>
+          {recommand.prev && (
+            <BlogRecommand {...recommand.prev} name='Previous' />
+          )}
+          {recommand.next && <BlogRecommand {...recommand.next} name='Next' />}
+        </div>
+
+        <div className='text-sm text-gray-700 py-3 text-right mt-7'>
+          <Link href={discussUrl(frontMatter.slug)} external>
+            Discuss on Twitter
+          </Link>
+          {` • `}
+          <Link href={editUrl(frontMatter.slug)} external>
+            Edit page on GitHub
+          </Link>
+        </div>
       </Container>
       <Newsletter />
     </Layout>
