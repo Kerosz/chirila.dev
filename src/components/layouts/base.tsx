@@ -19,7 +19,7 @@ function Layout({ children, ...customMeta }: ILayout): ReactElement {
       <Header
         preHeader={
           <Banner
-            link='#'
+            link='/blog/new-space-version'
             text='Welcome to my new space on the internet'
             cta='Learn more about the new version'
           />

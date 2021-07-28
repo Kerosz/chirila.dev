@@ -34,9 +34,9 @@ function BlogRecommand({ slug, title, name }: IBlogRecommand) {
   return (
     <Link href={`/blog/${slug}`} className={rootClass}>
       {isNext ? (
-        <ArrowRight className='w-11 text-gray-400' />
+        <ArrowRight className='text-gray-400 max-w-[1.5rem] w-full' />
       ) : (
-        <ArrowLeft className='w-6 text-gray-400' />
+        <ArrowLeft className='text-gray-400 max-w-[1.5rem] w-full' />
       )}
       <div className={textContainer}>
         <Typography resetStyles className={nameClass}>

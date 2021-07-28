@@ -22,7 +22,9 @@ export default function BlogPage({ posts, total }: IStaticProps) {
 
   return (
     <Layout title='Blog | Andrei Chirila'>
-      <FadeIntoView as={Container} className='text-black-tone pt-28 pb-20'>
+      <FadeIntoView
+        as={Container}
+        className='text-black-tone pt-28 pb-20 min-h-screen'>
         <div className='flex md:flex-row flex-col justify-between pb-20'>
           <Typography
             as='h1'

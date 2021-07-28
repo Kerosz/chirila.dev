@@ -82,14 +82,18 @@ export default function PostLayout({
           {children}
         </div>
 
-        <div className='flex justify-between pt-6 space-x-6'>
-          {recommand.prev && (
-            <BlogRecommand {...recommand.prev} name='Previous' />
-          )}
-          {recommand.next && <BlogRecommand {...recommand.next} name='Next' />}
-        </div>
+        {(recommand.prev || recommand.next) && (
+          <div className='flex justify-between pt-6 space-x-6 mb-7'>
+            {recommand.prev && (
+              <BlogRecommand {...recommand.prev} name='Previous' />
+            )}
+            {recommand.next && (
+              <BlogRecommand {...recommand.next} name='Next' />
+            )}
+          </div>
+        )}
 
-        <div className='text-sm text-gray-700 py-3 text-right mt-7'>
+        <div className='text-sm text-gray-700 py-3 text-right'>
           <Link href={discussUrl(frontMatter.slug)} external>
             Discuss on Twitter
           </Link>
