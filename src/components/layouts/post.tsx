@@ -4,8 +4,8 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 // components
 import Layout from './base';
 import Link from '../common/link';
-import BlogRecommand from '../blog/recommand';
 import Newsletter from '../common/newsletter';
+import BlogRecommand from '../blog/recommand';
 import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
