@@ -38,10 +38,7 @@ export default function PostLayout({
     <Layout
       title={`Blog – ${frontMatter.title} – Andrei Chirila`}
       description={frontMatter.excerpt}>
-      <Container
-        as='article'
-        reset
-        className='px-4 max-w-3xl mx-auto w-full py-10'>
+      <Container as='article' maxW='max-w-[848px]' className='py-10'>
         <header className='border-b border-gray-300 pb-14'>
           <Typography
             as='h1'
