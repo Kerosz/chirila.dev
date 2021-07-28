@@ -14,7 +14,7 @@ export interface IFrontMatter {
     words: number;
     minutes: number;
   };
-  slug: string | null;
+  slug: string;
   title: string;
   publishedAt: string;
   updatedAt: string | null;
@@ -27,6 +27,8 @@ export interface IFileResult {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: IFrontMatter;
 }
+
+export type FrontMatterWithoutMeta = Omit<IFrontMatter, 'meta'>;
 
 const rootDir = process.cwd();
 
@@ -68,8 +70,29 @@ export async function getFileBySlug(
     source: mdxSource,
     frontMatter: {
       meta: readingTime(content),
-      slug: slug || null,
+      slug: slug.replace(/\.mdx/, ''),
       ...data,
     },
   } as IFileResult;
+}
+
+export async function getAllFilesMeta(
+  dir: string = 'blog'
+): Promise<FrontMatterWithoutMeta[]> {
+  const files = fs.readdirSync(path.join(rootDir, 'data', dir));
+
+  return files.reduce((allPosts: any, postSlug) => {
+    const source = fs.readFileSync(
+      path.join(rootDir, 'data', dir, postSlug),
+      'utf8'
+    );
+    const { data } = matter(source);
+
+    const post = {
+      ...data,
+      slug: postSlug.replace(/\.mdx/, ''),
+    } as FrontMatterWithoutMeta;
+
+    return [post, ...allPosts];
+  }, []);
 }
