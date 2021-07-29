@@ -5,8 +5,8 @@ const navLinksData = [
     isExternal: false,
   },
   {
-    label: 'Blog',
-    path: '/blog',
+    label: 'Writting',
+    path: '/writting',
     isExternal: false,
   },
   {

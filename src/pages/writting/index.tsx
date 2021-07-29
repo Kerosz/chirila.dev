@@ -17,11 +17,11 @@ interface IStaticProps {
   total: number;
 }
 
-export default function BlogPage({ posts, total }: IStaticProps) {
+export default function WrittingPage({ posts, total }: IStaticProps) {
   const [blogPosts, setBlogPosts] = useState<IStaticProps['posts']>(posts);
 
   return (
-    <Layout title='Blog | Andrei Chirila'>
+    <Layout title='Writting | Andrei Chirila'>
       <FadeIntoView
         as={Container}
         className='text-black-tone pt-28 pb-20 min-h-screen'>

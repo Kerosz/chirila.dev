@@ -51,7 +51,7 @@ function Media({ title, src, className, active }: IMedia): JSX.Element {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
-      src={`/images/${src}`}
+      src={`/images/more-work/${src}`}
       alt={title}
       width={185}
       className={rootClass}
