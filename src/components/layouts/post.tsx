@@ -10,6 +10,7 @@ import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
 import type { IFrontMatter, IRecommandPosts } from '~/services/mdx';
+import FadeIntoView from '../animations/fade-into-view';
 
 export interface IPostLayout {
   children: ReactNode;
@@ -38,69 +39,75 @@ export default function PostLayout({
     <Layout
       title={`Blog – ${frontMatter.title} – Andrei Chirila`}
       description={frontMatter.excerpt}>
-      <Container as='article' maxW='max-w-[848px]' className='py-10'>
-        <header className='border-b border-gray-300 pb-14'>
-          <Typography
-            as='h1'
-            className='text-5xl font-bold text-center font-serif pb-14'
-            resetStyles>
-            {frontMatter.title}
-          </Typography>
+      <FadeIntoView>
+        <Container as='article' maxW='max-w-[848px]' className='py-10'>
+          <header className='border-b border-gray-300 pb-14'>
+            <Typography
+              as='h1'
+              className='text-5xl font-bold text-center font-serif pb-14'
+              resetStyles>
+              {frontMatter.title}
+            </Typography>
 
-          <div className='flex justify-between text-gray-600 text-sm'>
-            <time dateTime={publishedAt.toISOString()}>
-              {`${publishedAtFormat} (${publishedAtToNow})`}
-            </time>
+            <div className='flex xs:flex-row flex-col justify-between text-gray-600 text-sm'>
+              <time
+                dateTime={publishedAt.toISOString()}
+                className='pb-1 xs:pb-0'>
+                {`${publishedAtFormat} (${publishedAtToNow})`}
+              </time>
 
-            <p>{frontMatter.meta.text}</p>
-          </div>
-
-          <div className='flex items-center mt-4'>
-            <Image
-              alt='Andrei Chirila'
-              height={34}
-              width={34}
-              src='/images/avatar.png'
-              className='rounded-full'
-            />
-            <div className='flex flex-col ml-3'>
-              <p className='text-gray-900 font-medium'>{frontMatter.author}</p>
-              <Link
-                href='https://twitter.com/chirila_'
-                className='text-blue-600 text-xs -mt-0.5'
-                external>
-                @chirila_
-              </Link>
+              <p>{frontMatter.meta.text}</p>
             </div>
+
+            <div className='flex items-center mt-4'>
+              <Image
+                alt='Andrei Chirila'
+                height={34}
+                width={34}
+                src='/images/avatar.png'
+                className='rounded-full'
+              />
+              <div className='flex flex-col ml-3'>
+                <p className='text-gray-900 font-medium'>
+                  {frontMatter.author}
+                </p>
+                <Link
+                  href='https://twitter.com/chirila_'
+                  className='text-blue-600 text-xs -mt-0.5'
+                  external>
+                  @chirila_
+                </Link>
+              </div>
+            </div>
+          </header>
+
+          <div className='prose max-w-none w-full mt-10 pb-16 border-b border-gray-200'>
+            {children}
           </div>
-        </header>
 
-        <div className='prose max-w-none w-full mt-10 pb-16 border-b border-gray-200'>
-          {children}
-        </div>
+          {(recommand.prev || recommand.next) && (
+            <div className='flex justify-between pt-6 space-x-6 mb-7'>
+              {recommand.prev && (
+                <BlogRecommand {...recommand.prev} name='Previous' />
+              )}
+              {recommand.next && (
+                <BlogRecommand {...recommand.next} name='Next' />
+              )}
+            </div>
+          )}
 
-        {(recommand.prev || recommand.next) && (
-          <div className='flex justify-between pt-6 space-x-6 mb-7'>
-            {recommand.prev && (
-              <BlogRecommand {...recommand.prev} name='Previous' />
-            )}
-            {recommand.next && (
-              <BlogRecommand {...recommand.next} name='Next' />
-            )}
+          <div className='text-sm text-gray-700 py-3 text-right'>
+            <Link href={discussUrl(frontMatter.slug)} external>
+              Discuss on Twitter
+            </Link>
+            {` • `}
+            <Link href={editUrl(frontMatter.slug)} external>
+              Edit page on GitHub
+            </Link>
           </div>
-        )}
-
-        <div className='text-sm text-gray-700 py-3 text-right'>
-          <Link href={discussUrl(frontMatter.slug)} external>
-            Discuss on Twitter
-          </Link>
-          {` • `}
-          <Link href={editUrl(frontMatter.slug)} external>
-            Edit page on GitHub
-          </Link>
-        </div>
-      </Container>
-      <Newsletter />
+        </Container>
+        <Newsletter />
+      </FadeIntoView>
     </Layout>
   );
 }

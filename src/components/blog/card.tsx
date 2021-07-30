@@ -15,7 +15,7 @@ function BlogCard({ publishedAt, slug, title }: IBlogCard) {
 
   return (
     <Link
-      href={`/writting/${slug}`}
+      href={`/writing/${slug}`}
       className='flex items-center justify-between transition-all duration-500 py-14 group hover:bg-gray-200 border-b border-gray-300'>
       <div className='flex items-center transform-gpu duration-300 group-hover:translate-x-8'>
         <time

@@ -32,7 +32,7 @@ function BlogRecommand({ slug, title, name }: IBlogRecommand) {
   });
 
   return (
-    <Link href={`/writting/${slug}`} className={rootClass}>
+    <Link href={`/writing/${slug}`} className={rootClass}>
       {isNext ? (
         <ArrowRight className='text-gray-400 max-w-[1.5rem] w-full' />
       ) : (
