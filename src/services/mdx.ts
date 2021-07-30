@@ -25,11 +25,25 @@ export interface IFrontMatter {
   tags: string[];
 }
 
+export interface ISnippetsFrontMatter {
+  meta: {
+    text: string;
+    time: number;
+    words: number;
+    minutes: number;
+  };
+  slug: string;
+  title: string;
+  description: string;
+}
+
+export type SnippetsFrontMatterWithoutMeta = Omit<ISnippetsFrontMatter, 'meta'>;
+
 export type FrontMatterWithoutMeta = Omit<IFrontMatter, 'meta'>;
 
-export interface IFileResult {
+export interface IFileResult<T> {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
-  frontMatter: IFrontMatter;
+  frontMatter: T;
 }
 
 export interface IRecommandPosts {
@@ -43,10 +57,10 @@ export async function getAllFiles(dir: string = 'blog'): Promise<string[]> {
   return fs.readdirSync(path.join(rootDir, 'data', dir));
 }
 
-export async function getFileBySlug(
+export async function getFileBySlug<T>(
   slug: string,
   dir: string = 'blog'
-): Promise<IFileResult> {
+): Promise<IFileResult<T>> {
   const file = fs.readFileSync(
     path.join(rootDir, 'data', dir, `${slug}.mdx`),
     'utf-8'
@@ -80,33 +94,36 @@ export async function getFileBySlug(
       slug: slug.replace(/\.mdx/, ''),
       ...data,
     },
-  } as IFileResult;
+  } as unknown as IFileResult<T>;
 }
 
-export async function getAllFilesMeta(
-  dir: string = 'blog'
-): Promise<FrontMatterWithoutMeta[]> {
+export async function getAllFilesMeta<T>(dir: string = 'blog'): Promise<T[]> {
   const files = fs.readdirSync(path.join(rootDir, 'data', dir));
 
-  const posts: FrontMatterWithoutMeta[] = files.reduce(
-    (allPosts: any, postSlug) => {
-      const source = fs.readFileSync(
-        path.join(rootDir, 'data', dir, postSlug),
-        'utf8'
-      );
-      const { data } = matter(source);
+  const posts: T[] = files.reduce((allPosts: any, postSlug) => {
+    const source = fs.readFileSync(
+      path.join(rootDir, 'data', dir, postSlug),
+      'utf8'
+    );
+    const { data } = matter(source);
 
-      const post = {
-        ...data,
-        slug: postSlug.replace(/\.mdx/, ''),
-      } as FrontMatterWithoutMeta;
+    const post = {
+      ...data,
+      slug: postSlug.replace(/\.mdx/, ''),
+    } as FrontMatterWithoutMeta;
 
-      return [post, ...allPosts];
-    },
-    []
-  );
+    return [post, ...allPosts];
+  }, []);
 
-  return posts.sort((a, b) => {
+  return posts;
+}
+
+export async function getRecommandationBySlug(
+  slug: string
+): Promise<IRecommandPosts> {
+  const allPosts = await getAllFilesMeta<FrontMatterWithoutMeta>();
+
+  const sortedPosts = allPosts.sort((a, b) => {
     const dateA = parseISO(a.publishedAt);
     const dateb = parseISO(b.publishedAt);
 
@@ -115,14 +132,8 @@ export async function getAllFilesMeta(
 
     return 0;
   });
-}
 
-export async function getRecommandationBySlug(
-  slug: string
-): Promise<IRecommandPosts> {
-  const allPosts = await getAllFilesMeta();
-
-  const currentPostIndex = allPosts.findIndex((el) => el.slug === slug);
+  const currentPostIndex = sortedPosts.findIndex((el) => el.slug === slug);
 
   function getNextPost(idx: number) {
     if (idx !== -1 && idx - 1 >= 0) {

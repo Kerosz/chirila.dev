@@ -64,8 +64,9 @@ export default function PostLayout({
                 alt='Andrei Chirila'
                 height={34}
                 width={34}
-                src='/images/avatar.png'
+                src='/images/blog/avatar.png'
                 className='rounded-full'
+                priority
               />
               <div className='flex flex-col ml-3'>
                 <p className='text-gray-900 font-medium'>

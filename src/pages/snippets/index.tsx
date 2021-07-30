@@ -1,21 +1,36 @@
 // packages
 import { useState } from 'react';
 // components
-import BlogCard from '~/components/blog/card';
+import Link from '~/components/common/link';
 import Layout from '~/components/layouts/base';
+import SearchBar from '~/components/common/search';
 import Newsletter from '~/components/common/newsletter';
+import ArrowNarrowRight from '~/assets/icons/arrow-narrow-right';
 import FadeIntoView from '~/components/animations/fade-into-view';
 import { Container, Typography } from '~/components/ui';
-import { FrontMatterWithoutMeta, getAllFilesMeta } from '~/services/mdx';
+import {
+  getAllFilesMeta,
+  SnippetsFrontMatterWithoutMeta,
+} from '~/services/mdx';
 // types
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
 
 interface IStaticProps {
-  snippets: FrontMatterWithoutMeta[];
+  snippets: SnippetsFrontMatterWithoutMeta[];
   total: number;
 }
 
-export default function SnippetsPage({ snippets, total }: IStaticProps) {
+export default function SnippetsPage({ snippets }: IStaticProps) {
+  const [pageSnippets, setPageSnippets] =
+    useState<IStaticProps['snippets']>(snippets);
+
+  const searchOptions = {
+    includeScore: true,
+    // Search in `title` and in `tags` array
+    keys: ['title', 'description'],
+    threshold: 0.4,
+  };
+
   return (
     <Layout title='Snippets | Andrei Chirila'>
       <FadeIntoView
@@ -28,11 +43,36 @@ export default function SnippetsPage({ snippets, total }: IStaticProps) {
             resetStyles>
             Snippets
           </Typography>
+
+          <SearchBar
+            initialData={snippets}
+            setData={setPageSnippets}
+            options={searchOptions}
+          />
         </div>
 
-        {snippets.map((s) => (
-          <p>{s.slug}</p>
-        ))}
+        <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-20 lg:gap-14 gap-8'>
+          {pageSnippets.map(({ slug, title, description }, idx) => (
+            <Link
+              key={`${title}__${idx}`}
+              href={`/snippets/${slug}`}
+              className='col-span-1 flex relative items-center border-b border-gray-300 py-6  group'>
+              <div className='ml-8 pr-14'>
+                <Typography
+                  as='h1'
+                  className='text-xl font-medium pb-2'
+                  resetStyles>
+                  {title}
+                </Typography>
+                <Typography className='text-lg text-gray-500' resetStyles>
+                  {description}
+                </Typography>
+              </div>
+
+              <ArrowNarrowRight className='w-9 -mt-1.5 group-hover:-rotate-45 group-hover:scale-105 transition-all duration-[400ms] absolute right-0 top-2/4' />
+            </Link>
+          ))}
+        </div>
       </FadeIntoView>
       <Newsletter />
     </Layout>
@@ -42,7 +82,9 @@ export default function SnippetsPage({ snippets, total }: IStaticProps) {
 export const getStaticProps: GetStaticProps<IStaticProps> = async (): Promise<
   GetStaticPropsResult<IStaticProps>
 > => {
-  const snippets = await getAllFilesMeta('snippets');
+  const snippets = await getAllFilesMeta<SnippetsFrontMatterWithoutMeta>(
+    'snippets'
+  );
 
   return { props: { snippets, total: snippets.length } };
 };

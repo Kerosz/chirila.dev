@@ -4,7 +4,7 @@ import { parseISO } from 'date-fns';
 // components
 import BlogCard from '~/components/blog/card';
 import Layout from '~/components/layouts/base';
-import BlogSearchBar from '~/components/blog/search';
+import SearchBar from '~/components/common/search';
 import Newsletter from '~/components/common/newsletter';
 import FadeIntoView from '~/components/animations/fade-into-view';
 import { Container, Typography } from '~/components/ui';
@@ -17,8 +17,15 @@ interface IStaticProps {
   total: number;
 }
 
-export default function WritingPage({ posts, total }: IStaticProps) {
+export default function WritingPage({ posts }: IStaticProps) {
   const [blogPosts, setBlogPosts] = useState<IStaticProps['posts']>(posts);
+
+  const searchOptions = {
+    includeScore: true,
+    // Search in `title` and in `tags` array
+    keys: ['title', 'tags'],
+    threshold: 0.4,
+  };
 
   return (
     <Layout title='Writting | Andrei Chirila'>
@@ -30,10 +37,14 @@ export default function WritingPage({ posts, total }: IStaticProps) {
             as='h1'
             className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
             resetStyles>
-           Writing
+            Writing
           </Typography>
 
-          <BlogSearchBar initialPosts={posts} setPosts={setBlogPosts} />
+          <SearchBar
+            initialData={posts}
+            setData={setBlogPosts}
+            options={searchOptions}
+          />
         </div>
 
         {blogPosts.map((p) => (
@@ -48,7 +59,17 @@ export default function WritingPage({ posts, total }: IStaticProps) {
 export const getStaticProps: GetStaticProps<IStaticProps> = async (): Promise<
   GetStaticPropsResult<IStaticProps>
 > => {
-  const posts = await getAllFilesMeta();
+  const posts = await getAllFilesMeta<FrontMatterWithoutMeta>();
 
-  return { props: { posts, total: posts.length } };
+  const sortedPosts = posts.sort((a, b) => {
+    const dateA = parseISO(a.publishedAt);
+    const dateb = parseISO(b.publishedAt);
+
+    if (dateA > dateb) return -1;
+    if (dateA < dateb) return 1;
+
+    return 0;
+  });
+
+  return { props: { posts: sortedPosts, total: posts.length } };
 };

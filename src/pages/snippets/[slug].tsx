@@ -4,14 +4,12 @@ import { MDXRemote } from 'next-mdx-remote';
 import { ParsedUrlQuery } from 'querystring';
 // internals
 import Link from '~/components/common/link';
-import PostLayout from '~/components/layouts/post';
+import SnippetLayout from '~/components/layouts/snippet';
 import {
   getAllFiles,
   getFileBySlug,
-  getRecommandationBySlug,
   IFileResult,
-  IFrontMatter,
-  IRecommandPosts,
+  ISnippetsFrontMatter,
 } from '~/services/mdx';
 // types
 import type {
@@ -21,28 +19,26 @@ import type {
   GetStaticPathsResult,
 } from 'next';
 
-interface IStaticProps extends IFileResult<IFrontMatter> {
-  recommand: IRecommandPosts;
-}
+interface IStaticProps extends IFileResult<ISnippetsFrontMatter> {}
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export default function Post({ source, frontMatter, recommand }: IStaticProps) {
+export default function Snippet({ source, frontMatter }: IStaticProps) {
   return (
-    <PostLayout frontMatter={frontMatter} recommand={recommand}>
+    <SnippetLayout frontMatter={frontMatter}>
       <MDXRemote {...source} components={{ a: Link, Image }} />
-    </PostLayout>
+    </SnippetLayout>
   );
 }
 
 export const getStaticPaths: GetStaticPaths =
   async (): Promise<GetStaticPathsResult> => {
-    const posts = await getAllFiles();
+    const snippets = await getAllFiles('snippets');
 
     return {
-      paths: posts.map((p) => ({
+      paths: snippets.map((p) => ({
         params: {
           slug: p.replace(/\.mdx/, ''),
         },
@@ -54,8 +50,10 @@ export const getStaticPaths: GetStaticPaths =
 export const getStaticProps: GetStaticProps<IStaticProps, IParams> = async ({
   params,
 }): Promise<GetStaticPropsResult<IStaticProps>> => {
-  const post = await getFileBySlug<IFrontMatter>(params!.slug);
-  const recommand = await getRecommandationBySlug(params!.slug);
+  const snippet = await getFileBySlug<ISnippetsFrontMatter>(
+    params!.slug,
+    'snippets'
+  );
 
-  return { props: { ...post, recommand } };
+  return { props: { ...snippet } };
 };

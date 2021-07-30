@@ -3,26 +3,21 @@ import Fuse from 'fuse.js';
 import { useState, useEffect } from 'react';
 // types
 import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import type { FrontMatterWithoutMeta } from '~/services/mdx';
 
-export interface IBlogSearchBar {
-  initialPosts: FrontMatterWithoutMeta[];
-  setPosts: Dispatch<SetStateAction<FrontMatterWithoutMeta[]>>;
+export interface ISearchBar<T> {
+  initialData: T[];
+  setData: Dispatch<SetStateAction<T[]>>;
+  options: Fuse.IFuseOptions<unknown>;
 }
 
-export default function BlogSearchBar({
-  initialPosts,
-  setPosts,
-}: IBlogSearchBar) {
+export default function SearchBar<T>({
+  initialData,
+  setData,
+  options,
+}: ISearchBar<T>) {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const SEARCH_OPTIONS = {
-    includeScore: true,
-    // Search in `title` and in `tags` array
-    keys: ['title', 'tags'],
-    threshold: 0.4,
-  };
-  const fuse = new Fuse(initialPosts, SEARCH_OPTIONS);
+  const fuse = new Fuse(initialData, options);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget;
@@ -36,9 +31,9 @@ export default function BlogSearchBar({
 
       const posts = results.map((r) => r.item);
 
-      setPosts(posts);
+      setData(posts);
     } else {
-      setPosts(initialPosts);
+      setData(initialData);
     }
   }, [searchTerm]);
 

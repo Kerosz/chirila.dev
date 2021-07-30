@@ -1,0 +1,33 @@
+---
+title: 'useEvent Hook'
+description: 'Attach event listners in a more elegant way.'
+---
+
+## Implementation
+
+```jsx:Hook
+import { useRef, useEffect } from 'react';
+
+export default function useEvent({ eventName, handler, target = window }) {
+  const savedHandler = useRef();
+
+  const canUseEvent = target.document && target.document.addEventListener;
+
+  useEffect(() => {
+    savedHandler.current = handler;
+  }, [handler]);
+
+  useEffect(() => {
+    if (!canUseEvent) return;
+
+    const listner = (event) => savedHandler.current(event);
+
+    target.addEventListener(eventName, listner);
+
+    return () => {
+      target.removeEventListener(eventName, listner);
+    };
+  }, [eventName, target]);
+}
+
+```
