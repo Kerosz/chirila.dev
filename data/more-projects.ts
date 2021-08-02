@@ -16,7 +16,7 @@ const moreProjectsData: IProjectData[] = [
     tags: ['nextjs', 'styled-components', 'typescript'],
     summary:
       'First version of my personal website, it is a minimal approach to design and browsing experience.',
-    srcName: 'p_site_mock.jpg',
+    srcName: 'personal_site_mock.jpg',
     link: 'https://old.chirila.dev',
   },
   {
