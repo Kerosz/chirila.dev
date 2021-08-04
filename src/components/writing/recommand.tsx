@@ -8,11 +8,15 @@ import { Typography } from '~/components/ui';
 // types
 import type { FrontMatterWithoutMeta } from '~/services/mdx';
 
-export interface IBlogRecommand extends FrontMatterWithoutMeta {
+export interface IWritingRecommand extends FrontMatterWithoutMeta {
   name: string;
 }
 
-function BlogRecommand({ slug, title, name }: IBlogRecommand) {
+export default function WritingRecommand({
+  slug,
+  title,
+  name,
+}: IWritingRecommand) {
   const isNext = name.toLowerCase() === 'next';
 
   const rootClass = cn(
@@ -51,5 +55,3 @@ function BlogRecommand({ slug, title, name }: IBlogRecommand) {
     </Link>
   );
 }
-
-export default BlogRecommand;

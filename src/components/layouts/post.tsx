@@ -5,17 +5,17 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 import Layout from './base';
 import Link from '../common/link';
 import Newsletter from '../common/newsletter';
-import BlogRecommand from '../blog/recommand';
+import WritingRecommand from '../writing/recommand';
+import FadeIntoView from '../animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
-import type { IFrontMatter, IRecommandPosts } from '~/services/mdx';
-import FadeIntoView from '../animations/fade-into-view';
+import type { IFrontMatter, IRecommandArticles } from '~/services/mdx';
 
 export interface IPostLayout {
   children: ReactNode;
   frontMatter: IFrontMatter;
-  recommand: IRecommandPosts;
+  recommand: IRecommandArticles;
 }
 
 export default function PostLayout({
@@ -89,10 +89,10 @@ export default function PostLayout({
           {(recommand.prev || recommand.next) && (
             <div className='flex justify-between pt-6 space-x-6 mb-7'>
               {recommand.prev && (
-                <BlogRecommand {...recommand.prev} name='Previous' />
+                <WritingRecommand {...recommand.prev} name='Previous' />
               )}
               {recommand.next && (
-                <BlogRecommand {...recommand.next} name='Next' />
+                <WritingRecommand {...recommand.next} name='Next' />
               )}
             </div>
           )}

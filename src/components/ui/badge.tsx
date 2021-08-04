@@ -16,7 +16,7 @@ const Badge = forwardRef<HTMLSpanElement, IBadge>((props, ref): JSX.Element => {
   const Element = as || component;
 
   const rootClass = cn(
-    'border border-gray-900 px-3 py-1.5 text-gray-700 font-medium uppercase',
+    'border border-gray-900 px-3 py-1.5 text-gray-700 font-medium uppercase max-w-max',
     className
   );
 

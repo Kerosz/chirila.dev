@@ -7,9 +7,13 @@ import { Typography } from '~/components/ui';
 // types
 import type { FrontMatterWithoutMeta } from '~/services/mdx';
 
-export interface IBlogCard extends FrontMatterWithoutMeta {}
+export interface IWritingCard extends FrontMatterWithoutMeta {}
 
-function BlogCard({ publishedAt, slug, title }: IBlogCard) {
+export default function WritingCard({
+  publishedAt,
+  slug,
+  title,
+}: IWritingCard) {
   const parsedDate = parseISO(publishedAt);
   const formatDate = format(parsedDate, 'MMM d, y');
 
@@ -17,20 +21,21 @@ function BlogCard({ publishedAt, slug, title }: IBlogCard) {
     <Link
       href={`/writing/${slug}`}
       className='flex items-center justify-between transition-all duration-500 py-14 group hover:bg-gray-200 border-b border-gray-300'>
-      <div className='flex items-center transform-gpu duration-300 group-hover:translate-x-8'>
+      <div className='flex items-center transform-gpu duration-300 sm:group-hover:translate-x-8 group-hover:translate-x-4'>
         <time
           dateTime={parsedDate.toString()}
-          className='text-gray-500 text-xl uppercase pr-10'>
+          className='text-gray-500 text-xl uppercase md:pr-10 sm:pr-6 pr-4'>
           {formatDate}
         </time>
-        <Typography as='h1' className='text-3xl font-medium' resetStyles>
+        <Typography
+          as='h1'
+          className='sm:text-3xl text-2xl font-medium'
+          resetStyles>
           {title}
         </Typography>
       </div>
 
-      <ArrowRight className='w-8 group-hover:-translate-x-8 transform-gpu duration-300' />
+      <ArrowRight className='w-8 sm:group-hover:-translate-x-8 group-hover:-translate-x-4 transform-gpu duration-300 sm:block hidden' />
     </Link>
   );
 }
-
-export default BlogCard;

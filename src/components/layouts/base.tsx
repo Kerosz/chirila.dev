@@ -1,5 +1,5 @@
 // components
-import Head from '~components/common/head';
+import HtmlHead from '~/components/common/html-head';
 import Header from '~components/common/header';
 import Footer from '~components/common/footer';
 import Banner from '~components/common/banner';
@@ -15,7 +15,7 @@ export interface ILayout {
 function Layout({ children, ...customMeta }: ILayout): ReactElement {
   return (
     <>
-      <Head {...customMeta} />
+      <HtmlHead {...customMeta} />
       <Header
         preHeader={
           <Banner

@@ -2,12 +2,12 @@ import NextHead from 'next/head';
 import { NextSeo } from 'next-seo';
 import { isBrowser } from '~/utils/dom';
 
-export interface IHead {
+export interface IHtmlHead {
   title?: string;
   description?: string;
 }
 
-export default function Head({ title, description }: IHead) {
+export default function HtmlHead({ title, description }: IHtmlHead) {
   title = title || 'Andrei Chirila';
   description =
     description ||

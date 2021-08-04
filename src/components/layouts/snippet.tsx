@@ -5,12 +5,11 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 import Layout from './base';
 import Link from '../common/link';
 import Newsletter from '../common/newsletter';
-import BlogRecommand from '../blog/recommand';
+import FadeIntoView from '../animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
 import type { ISnippetsFrontMatter } from '~/services/mdx';
-import FadeIntoView from '../animations/fade-into-view';
 
 export interface ISnippetLayout {
   children: ReactNode;

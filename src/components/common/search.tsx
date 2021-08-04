@@ -8,12 +8,16 @@ export interface ISearchBar<T> {
   initialData: T[];
   setData: Dispatch<SetStateAction<T[]>>;
   options: Fuse.IFuseOptions<unknown>;
+  triggerCharCount?: number;
+  placeholder?: string;
 }
 
 export default function SearchBar<T>({
   initialData,
   setData,
   options,
+  triggerCharCount = 2,
+  placeholder = 'Search',
 }: ISearchBar<T>) {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
@@ -26,7 +30,7 @@ export default function SearchBar<T>({
   };
 
   useEffect(() => {
-    if (searchTerm.length > 2) {
+    if (searchTerm.length > triggerCharCount) {
       const results = fuse.search(searchTerm);
 
       const posts = results.map((r) => r.item);
@@ -40,7 +44,7 @@ export default function SearchBar<T>({
   return (
     <input
       type='search'
-      placeholder='Search articles'
+      placeholder={placeholder}
       className='h-16 px-0.5 text-lg bg-transparent border-t-0 border-l-0 border-r-0 focus:ring-0 border-gray-400 focus:border-gray-900 max-w-lg w-full uppercase placeholder-gray-500 mt-5'
       value={searchTerm}
       onChange={handleInputChange}

@@ -11,7 +11,7 @@ import {
   getRecommandationBySlug,
   IFileResult,
   IFrontMatter,
-  IRecommandPosts,
+  IRecommandArticles,
 } from '~/services/mdx';
 // types
 import type {
@@ -22,7 +22,7 @@ import type {
 } from 'next';
 
 interface IStaticProps extends IFileResult<IFrontMatter> {
-  recommand: IRecommandPosts;
+  recommand: IRecommandArticles;
 }
 
 interface IParams extends ParsedUrlQuery {
@@ -39,10 +39,10 @@ export default function Post({ source, frontMatter, recommand }: IStaticProps) {
 
 export const getStaticPaths: GetStaticPaths =
   async (): Promise<GetStaticPathsResult> => {
-    const posts = await getAllFiles();
+    const articles = await getAllFiles();
 
     return {
-      paths: posts.map((p) => ({
+      paths: articles.map((p) => ({
         params: {
           slug: p.replace(/\.mdx/, ''),
         },
@@ -54,8 +54,8 @@ export const getStaticPaths: GetStaticPaths =
 export const getStaticProps: GetStaticProps<IStaticProps, IParams> = async ({
   params,
 }): Promise<GetStaticPropsResult<IStaticProps>> => {
-  const post = await getFileBySlug<IFrontMatter>(params!.slug);
+  const article = await getFileBySlug<IFrontMatter>(params!.slug);
   const recommand = await getRecommandationBySlug(params!.slug);
 
-  return { props: { ...post, recommand } };
+  return { props: { ...article, recommand } };
 };

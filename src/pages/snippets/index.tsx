@@ -1,8 +1,9 @@
 // packages
 import { useState } from 'react';
-// components
+// internals
 import Link from '~/components/common/link';
 import Layout from '~/components/layouts/base';
+import Filter from '~/components/common/filter';
 import SearchBar from '~/components/common/search';
 import Newsletter from '~/components/common/newsletter';
 import ArrowNarrowRight from '~/assets/icons/arrow-narrow-right';
@@ -12,15 +13,17 @@ import {
   getAllFilesMeta,
   SnippetsFrontMatterWithoutMeta,
 } from '~/services/mdx';
+import { generateTags } from '~/utils';
 // types
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
 
 interface IStaticProps {
   snippets: SnippetsFrontMatterWithoutMeta[];
   total: number;
+  tags: string[];
 }
 
-export default function SnippetsPage({ snippets }: IStaticProps) {
+export default function SnippetsPage({ snippets, tags }: IStaticProps) {
   const [pageSnippets, setPageSnippets] =
     useState<IStaticProps['snippets']>(snippets);
 
@@ -48,8 +51,15 @@ export default function SnippetsPage({ snippets }: IStaticProps) {
             initialData={snippets}
             setData={setPageSnippets}
             options={searchOptions}
+            placeholder='Search snippets'
           />
         </div>
+
+        <Filter
+          initialData={snippets}
+          setData={setPageSnippets}
+          filterByData={tags}
+        />
 
         <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-20 lg:gap-14 gap-8'>
           {pageSnippets.map(({ slug, title, description }, idx) => (
@@ -85,6 +95,7 @@ export const getStaticProps: GetStaticProps<IStaticProps> = async (): Promise<
   const snippets = await getAllFilesMeta<SnippetsFrontMatterWithoutMeta>(
     'snippets'
   );
+  const tags = generateTags(snippets);
 
-  return { props: { snippets, total: snippets.length } };
+  return { props: { snippets, total: snippets.length, tags } };
 };

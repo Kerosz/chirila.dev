@@ -1,21 +1,21 @@
 ---
 title: "My new space on the internet opens it's doors"
-publishedAt: '2021-07-28'
+publishedAt: '2021-08-05'
 excerpt: 'Learn about the new version of my space, the why and how it came to be.'
 media: ''
 author: 'Andrei Chirila'
-tags: ['tech']
+tags: ['updates', 'tech']
 ---
 
-The new version of my site brings a minimalist design into the mix and aims to showcase myself, my thoughts and my writtings. It has been a journey to get here but finally I opened the door wide.
+The new version of my site brings a minimalist design into the mix and aims to showcase myself, my thoughts and my writings. It has been a journey to get here but finally I opened the door wide.
 
 ## In the makings
 
 I've always struggled with finishing side projects. While I can say I love experimenting and trying out new things thus forming my own opinions, which usually leads to a lot of unfinished products, as shipping a **good enough** product requires a lot of work, which requires a lot of time, time I cannot afford to spend on these projects.
 
-To be honest is the good old trap that `it's always something you can do to improve it`. So I'm glad that I made myself finish this new space version no matter how many challanges I had to face, **time wise**.
+To be honest is the good old trap that `it's always something you can do to improve it`. So I'm glad that I forced myself to finish this new version of my persoanl space no matter how many challanges I had to face, **time wise**.
 
-In the making of this space I used technologies that I've enjoyed lately, including:
+In the making of this space I used technologies that I've enjoyed using lately, including:
 
 - Next.js (`v11`)
 - Tailwind CSS (Recently switched from `styled-components / emotion`)
@@ -30,7 +30,7 @@ Next.js is one of my favorite tools to use lately, **vercel team** is killing on
 
 When it comes to under-the-hood optimizations next is one of the best for sure. Their `Image` component gives you a big helping hand in preventing [Cumulative Layout Shifts](https://web.dev/cls/) (CLS) by providing a fixed `width` and `height` to the media, loading it as it reaches the viewport and serving it using modern formats like [WebP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types) when supported, all these makes the page be really fast as we all know media is one to provide a big performance hit to most websites.
 
-## Tailwind css
+## Tailwind CSS
 
 For a long time I've been a fan of CSS-in-JS solutions like `styled-components` or `emotion` and I thought `tailwindcss` is just `bootstrap`, so I was reticent of trying it out, all until [@karlhadwen](https://twitter.com/karlhadwen) introduced me to it, since then I've used tailwind in a few projects and I can say I have a strong opinion on the matter, **I love it**.
 
@@ -52,7 +52,7 @@ into tailwind utility classes:
 
 ## MDX
 
-As a developer, my personal favorite way of writting content is `markdown` so it was an easy decision on how I want my data to be sourced. `next-mdx-remote` along with `getStaticPaths` from **next.js** allows you to treat your `.mdx` files as you would treat any data in your application, being able to query it and statically build it from remote sources.
+As a developer, my personal favorite way of writing content is `markdown` so it was an easy decision on how I want my data to be sourced. `next-mdx-remote` along with `getStaticPaths` from **next.js** allows you to treat your `.mdx` files as you would treat any data in your application, being able to query it and statically build it from remote sources.
 
 This approach keeps your mdx files separated from your application, in my case I chose to store my content into a top level folder `/data`.
 
@@ -80,9 +80,9 @@ const mdxSource = await serialize(content, {
 
 ## GreenStock Animation (GSAP)
 
-`gsap` is a fast, robust library that can be used in a lot of environments, including `react`. I've chose to go with GreenStock for animations over something like `framer-motion` (which I've also used in the past) because it makes the developer work simple and has a big user impact. Over the years **gsap team** released [multiple useful plugins](https://greensock.com/docs/v3/Plugins) for easly creating animations along their core [tween](https://greensock.com/docs/v3/GSAP/Tween) and [timeline](https://greensock.com/docs/v3/GSAP/Timeline) functions.
+`gsap` is a fast and robust library that can be used in a lot of environments, including `react`. I've chose to go with GreenStock for animations over something like `framer-motion` (which I've also used in the past) because it makes the developer job simple and has a big impact on the user. Over the years **gsap team** released [multiple useful plugins](https://greensock.com/docs/v3/Plugins) for easly creating animations along their core [tween](https://greensock.com/docs/v3/GSAP/Tween) and [timeline](https://greensock.com/docs/v3/GSAP/Timeline) functions.
 
-I've heard multiple opinions that are against using `gsap` with `react` but I find it's usage being very simple, as the exemple below will illustrate:
+Over time I've heard multiple opinions that are against using `gsap` with `react` but I find it's usage being very simple, as the exemple below will illustrate:
 
 ```tsx:header.tsx
 useLayoutEffect(() => {
@@ -104,7 +104,7 @@ useLayoutEffect(() => {
 
 ## Zustand
 
-All I can say about `zustand` is that it is a very well thought library and a persoanl varorite when I have to deal with a light global state. It's based on [flux principles](https://facebook.github.io/flux/) and it pairs really well with `react` as they have an API based on **react-hooks pattern**. It only renders components when changes are done to the part of the state that it's being used in that particular component and it **does not** wrap your application in [Context Providers](https://reactjs.org/docs/context.html). 
+All I can say about `zustand` is that it is a very well thought library and a persoanl favorite when it comes to a light global state management solution. It's based on [flux principles](https://facebook.github.io/flux/) and it pairs really well with `react` as it has an API based on **react-hooks pattern**. It only renders components when changes are done to part of the state that it's being used in that particular component, and it **does not** wrap your application in [Context Providers](https://reactjs.org/docs/context.html). 
 
 The usage is intuitive and simple (which you might get that it's a theme among all the tools I use), let's look on how we can create a store with `zustand`:
 
@@ -127,4 +127,4 @@ const {  introComplete } = useStore();
 ```
 ### Conclusion
 
-The new space version is a personal slice of the internet, a place to share my writtings and post things I learn along my journey. So, **here it is**, I hope you will enjoy your time with me and if you want to disagree with anything I say shoot me a DM on twitter [@chirila_](https://twitter.com/chirila_) and I would be happy debate.
+The new version is a personal slice of the internet, a place to share my writings and post things I learn along my journey. **Here it is**, I hope you will enjoy your time spent with me and if you want to disagree with anything I say, feel free to shoot me a DM on twitter [@chirila_](https://twitter.com/chirila_) and I would be happy to debate.

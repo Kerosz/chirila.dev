@@ -2,23 +2,26 @@
 import { useState } from 'react';
 import { parseISO } from 'date-fns';
 // components
-import BlogCard from '~/components/blog/card';
 import Layout from '~/components/layouts/base';
+import Filter from '~/components/common/filter';
+import WritingCard from '~/components/writing/card';
 import SearchBar from '~/components/common/search';
 import Newsletter from '~/components/common/newsletter';
 import FadeIntoView from '~/components/animations/fade-into-view';
 import { Container, Typography } from '~/components/ui';
 import { FrontMatterWithoutMeta, getAllFilesMeta } from '~/services/mdx';
+import { generateTags, pluralWord } from '~/utils';
 // types
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
 
 interface IStaticProps {
-  posts: FrontMatterWithoutMeta[];
+  articles: FrontMatterWithoutMeta[];
   total: number;
+  tags: string[];
 }
 
-export default function WritingPage({ posts }: IStaticProps) {
-  const [blogPosts, setBlogPosts] = useState<IStaticProps['posts']>(posts);
+export default function WritingPage({ articles, tags, total }: IStaticProps) {
+  const [blogArticles, setBlogArticles] = useState<IStaticProps['articles']>(articles);
 
   const searchOptions = {
     includeScore: true,
@@ -32,7 +35,7 @@ export default function WritingPage({ posts }: IStaticProps) {
       <FadeIntoView
         as={Container}
         className='text-black-tone pt-28 pb-20 min-h-screen'>
-        <div className='flex md:flex-row flex-col justify-between pb-20'>
+        <div className='flex md:flex-row flex-col justify-between pb-16'>
           <Typography
             as='h1'
             className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
@@ -41,14 +44,27 @@ export default function WritingPage({ posts }: IStaticProps) {
           </Typography>
 
           <SearchBar
-            initialData={posts}
-            setData={setBlogPosts}
+            initialData={articles}
+            setData={setBlogArticles}
             options={searchOptions}
+            placeholder='Search articles'
           />
         </div>
 
-        {blogPosts.map((p) => (
-          <BlogCard key={p.slug} {...p} />
+        <Typography className='text-lg pb-8 max-w-2xl' resetStyles>
+          I write about web development and computer science. In total,
+          I&apos;ve written {pluralWord(total, 'article')}, use the the below
+          filter to optimize your surfing.
+        </Typography>
+
+        <Filter
+          initialData={articles}
+          setData={setBlogArticles}
+          filterByData={tags}
+        />
+
+        {blogArticles.map((p) => (
+          <WritingCard key={p.slug} {...p} />
         ))}
       </FadeIntoView>
       <Newsletter />
@@ -59,9 +75,10 @@ export default function WritingPage({ posts }: IStaticProps) {
 export const getStaticProps: GetStaticProps<IStaticProps> = async (): Promise<
   GetStaticPropsResult<IStaticProps>
 > => {
-  const posts = await getAllFilesMeta<FrontMatterWithoutMeta>();
+  const articles = await getAllFilesMeta<FrontMatterWithoutMeta>();
+  const tags = generateTags(articles);
 
-  const sortedPosts = posts.sort((a, b) => {
+  const sortedArticles = articles.sort((a, b) => {
     const dateA = parseISO(a.publishedAt);
     const dateb = parseISO(b.publishedAt);
 
@@ -71,5 +88,5 @@ export const getStaticProps: GetStaticProps<IStaticProps> = async (): Promise<
     return 0;
   });
 
-  return { props: { posts: sortedPosts, total: posts.length } };
+  return { props: { articles: sortedArticles, total: articles.length, tags } };
 };

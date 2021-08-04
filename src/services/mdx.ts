@@ -35,6 +35,7 @@ export interface ISnippetsFrontMatter {
   slug: string;
   title: string;
   description: string;
+  tags: string[];
 }
 
 export type SnippetsFrontMatterWithoutMeta = Omit<ISnippetsFrontMatter, 'meta'>;
@@ -46,20 +47,20 @@ export interface IFileResult<T> {
   frontMatter: T;
 }
 
-export interface IRecommandPosts {
+export interface IRecommandArticles {
   next: FrontMatterWithoutMeta | null;
   prev: FrontMatterWithoutMeta | null;
 }
 
 const rootDir = process.cwd();
 
-export async function getAllFiles(dir: string = 'blog'): Promise<string[]> {
+export async function getAllFiles(dir: string = 'writing'): Promise<string[]> {
   return fs.readdirSync(path.join(rootDir, 'data', dir));
 }
 
 export async function getFileBySlug<T>(
   slug: string,
-  dir: string = 'blog'
+  dir: string = 'writing'
 ): Promise<IFileResult<T>> {
   const file = fs.readFileSync(
     path.join(rootDir, 'data', dir, `${slug}.mdx`),
@@ -97,33 +98,35 @@ export async function getFileBySlug<T>(
   } as unknown as IFileResult<T>;
 }
 
-export async function getAllFilesMeta<T>(dir: string = 'blog'): Promise<T[]> {
+export async function getAllFilesMeta<T>(
+  dir: string = 'writing'
+): Promise<T[]> {
   const files = fs.readdirSync(path.join(rootDir, 'data', dir));
 
-  const posts: T[] = files.reduce((allPosts: any, postSlug) => {
+  const articles: T[] = files.reduce((allArticles: any, articleSlug) => {
     const source = fs.readFileSync(
-      path.join(rootDir, 'data', dir, postSlug),
+      path.join(rootDir, 'data', dir, articleSlug),
       'utf8'
     );
     const { data } = matter(source);
 
     const post = {
       ...data,
-      slug: postSlug.replace(/\.mdx/, ''),
+      slug: articleSlug.replace(/\.mdx/, ''),
     } as FrontMatterWithoutMeta;
 
-    return [post, ...allPosts];
+    return [post, ...allArticles];
   }, []);
 
-  return posts;
+  return articles;
 }
 
 export async function getRecommandationBySlug(
   slug: string
-): Promise<IRecommandPosts> {
-  const allPosts = await getAllFilesMeta<FrontMatterWithoutMeta>();
+): Promise<IRecommandArticles> {
+  const allArticles = await getAllFilesMeta<FrontMatterWithoutMeta>();
 
-  const sortedPosts = allPosts.sort((a, b) => {
+  const sortedArticles = allArticles.sort((a, b) => {
     const dateA = parseISO(a.publishedAt);
     const dateb = parseISO(b.publishedAt);
 
@@ -133,26 +136,26 @@ export async function getRecommandationBySlug(
     return 0;
   });
 
-  const currentPostIndex = sortedPosts.findIndex((el) => el.slug === slug);
+  const currentArticleIdx = sortedArticles.findIndex((el) => el.slug === slug);
 
-  function getNextPost(idx: number) {
+  function getNextArticle(idx: number) {
     if (idx !== -1 && idx - 1 >= 0) {
-      return allPosts[idx - 1];
+      return allArticles[idx - 1];
     }
 
     return null;
   }
 
-  function getPrevPost(idx: number) {
-    if (idx !== -1 && idx + 1 <= allPosts.length - 1) {
-      return allPosts[idx + 1];
+  function getPrevArticle(idx: number) {
+    if (idx !== -1 && idx + 1 < allArticles.length) {
+      return allArticles[idx + 1];
     }
 
     return null;
   }
 
   return {
-    next: getNextPost(currentPostIndex),
-    prev: getPrevPost(currentPostIndex),
+    next: getNextArticle(currentArticleIdx),
+    prev: getPrevArticle(currentArticleIdx),
   };
 }
