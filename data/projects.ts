@@ -15,7 +15,7 @@ const projectData: IProjectData[] = [
     summary:
       'After some independent work I decided to form a centralized place which will facilitate the working process with local clients from early consulting and design stages all the way up to development and marketing of their products and ideas.',
     srcName: 'nectbox-mock.png',
-    link: 'https://blog.chirila.dev/study-case/nectbox',
+    link: '/writing/nectbox',
   },
   {
     title: 'Montex',
@@ -24,7 +24,7 @@ const projectData: IProjectData[] = [
     summary:
       "Montex it's the easiest way to add comments or reviews to your blog or personal website. Implementing a feedback system into your website was never that easy.",
     srcName: 'montex-mock.png',
-    link: 'https://blog.chirila.dev/study-case/montex',
+    link: '/writing/montex',
   },
   {
     title: 'Margatsni',
@@ -33,7 +33,7 @@ const projectData: IProjectData[] = [
     summary:
       'Margatsni is an unofficial web application build of the famous Instagram by Facebook, providing a full social media experience in the browser.',
     srcName: 'margatsni-mock.png',
-    link: 'https://blog.chirila.dev/study-case/margatsni',
+    link: '/writing/margatsni',
   },
 ];
 

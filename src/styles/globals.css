@@ -27,33 +27,6 @@
   ::selection {
     @apply bg-cyan text-gray-900;
   }
-
-  .prose code {
-    @apply rounded-md px-1 py-0.5 shadow-sm bg-gray-100 border border-gray-300;
-  }
-
-  .prose .autolink {
-    @apply absolute invisible;
-  
-    margin-left: -1em;
-    padding-right: 0.5em;
-    width: 80%;
-    max-width: 700px;
-    cursor: pointer;
-  }
-  
-  .autolink:hover {
-    @apply visible no-underline;
-  }
-  
-  .prose .autolink:after {
-    @apply text-gray-300;
-    content: '#';
-  }
-  
-  .prose *:hover > .autolink {
-    @apply visible no-underline;
-  }
 }
 
 @layer utilities {

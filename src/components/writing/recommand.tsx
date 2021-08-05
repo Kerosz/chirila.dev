@@ -23,7 +23,7 @@ export default function WritingRecommand({
     'max-w-sm w-full flex bg-gray-200 rounded-lg py-4 px-5 text-black-tone shadow-md group hover:shadow-lg transition-all duration-200 hover:scale-105',
     {
       'flex-row': !isNext,
-      'flex-row-reverse': isNext,
+      'flex-row-reverse ml-auto': isNext,
     }
   );
   const nameClass = cn('text-gray-500 text-sm pb-2', {

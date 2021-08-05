@@ -108,7 +108,6 @@ function Project({
 
         <Link
           href={link}
-          external
           className='flex uppercase text-gray-500 hover:text-red-800 text-lg font-medium max-w-max link-animation group'
           ref={exploreRef}>
           <Typography className='pr-2'>Explore project</Typography>
@@ -120,7 +119,7 @@ function Project({
       </div>
 
       <div className='xl:w-7/12' ref={imgContainer}>
-        <Link href={link} external>
+        <Link href={link}>
           <Image
             src={require(`../../../assets/images/${srcName}`)}
             alt={title}

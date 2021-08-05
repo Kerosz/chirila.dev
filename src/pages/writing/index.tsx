@@ -35,7 +35,7 @@ export default function WritingPage({ articles, tags, total }: IStaticProps) {
       <FadeIntoView
         as={Container}
         className='text-black-tone pt-28 pb-20 min-h-screen'>
-        <div className='flex md:flex-row flex-col justify-between pb-16'>
+        <div className='flex md:flex-row flex-col justify-between pb-14'>
           <Typography
             as='h1'
             className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
@@ -51,7 +51,7 @@ export default function WritingPage({ articles, tags, total }: IStaticProps) {
           />
         </div>
 
-        <Typography className='text-lg pb-8 max-w-2xl' resetStyles>
+        <Typography className='text-lg pb-20 max-w-2xl' resetStyles>
           I write about web development and computer science. In total,
           I&apos;ve written {pluralWord(total, 'article')}, use the the below
           filter to optimize your surfing.

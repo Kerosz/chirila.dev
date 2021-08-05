@@ -20,6 +20,7 @@ import type {
   GetStaticPropsResult,
   GetStaticPathsResult,
 } from 'next';
+import ProjectOverview from '~/components/writing/project-overview';
 
 interface IStaticProps extends IFileResult<IFrontMatter> {
   recommand: IRecommandArticles;
@@ -32,7 +33,7 @@ interface IParams extends ParsedUrlQuery {
 export default function Post({ source, frontMatter, recommand }: IStaticProps) {
   return (
     <PostLayout frontMatter={frontMatter} recommand={recommand}>
-      <MDXRemote {...source} components={{ a: Link, Image }} />
+      <MDXRemote {...source} components={{ a: Link, Image, ProjectOverview }} />
     </PostLayout>
   );
 }

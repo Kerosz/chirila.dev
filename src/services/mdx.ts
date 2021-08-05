@@ -82,9 +82,21 @@ export async function getFileBySlug<T>(
             },
           },
         ],
-        require('remark-prism'),
+        [
+          require('remark-prism'),
+          {
+            plugins: [
+              'command-line',
+              'data-uri-highlight',
+              'diff-highlight',
+              'inline-color',
+              'line-numbers',
+              'treeview',
+            ],
+          },
+        ],
       ],
-      rehypePlugins: [require('mdx-prism')],
+      rehypePlugins: [],
     },
   });
 

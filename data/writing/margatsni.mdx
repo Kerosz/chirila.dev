@@ -1,0 +1,207 @@
+---
+title: "Margatsni, your web instagram concept"
+publishedAt: '2021-08-04'
+excerpt: 'Learn about the process that made Margatsni come to life.'
+media: ''
+author: 'Andrei Chirila'
+tags: ['study-case']
+---
+
+Learn about the process that made Margatsni come to life as a web version of the famous instagram by Facebook.
+
+<ProjectOverview 
+  timeline="6 weeks"
+  services={["Web App Development"]}
+  stack={["React", "Tailwind CSS", "Firebase", "Cloudinary"]}
+  role="Managed and developed the project"
+/>
+
+## Overview
+
+On the span of about **6 weeks**, `Margatsni` came together as a social media web platform that mimicks one of the most popular social media platforms out there, [Instagram](https://www.instagram.com/). Beeing a lover of experimental projects, in the making of the product I wanted to try out some technologies that I was unfamiliar with at the time. The project isn't ment to be used out in the wild nor is ment as an alternative to other products.
+
+## The problem
+
+The main problem relates more to me than the product itself, and that is adding more `skills` to my toolbox. Related to the product, at the time of making Margatsni, Instagram lacked the possibility to post new photos/videos or stories from their web version.
+
+> **Note:** Since than Instagram ported their posting feature to desktop.
+
+## The solution
+
+Build a complete social media web app, that would include all the core features of such platform and basing the initial UI/UX design on the **Instagram** app, plus adding the capability to create and manage posts from the desktop version.
+
+## Brief walkthorugh the core technologies
+
+- `React`: Core react along with `react-router-dom` was used as the front-end framework and routing.
+- `Firebase`: Firebase has been used in the app for **handling authentification**, **sending emails** and NoSql DB storage, **firestore**.
+- `Cloudinary`: Initially I wanted to store the uploaded media using firebase **Storage**, but as this project was entended to expand my skillset I went ahead and use another service to handle media processing and uploading.
+- `Tailwind CSS`: Has been used to style the entire application
+
+## Features
+
+Here is a list of features that were considered `core features` to be present in a social media application.
+
+### Singin / signup flow
+
+<Image
+  alt="Signup flow"
+  src="/images/blog/margatsni/sign-up.png"
+  width={1355}
+  height={623}
+/>
+
+### Forgot/reset password
+
+<Image
+  alt="Forgot Password Page"
+  src="/images/blog/margatsni/forgot-password.png"
+  width={1355}
+  height={623}
+/>
+
+### Email verification
+
+A system to verify the email that was used to singup, allowing the application to correctly address future issues with the account, such as resetting/changing the password as well as changing the emaill address.
+
+### Profile page
+
+The fact that the whole purpose of such platform is being able to share your experiences with your friends the public profiles were made public for viewing to any users without the need of an account.
+
+<Image
+  alt="Profile page"
+  src="/images/blog/margatsni/profile.png"
+  width={1355}
+  height={623}
+/>
+
+Extra features including, `liking`, `commenting` or `saving` posts were made available only for users that already have an active account.
+
+<Image
+  alt="Restricted profile modal"
+  src="/images/blog/margatsni/restricted-profile.png"
+  width={1355}
+  height={623}
+/>
+
+### Unique post page
+
+Following the same concept as the **profile page** the post page is ment to be publicly shared with anyone, without the need of an account. But has the same restrictions as the profile page when it comes to interacting with the post.
+
+<Image
+  alt="Restricted post"
+  src="/images/blog/margatsni/restricted-post.png"
+  width={1355}
+  height={623}
+/>
+
+### Inbox
+
+In app messaging capabilities are a must in any modern web application, therefor such a feature has been added to Margatsni as well.
+
+Messaging includes but is not limited to the following sub-features:
+
+- Direct message room
+- Multi user chat rooms
+- Chat details
+- Chat privileges
+
+<Image
+  alt="Inbox Page"
+  src="/images/blog/margatsni/inbox.png"
+  width={1355}
+  height={623}
+/>
+
+### Live notifications
+
+Another core feature of such an app is live notifications for in app actions. Margatsni has a notification system that include the most commun actions, including: `like, follow, chat add, chat delete, chat leave, direct message`.
+
+A system for customizing what kind of notifications you recieve has been added as well.
+
+<Image
+  alt="Notifications Settings Page"
+  src="/images/blog/margatsni/notifications.png"
+  width={1355}
+  height={623}
+/>
+
+### Settings
+
+The settings is your account management page, includes the following sub-features:
+
+- Edit Profile
+- Change password
+- Notifications settings
+- Privacy and Security
+
+<Image
+  alt="Settings page"
+  src="/images/blog/margatsni/settings.png"
+  width={1355}
+  height={623}
+/>
+
+### Timeline
+
+Timeline page is the main page of the application and one of the core features, allowing you to see and interact with posts of the accounts you are following. It includes the base timeline, plus basic information of your account and a quick suggestions sidebar.
+
+The interactions are part of the core features as well, and includes:
+
+- `Liking`
+- `Commenting`
+- `Sending a direct message`
+- `Saving the post`
+
+<Image
+  alt="Timeline page"
+  src="/images/blog/margatsni/timeline.png"
+  width={1355}
+  height={623}
+/>
+
+### Create/add new post
+
+Adding new posts was the initial requirement and one of the core features. It allows you to share your experiences with your friends. It has a preview feature for the media you are uploading, to enhance the user experience while sharing their memories.
+
+<Image
+  alt="New Post page"
+  src="/images/blog/margatsni/new-post.png"
+  width={1355}
+  height={623}
+/>
+
+### Explore posts
+
+Explore posts page is a `discovery` page, allowing you to see suggested posts from other users you are not currently following (as opposed to the [timeline](/writing/margatsni#timeline) which allows you to only see posts from people you are following).
+
+<Image
+  alt="Explore page"
+  src="/images/blog/margatsni/explore.png"
+  width={1355}
+  height={623}
+/>
+
+### Search
+
+Searching feature allows you to find active accounts that are part of Margatsni platform, it will show both accounts you follow and not currently following, that match your searching criteria.
+
+<Image
+  alt="Search page"
+  src="/images/blog/margatsni/search.png"
+  width={1355}
+  height={623}
+/>
+
+## Challanges and learnings
+
+Throughout the development of the project I had challanges from just finding the right approaches in documentations to full off implementation challanges of certain features.
+
+One of the initial things I had to face was adapting to the tailwind utility classes which was a bit weird to me coming from just using normal `scss` or lately doing CSS-in-JS with `emotion` or `styled-components`. The transition to **tailwind** was easier than I initially thought and I managed to get behind their HTML first concept, all thanks to the tailwind team, that put together a great documentation along with IDE specific tooling like `intellisense`. Overall my experience with tailwind was great and in the future I think I would make the switch to it for all my side projects.
+
+Another big challange was `firebase`, most of the things were very intuitive, but once you get into some **transactions and snapshots**, things I've used to provide realtime data for the `messaging feature` and for `notifications`. I felt trapped into their docs, that I can say it's not the best, organization wise. I had to move from one category to another in their docs, which in terms of usage was simillar but was placed in diffrent areas of the docs.
+
+Authentification with firebase has been a breeze, works great with little effort from the developer, it integrates with their emailing feature, providing automatic emailling for signin up along with resetting passwords.
+
+## MVP in the Wild
+
+Through this experiment I was able to improve my skillset, and have a cool little project out in the wild. You can see a live demo of the project at [margatsni.chirila.dev](https://margatsni.chirila.dev) as well as it's full source code on my github [kerosz.github/margatsni](https://github.com/Kerosz/margatsni).

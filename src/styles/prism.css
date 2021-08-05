@@ -70,3 +70,71 @@
 .remark-code-title {
   @apply bg-gray-200 -mb-7 py-2 rounded-t-md border border-gray-300 text-center shadow-sm text-sm;
 }
+
+pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+  margin-top: -0.17em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.prose code {
+  @apply rounded-md px-1 py-0.5 shadow-sm bg-gray-100 border border-gray-300;
+}
+
+.prose .autolink {
+  @apply absolute invisible;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.autolink:hover {
+  @apply visible no-underline;
+}
+
+.prose .autolink:after {
+  @apply text-gray-300;
+  content: '#';
+}
+
+.prose *:hover > .autolink {
+  @apply visible no-underline;
+}

@@ -38,7 +38,7 @@ In short, `tailwindcss` allows you to have a good, reliable and really thought o
 
 There is a small learning curve in using it, mostly by rewiring your existing CSS knowledge into CSS utility classes. The transition can be easier by using IDE tools like [IntelliSense for Tailwind CSS](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss). As a small example we can look at how we can convert some CSS:
 
-```css:styles.css
+```css[class="line-numbers"]:styles.css
 margin-left: auto;
 margin-right: auto;
 padding: 80px 12px;
@@ -46,7 +46,7 @@ padding: 80px 12px;
 
 into tailwind utility classes:
 
-```tsx:tailwind.tsx
+```tsx[class="line-numbers"]:tailwind.tsx
 <section className="mx-auto py-20 px-3" />
 ```
 
@@ -58,7 +58,7 @@ This approach keeps your mdx files separated from your application, in my case I
 
 More then this `next-mdx-remote` makes it simple to use **remark and rehype plugins** which enhances the content processing, pairing this with tailwind `prose` utility class makes you have a fully featured blog with a few lines of code.
 
-```tsx:mdx.tsx
+```tsx[class="line-numbers"]:mdx.tsx
 const mdxSource = await serialize(content, {
   mdxOptions: {
     remarkPlugins: [
@@ -72,7 +72,7 @@ const mdxSource = await serialize(content, {
 });
 ```
 
-```tsx:post.tsx
+```tsx[class="line-numbers"]:post.tsx
 <div className='prose max-w-none w-full'>
   {content}
 </div>
@@ -84,7 +84,7 @@ const mdxSource = await serialize(content, {
 
 Over time I've heard multiple opinions that are against using `gsap` with `react` but I find it's usage being very simple, as the exemple below will illustrate:
 
-```tsx:header.tsx
+```tsx[class="line-numbers"]:header.tsx
 useLayoutEffect(() => {
   if (introComplete) {
     const tl = gsap.timeline();
@@ -108,7 +108,7 @@ All I can say about `zustand` is that it is a very well thought library and a pe
 
 The usage is intuitive and simple (which you might get that it's a theme among all the tools I use), let's look on how we can create a store with `zustand`:
 
-```tsx:store.tsx
+```tsx[class="line-numbers"]:store.tsx
 export const useStore = create(
   combine(
     {
@@ -122,7 +122,7 @@ export const useStore = create(
 ```
 to use our state in a component we make use of the **useStore** hook:
 
-```tsx:component.tsx
+```tsx[class="line-numbers"]:component.tsx
 const {  introComplete } = useStore();
 ```
 ### Conclusion

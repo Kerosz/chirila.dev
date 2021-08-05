@@ -39,7 +39,7 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
       <FadeIntoView
         as={Container}
         className='text-black-tone pt-28 pb-20 min-h-screen'>
-        <div className='flex md:flex-row flex-col justify-between pb-20'>
+        <div className='flex md:flex-row flex-col justify-between pb-24'>
           <Typography
             as='h1'
             className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
