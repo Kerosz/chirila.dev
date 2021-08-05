@@ -25,6 +25,7 @@ module.exports = {
     extend: {
       colors: {
         cyan: '#7eeaf2',
+        'light-gray': '#ebedf0',
         'faded-white': 'rgba(243, 244, 246, 0.68)',
         'faded-black': 'rgba(7, 0, 1, 0.68)',
         'black-tone': '#070001',

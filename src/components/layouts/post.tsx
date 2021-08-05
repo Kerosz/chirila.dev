@@ -11,6 +11,7 @@ import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
 import type { IFrontMatter, IRecommandArticles } from '~/services/mdx';
+import AuthorInfo from '../writing/author-info';
 
 export interface IPostLayout {
   children: ReactNode;
@@ -40,7 +41,7 @@ export default function PostLayout({
       title={`Blog – ${frontMatter.title} – Andrei Chirila`}
       description={frontMatter.excerpt}>
       <FadeIntoView>
-        <Container as='article' maxW='max-w-[848px]' className='py-10'>
+        <Container as='article' maxW='max-w-[848px]' className='py-14'>
           <header className='border-b border-gray-300 pb-14'>
             <Typography
               as='h1'
@@ -81,11 +82,11 @@ export default function PostLayout({
               </div>
             </div>
           </header>
+          <div className='prose max-w-none w-full mt-10'>{children}</div>
+        </Container>
+        <AuthorInfo />
 
-          <div className='prose max-w-none w-full mt-10 pb-16 border-b border-gray-200'>
-            {children}
-          </div>
-
+        <Container as='section' maxW='max-w-[848px]' className='py-6'>
           {(recommand.prev || recommand.next) && (
             <div className='flex justify-between pt-6 space-x-6 mb-7'>
               {recommand.prev && (
@@ -107,6 +108,7 @@ export default function PostLayout({
             </Link>
           </div>
         </Container>
+
         <Newsletter />
       </FadeIntoView>
     </Layout>

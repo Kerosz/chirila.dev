@@ -20,7 +20,7 @@ export default function WritingCard({
   return (
     <Link
       href={`/writing/${slug}`}
-      className='flex items-center justify-between transition-all duration-500 py-14 group hover:bg-gray-200 border-b border-gray-300'>
+      className='flex items-center justify-between transition-all duration-500 py-14 group hover:bg-light-gray border-b border-gray-300'>
       <div className='flex items-center transform-gpu duration-300 sm:group-hover:translate-x-8 group-hover:translate-x-4'>
         <time
           dateTime={parsedDate.toString()}

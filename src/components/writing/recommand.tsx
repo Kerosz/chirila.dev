@@ -20,7 +20,7 @@ export default function WritingRecommand({
   const isNext = name.toLowerCase() === 'next';
 
   const rootClass = cn(
-    'max-w-sm w-full flex bg-gray-200 rounded-lg py-4 px-5 text-black-tone shadow-md group hover:shadow-lg transition-all duration-200 hover:scale-105',
+    'max-w-sm w-full flex bg-light-gray rounded-lg py-4 px-5 text-black-tone shadow-md group hover:shadow-lg transition-all duration-200 hover:scale-105',
     {
       'flex-row': !isNext,
       'flex-row-reverse ml-auto': isNext,
