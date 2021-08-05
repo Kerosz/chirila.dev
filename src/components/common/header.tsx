@@ -48,7 +48,7 @@ function Header({ preHeader }: IHeader): JSX.Element {
   }, [introComplete]);
 
   const rootClass = cn(
-    'h-[5.25rem] sticky top-0 z-30 text-gray-100 backdrop-blur-md transition-transform duration-700 ease-in-out delay-150 transform-gpu -translate-y-40',
+    'h-[5.25rem] sticky top-0 z-30 text-gray-100 transition-transform duration-700 ease-in-out delay-150 transform-gpu -translate-y-40',
     {
       'bg-faded-black text-gray-50': isDarkBody,
       'bg-faded-white text-black': !isDarkBody,

@@ -4,6 +4,7 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 // components
 import Layout from './base';
 import Link from '../common/link';
+import Tags from '../writing/tags';
 import AuthorInfo from '../writing/author-info';
 import WritingRecommand from '../writing/recommand';
 import FadeIntoView from '../animations/fade-into-view';
@@ -40,7 +41,7 @@ export default function PostLayout({
       title={`Blog – ${frontMatter.title} – Andrei Chirila`}
       description={frontMatter.excerpt}>
       <FadeIntoView>
-        <Container as='article' maxW='max-w-[848px]' className='py-14'>
+        <Container as='article' maxW='max-w-[848px]' className='py-10'>
           <header className='border-b border-gray-300 pb-8'>
             <Typography
               as='h1'
@@ -81,17 +82,7 @@ export default function PostLayout({
               </div>
             </div>
 
-            <div className='mt-8 flex items-center flex-wrap'>
-              <span className='font-medium text-gray-500 mr-3'>Tags:</span>
-              {frontMatter.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/writing?filter=${tag}`}
-                  className='px-1.5 py-1 bg-light-gray hover:bg-gray-200 text-sm font-medium border border-gray-300 shadow-sm xs:mr-3 mr-2.5'>
-                  {tag}
-                </Link>
-              ))}
-            </div>
+            <Tags data={frontMatter.tags} />
           </header>
           <div className='prose max-w-none w-full mt-10'>{children}</div>
         </Container>

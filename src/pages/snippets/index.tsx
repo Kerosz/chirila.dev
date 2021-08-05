@@ -65,7 +65,7 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
             <Link
               key={`${title}__${idx}`}
               href={`/snippets/${slug}`}
-              className='col-span-1 flex relative items-center border-b border-gray-300 py-6  group'>
+              className='col-span-1 flex relative transition-all duration-500 items-center border-b border-gray-300 py-6  group hover:bg-light-gray'>
               <div className='ml-8 pr-14'>
                 <Typography
                   as='h1'
@@ -78,7 +78,7 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
                 </Typography>
               </div>
 
-              <ArrowNarrowRight className='w-9 -mt-1.5 group-hover:-rotate-45 group-hover:scale-105 transition-all duration-[400ms] absolute right-0 top-2/4' />
+              <ArrowNarrowRight className='w-9 -mt-1.5 group-hover:-translate-x-3.5 transition-all duration-300 absolute right-0 top-2/4' />
             </Link>
           ))}
         </div>

@@ -1,9 +1,7 @@
-// packages
-import Image from 'next/image';
-import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 // components
 import Layout from './base';
 import Link from '../common/link';
+import Tags from '../writing/tags';
 import FadeIntoView from '../animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
 // types
@@ -20,7 +18,7 @@ export default function SnippetLayout({
   frontMatter,
 }: ISnippetLayout): JSX.Element {
   const editUrl = (slug: string) =>
-    `https://github.com/Kerosz/chirila.dev/tree/main/data/blog/${slug}.mdx`;
+    `https://github.com/Kerosz/chirila.dev/tree/main/data/snippets/${slug}.mdx`;
 
   return (
     <Layout
@@ -38,6 +36,8 @@ export default function SnippetLayout({
             <Typography className='text-xl font-medium font-serif' resetStyles>
               {frontMatter.description}
             </Typography>
+
+            <Tags data={frontMatter.tags} />
           </header>
 
           <div className='prose max-w-none w-full mt-16 pb-16 border-b border-gray-200'>

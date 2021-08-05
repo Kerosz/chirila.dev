@@ -52,9 +52,9 @@ export default function WritingPage({ articles, tags, total }: IStaticProps) {
         </div>
 
         <Typography className='text-lg pb-20 max-w-2xl' resetStyles>
-          I write about web development and computer science. In total,
-          I&apos;ve written {pluralWord(total, 'article')}, use the the below
-          filter to optimize your surfing.
+          I write about web development, design, business and computer science.
+          In total, I&apos;ve written {pluralWord(total, 'article')}, use the
+          the below filter to optimize your surfing.
         </Typography>
 
         <Filter
