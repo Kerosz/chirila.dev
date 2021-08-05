@@ -3,6 +3,7 @@ import HtmlHead from '~/components/common/html-head';
 import Header from '~components/common/header';
 import Footer from '~components/common/footer';
 import Banner from '~components/common/banner';
+import Newsletter from '~components/common/newsletter';
 //types
 import type { ReactNode, ReactElement } from 'react';
 
@@ -26,6 +27,7 @@ function Layout({ children, ...customMeta }: ILayout): ReactElement {
         }
       />
       <main>{children}</main>
+      <Newsletter />
       <Footer />
     </>
   );

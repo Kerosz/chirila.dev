@@ -2,7 +2,7 @@
 import cn from 'classnames';
 import { useEffect, useRef } from 'react';
 // components
-import useDelayMouseMovement from '../../../hooks/use-delay-mouse-movement';
+import useDelayMouseMovement from '~hooks/use-delay-mouse-movement';
 // types
 import type { ComponentPropsWithoutRef } from 'react';
 
@@ -12,7 +12,12 @@ export interface IMedia extends ComponentPropsWithoutRef<'img'> {
   active: boolean;
 }
 
-function Media({ title, src, className, active }: IMedia): JSX.Element {
+export default function Media({
+  title,
+  src,
+  className,
+  active,
+}: IMedia): JSX.Element {
   const ref = useRef<HTMLImageElement | null>(null);
 
   const position = useDelayMouseMovement<HTMLImageElement>({
@@ -59,5 +64,3 @@ function Media({ title, src, className, active }: IMedia): JSX.Element {
     />
   );
 }
-
-export default Media;

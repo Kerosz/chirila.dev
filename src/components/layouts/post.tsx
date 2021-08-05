@@ -4,14 +4,13 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 // components
 import Layout from './base';
 import Link from '../common/link';
-import Newsletter from '../common/newsletter';
+import AuthorInfo from '../writing/author-info';
 import WritingRecommand from '../writing/recommand';
 import FadeIntoView from '../animations/fade-into-view';
-import { Badge, Container, Typography } from '~ui/index';
+import { Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
 import type { IFrontMatter, IRecommandArticles } from '~/services/mdx';
-import AuthorInfo from '../writing/author-info';
 
 export interface IPostLayout {
   children: ReactNode;
@@ -30,10 +29,10 @@ export default function PostLayout({
     addSuffix: true,
   });
   const editUrl = (slug: string) =>
-    `https://github.com/Kerosz/chirila.dev/tree/main/data/blog/${slug}.mdx`;
+    `https://github.com/Kerosz/chirila.dev/tree/main/data/writing/${slug}.mdx`;
   const discussUrl = (slug: string) =>
     `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://chirila.dev/blog/${slug}`
+      `https://chirila.dev/writing/${slug}`
     )}`;
 
   return (
@@ -120,8 +119,6 @@ export default function PostLayout({
             </Link>
           </div>
         </Container>
-
-        <Newsletter />
       </FadeIntoView>
     </Layout>
   );

@@ -5,7 +5,7 @@ import { Typography } from '~ui/index';
 import { useStore } from '~/store';
 // types
 import type { Dispatch, SetStateAction } from 'react';
-import type { IProjectData } from '../../../../data/projects';
+import type { IProjectData } from '~data/home/projects';
 
 export interface IProject extends IProjectData {
   index: number;

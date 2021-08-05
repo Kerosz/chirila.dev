@@ -4,7 +4,6 @@ import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 // components
 import Layout from './base';
 import Link from '../common/link';
-import Newsletter from '../common/newsletter';
 import FadeIntoView from '../animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
 // types
@@ -51,7 +50,6 @@ export default function SnippetLayout({
             </Link>
           </div>
         </Container>
-        <Newsletter />
       </FadeIntoView>
     </Layout>
   );

@@ -6,7 +6,6 @@ import Layout from '~/components/layouts/base';
 import Filter from '~/components/common/filter';
 import WritingCard from '~/components/writing/card';
 import SearchBar from '~/components/common/search';
-import Newsletter from '~/components/common/newsletter';
 import FadeIntoView from '~/components/animations/fade-into-view';
 import { Container, Typography } from '~/components/ui';
 import { FrontMatterWithoutMeta, getAllFilesMeta } from '~/services/mdx';
@@ -21,7 +20,8 @@ interface IStaticProps {
 }
 
 export default function WritingPage({ articles, tags, total }: IStaticProps) {
-  const [blogArticles, setBlogArticles] = useState<IStaticProps['articles']>(articles);
+  const [blogArticles, setBlogArticles] =
+    useState<IStaticProps['articles']>(articles);
 
   const searchOptions = {
     includeScore: true,
@@ -67,7 +67,6 @@ export default function WritingPage({ articles, tags, total }: IStaticProps) {
           <WritingCard key={p.slug} {...p} />
         ))}
       </FadeIntoView>
-      <Newsletter />
     </Layout>
   );
 }

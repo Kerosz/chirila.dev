@@ -3,7 +3,7 @@ import FadeIntoView from '~animations/fade-into-view';
 import Link from '~components/common/link';
 import { Container, Typography } from '~ui/index';
 // data
-import heroData from '~data/hero';
+import heroData from '~data/home/hero';
 
 function Hero(): JSX.Element {
   return (

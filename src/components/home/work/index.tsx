@@ -1,11 +1,11 @@
 // components
 import Project from './project';
+import FadeIntoView from '~animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
 // utils
-import projectData from '~data/projects';
-import FadeIntoView from '~animations/fade-into-view';
+import projectData from '~data/home/projects';
 
-export default function SelectedWork(): JSX.Element {
+export default function Work(): JSX.Element {
   return (
     <section className='bg-gray-100 py-20 relative z-10'>
       <FadeIntoView as={Container}>

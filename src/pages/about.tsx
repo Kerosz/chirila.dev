@@ -1,6 +1,5 @@
 // components
 import Layout from '~components/layouts/base';
-import Newsletter from '~/components/common/newsletter';
 import { Intro, Process, Story } from '~components/about/index';
 
 export default function AboutPage() {
@@ -9,7 +8,6 @@ export default function AboutPage() {
       <Intro />
       <Process />
       <Story />
-      <Newsletter />
     </Layout>
   );
 }

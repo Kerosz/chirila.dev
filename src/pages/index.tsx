@@ -1,11 +1,10 @@
 // components
 import Layout from '~/components/layouts/base';
-import Newsletter from '~/components/common/newsletter';
 import {
   Hero,
-  SelectedWord,
+  Work,
   AboutPromo,
-  MoreWork,
+  Extras,
   Contact,
 } from '~/components/home/index';
 
@@ -13,11 +12,10 @@ export default function HomePage() {
   return (
     <Layout>
       <Hero />
-      <SelectedWord />
+      <Work />
       <AboutPromo />
-      <MoreWork />
+      <Extras />
       <Contact />
-      <Newsletter />
     </Layout>
   );
 }

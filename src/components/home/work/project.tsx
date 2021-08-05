@@ -9,13 +9,13 @@ import ArrowNarrowRight from '~icons/arrow-narrow-right';
 import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
 import { Typography, Badge } from '~ui/index';
 // types
-import type { IProjectData } from '~data/projects';
+import type { IProjectData } from '~data/home/projects';
 
 export interface IProject extends IProjectData {
   index: number;
 }
 
-function Project({
+export default function Project({
   title,
   scope,
   link,
@@ -131,5 +131,3 @@ function Project({
     </div>
   );
 }
-
-export default Project;

@@ -5,9 +5,9 @@ import Project from './project';
 import Media from './media';
 import { Container, Typography } from '~ui/index';
 // data
-import moreProjectsData from '~data/more-projects';
+import extrasData from '~data/home/extras';
 
-function MoreWork(): JSX.Element {
+export default function Extras(): JSX.Element {
   const [activeProjectIndexState, setActiveProjectIndex] = useState<number>(-1);
 
   return (
@@ -18,7 +18,7 @@ function MoreWork(): JSX.Element {
             as='h2'
             className='xs:text-9xl lg:text-[7.2rem] xl:text-9xl text-22vw font-black fill-color pb-1 relative z-10'
             resetStyles>
-            More <br /> &nbsp;&nbsp;&nbsp;Work
+            Extras
           </Typography>
         </div>
 
@@ -29,7 +29,7 @@ function MoreWork(): JSX.Element {
           </Typography>
 
           <div className='fixed top-0 left-0 w-full h-full z-0'>
-            {moreProjectsData.map(({ srcName, title }, index) => {
+            {extrasData.map(({ srcName, title }, index) => {
               const isActive = index === activeProjectIndexState;
 
               return (
@@ -44,7 +44,7 @@ function MoreWork(): JSX.Element {
           </div>
 
           <div className='z-10 relative mix-blend-difference divide-y-2 divide-gray-800 flex flex-col'>
-            {moreProjectsData.map((project, index) => (
+            {extrasData.map((project, index) => (
               <Project
                 key={project.title}
                 index={index}
@@ -58,5 +58,3 @@ function MoreWork(): JSX.Element {
     </section>
   );
 }
-
-export default MoreWork;

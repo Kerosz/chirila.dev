@@ -5,7 +5,6 @@ import Link from '~/components/common/link';
 import Layout from '~/components/layouts/base';
 import Filter from '~/components/common/filter';
 import SearchBar from '~/components/common/search';
-import Newsletter from '~/components/common/newsletter';
 import ArrowNarrowRight from '~/assets/icons/arrow-narrow-right';
 import FadeIntoView from '~/components/animations/fade-into-view';
 import { Container, Typography } from '~/components/ui';
@@ -84,7 +83,6 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
           ))}
         </div>
       </FadeIntoView>
-      <Newsletter />
     </Layout>
   );
 }
