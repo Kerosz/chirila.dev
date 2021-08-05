@@ -9,6 +9,15 @@ export interface IProjectData {
 
 const projectData: IProjectData[] = [
   {
+    title: 'Margatsni',
+    scope: 'Web App Development',
+    tags: ['react', 'tailwindcss', 'firebase', 'cloudinary'],
+    summary:
+      'Margatsni is an unofficial web application build of the famous Instagram by Facebook, providing a full social media experience in the browser.',
+    srcName: 'margatsni-mock.png',
+    link: '/writing/margatsni',
+  },
+  {
     title: 'Nectbox',
     scope: 'UX/UI Design. Website Development',
     tags: ['gatsbyjs', 'styled-components', 'typescript'],
@@ -25,15 +34,6 @@ const projectData: IProjectData[] = [
       "Montex it's the easiest way to add comments or reviews to your blog or personal website. Implementing a feedback system into your website was never that easy.",
     srcName: 'montex-mock.png',
     link: '/writing/montex',
-  },
-  {
-    title: 'Margatsni',
-    scope: 'Web App Development',
-    tags: ['react', 'tailwindcss', 'firebase', 'cloudinary'],
-    summary:
-      'Margatsni is an unofficial web application build of the famous Instagram by Facebook, providing a full social media experience in the browser.',
-    srcName: 'margatsni-mock.png',
-    link: '/writing/margatsni',
   },
 ];
 

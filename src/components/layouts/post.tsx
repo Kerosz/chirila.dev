@@ -90,7 +90,7 @@ export default function PostLayout({
 
         <Container as='section' maxW='max-w-[848px]' className='py-6'>
           {(recommand.prev || recommand.next) && (
-            <div className='flex justify-between pt-6 space-x-6 mb-7'>
+            <div className='flex sm:flex-row flex-col sm:justify-between items-center pt-6 sm:space-x-6 sm:space-y-0 space-y-6 mb-7'>
               {recommand.prev && (
                 <WritingRecommand {...recommand.prev} name='Previous' />
               )}
