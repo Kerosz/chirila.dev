@@ -11,7 +11,7 @@ const projectData: IProjectData[] = [
   {
     title: 'Nectbox',
     scope: 'UX/UI Design. Website Development',
-    tags: ['nextjs', 'styled-components', 'typescript'],
+    tags: ['gatsbyjs', 'styled-components', 'typescript'],
     summary:
       'After some independent work I decided to form a centralized place which will facilitate the working process with local clients from early consulting and design stages all the way up to development and marketing of their products and ideas.',
     srcName: 'nectbox-mock.png',

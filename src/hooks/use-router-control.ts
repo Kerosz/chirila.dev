@@ -29,6 +29,7 @@ export default function useRouterControl(): void {
 
   useEffect(() => {
     if (isBrowser) {
+      // If it's one of the paths in the array, change the color to black
       if (bodyColorChangePaths.includes(router.pathname)) {
         document.body.style.backgroundColor = '#00030A';
       } else {

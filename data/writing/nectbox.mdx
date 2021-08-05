@@ -16,7 +16,176 @@ Learn how Nectbox business page come to life, the process and insights from the 
 
 <ProjectOverview 
   timeline="3 weeks"
-  services={["Website Development", "UI/UX Design"]}
-  stack={["Next JS", "Emotion/Chakra-UI", "Typescript", "Contentful"]}
+  services={["Website Development", "UI/UX Design", "Strategy"]}
+  stack={["Gatsby JS", "Emotion/Chakra-UI", "Typescript", "Contentful"]}
   role="Lead developer and Project Manager"
 />
+
+## Overview
+
+During a time frame of **3 weeks**, in a collaboration with [Enyel Sequeira](https://www.enyelsequeira.com/) had to tackle a new project that was intended to facilitate the communication with potential customers and showcase the process and the model Nectbox follows. After a rigorous research of what are some common misunderstandings and questions that customers usually have on the first consultation call we came up with a business page that aims to provide that quick look at what we do and the path we take.
+
+## The problem
+
+There were 2 big issues that were a strong requirement right from the beginning.
+
+1. Have a centralized collaborative space that would improve the workflow between multiple developers.
+2. Have a public business page that will showcase a high overview of Nectbox's process and the services provided.
+
+Since there was not a strong game plan, the communication process was a lot of going back on forth on what the client wants and what Nectbox can be provided. This repeated misscommunication was slowing down the productivity, and it was time to take on some action.
+
+## The solution
+
+In tackling the **first problem**, after some considerations, [Github Organization](https://github.com/Nectbox/) space was choosen as convenient pre existent solution. This will easly allow multiple developers to collaborate on projects, being a modern solution for code versioning.
+
+Key features that made `Github` be the best place for us:
+- Issue/ticket based workflow
+- Quick project management
+- Teams
+- Good integrations with almost any service out there
+
+For the **second problem**, there were a series of `surveys` and `interviews` with clients to identify the key issues they usually have, and what are some concerns they face when trying to solve or understand these issues.
+
+### Key findings
+
+- A high percentage were interested in exposing their product in the digital world.
+- Another big chunk were interested in having a small marketplace to sell their products online.
+- The rest were either interested in marketing themselves, or showing some kind of portolio.
+
+### Conceptualization
+
+Based on the previews findings, we made a clear game plan and strategy that will cover each point of concern most cusomers would have. The process has been split into 4 phases:
+
+1. Idea
+2. Develop
+3. Scale
+4. Transform
+
+<Image
+  alt="Phases"
+  src="/images/blog/nectbox/phases.png"
+  width={1360}
+  height={760}
+/>
+
+And the services were picked specially to solve the issues customers have, in a fast, reliable and optimal way.
+
+<Image
+  alt="Services"
+  src="/images/blog/nectbox/services.png"
+  width={1360}
+  height={760}
+/>
+
+## Key features
+
+Nectbox business page had to have the following key features:
+
+### Present the process from start to finish
+
+<Image
+  alt="Process"
+  src="/images/blog/nectbox/process.png"
+  width={1360}
+  height={760}
+/>
+
+### Provide a set of beliefs that we have
+
+<Image
+  alt="Beliefs"
+  src="/images/blog/nectbox/beliefs.png"
+  width={1360}
+  height={760}
+/>
+
+### Provide easy communication mediums for customers to reach out
+
+<Image
+  alt="Contact"
+  src="/images/blog/nectbox/contact.png"
+  width={1360}
+  height={760}
+/>
+
+## Core technologies
+
+In building Nectobx we used a specific set of tools:
+
+### Gatsby JS
+
+Gatsby was choosen as a front-end framework for their capability of building dynamic websites that are statically served over a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network), thus offering a blazzing fast surfing experience. Another big point in choosing `gatsbyjs` was their [plugin library](https://www.gatsbyjs.com/plugins/), which makes the developer job that much easier.
+
+```js[class="line-numbers"]:gatsby-config.js
+module.exports = {
+  plugins: [
+    'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALITICS_TRACKING_ID,
+      },
+    },
+    '@chakra-ui/gatsby-plugin',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-offline',
+  ]
+}
+```
+### Chakra-UI
+
+For styling the choice was a CSS-in-JS solution based on `emotion` and `chakra-ui`, which is a modular component library that makes building websites simple and easy. Integrating such solutions into **gatsby** is very simple and done thorugh their plugins as shown above.
+
+The combination between chakra and emotion allows you to quickly make highly customizable and accesible components.
+
+```ts[class="line-numbers"]:button.styles.ts
+import { Button } from '@chakra-ui/react';
+
+export const ButtonWrapper = styled(Button)`
+  background: transparent;
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 2.15rem 2rem;
+  border-radius: 10px;
+  width: fit-content;
+  ${(props) => props.margin && `margin: ${props.margin}`};
+  transition-property: transform, box-shadow;
+  transition-duration: ${theme.transitions.speed.xl};
+  transition-timing-function: ${theme.transitions.curve.scaleUp};
+  :hover {
+    background: transparent;
+    transform: scale(1.035);
+  }
+`;
+```
+### Contentful
+
+For managing the content we chose to go with `contentful`, which is a very simple and easy to use [Headless CMS](https://www.contentful.com/r/knowledgebase/what-is-headless-cms/), which integrates great with **gatsby** with just a plugin.
+
+Using contentful to create data models is a breeze and querying the data is made easy thorugh their `graphql` API right into our gatsby site
+
+```tsx[class="line-numbers"]:index.tsx
+export const query = graphql`
+  query HomePage {
+    hero: allContentfulLayoutHero {
+      edges {
+        node {
+          sectionModel {
+            id
+            caption
+            subTitle
+            ctaLink
+            invertSection
+          }
+        }
+      }
+    }
+  }
+`
+```
+
+## Conclusion
+
+The aim of the project was to connected customers with Nectbox, and provide an easy understanding of it's core principles and the process that clients need to expect when working togheter. Establishing a strong game plan and in collaboration with [Enyel](https://www.enyelsequeira.com/) developing a business page that will showcase all the things that were identified during the research phase. 

@@ -37,7 +37,7 @@ export default function SnippetLayout({
               {frontMatter.description}
             </Typography>
 
-            <Tags data={frontMatter.tags} />
+            <Tags data={frontMatter.tags} path='snippets' />
           </header>
 
           <div className='prose max-w-none w-full mt-16 pb-16 border-b border-gray-200'>

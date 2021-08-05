@@ -82,7 +82,7 @@ export default function PostLayout({
               </div>
             </div>
 
-            <Tags data={frontMatter.tags} />
+            <Tags data={frontMatter.tags} path='writing' />
           </header>
           <div className='prose max-w-none w-full mt-10'>{children}</div>
         </Container>
