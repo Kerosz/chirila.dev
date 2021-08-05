@@ -7,7 +7,7 @@ import Link from '../common/link';
 import Newsletter from '../common/newsletter';
 import WritingRecommand from '../writing/recommand';
 import FadeIntoView from '../animations/fade-into-view';
-import { Container, Typography } from '~ui/index';
+import { Badge, Container, Typography } from '~ui/index';
 // types
 import type { ReactNode } from 'react';
 import type { IFrontMatter, IRecommandArticles } from '~/services/mdx';
@@ -42,15 +42,15 @@ export default function PostLayout({
       description={frontMatter.excerpt}>
       <FadeIntoView>
         <Container as='article' maxW='max-w-[848px]' className='py-14'>
-          <header className='border-b border-gray-300 pb-14'>
+          <header className='border-b border-gray-300 pb-8'>
             <Typography
               as='h1'
-              className='text-5xl font-bold text-center font-serif pb-14'
+              className='text-5xl font-bold text-center font-serif pb-10'
               resetStyles>
               {frontMatter.title}
             </Typography>
 
-            <div className='flex xs:flex-row flex-col justify-between text-gray-600 text-sm'>
+            <div className='flex xs:flex-row flex-col justify-between text-gray-600 text-sm mt-6'>
               <time
                 dateTime={publishedAt.toISOString()}
                 className='pb-1 xs:pb-0'>
@@ -80,6 +80,18 @@ export default function PostLayout({
                   @chirila_
                 </Link>
               </div>
+            </div>
+
+            <div className='mt-8 flex items-center flex-wrap'>
+              <span className='font-medium text-gray-500 mr-3'>Tags:</span>
+              {frontMatter.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/writing?filter=${tag}`}
+                  className='px-1.5 py-1 bg-light-gray hover:bg-gray-200 text-sm font-medium border border-gray-300 shadow-sm xs:mr-3 mr-2.5'>
+                  {tag}
+                </Link>
+              ))}
             </div>
           </header>
           <div className='prose max-w-none w-full mt-10'>{children}</div>

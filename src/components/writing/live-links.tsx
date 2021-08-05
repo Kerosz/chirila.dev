@@ -10,11 +10,11 @@ export interface ILiveLinks {
 
 export default function LiveLinks({ liveDemoURL, sourceCodeURL }: ILiveLinks) {
   return (
-    <div className='flex flex-col pb-5 max-w-max space-y-2'>
+    <div className='flex flex-col pb-3 max-w-max space-y-2'>
       {liveDemoURL && (
         <Link href={liveDemoURL} className='flex group items-center'>
           <Typography
-            className='font-medium text-xl'
+            className='font-medium text-lg'
             resetStyles
             style={{ margin: 0 }}>
             See live version
@@ -25,7 +25,7 @@ export default function LiveLinks({ liveDemoURL, sourceCodeURL }: ILiveLinks) {
       {sourceCodeURL && (
         <Link href={sourceCodeURL} className='flex group items-center'>
           <Typography
-            className='font-medium text-xl'
+            className='font-medium text-lg'
             resetStyles
             style={{ margin: 0 }}>
             See source code

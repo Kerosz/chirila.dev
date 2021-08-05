@@ -58,6 +58,7 @@ export default function AuthorInfo() {
             width={200}
             src='/images/blog/avatar-full.jpg'
             className='rounded-full border border-gray-300 shadow-md'
+            priority
           />
         </div>
       </Container>
