@@ -1,5 +1,6 @@
 // components
 import Link from '../common/link';
+import { pluralWord } from '~utils/index';
 
 export interface ITags {
   data: string[];
@@ -9,7 +10,9 @@ export interface ITags {
 export default function Tags({ data, path = 'writing' }: ITags) {
   return (
     <div className='mt-8 flex items-center flex-wrap'>
-      <span className='font-medium text-gray-500 mr-3'>Tags:</span>
+      <span className='font-medium text-gray-500 mr-3'>
+        {pluralWord(data.length, 'Tag', false)}:
+      </span>
       {data.map((tag) => (
         <Link
           key={tag}

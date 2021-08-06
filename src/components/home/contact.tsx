@@ -69,8 +69,7 @@ function Contact(): JSX.Element {
               </Link>
               . I post some articles on my{' '}
               <Link
-                href='https://blog.chirila.dev'
-                external
+                href='/writing'
                 className='text-gray-50 font-medium hover:text-cyan'>
                 Blog
               </Link>{' '}

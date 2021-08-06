@@ -7,7 +7,7 @@ import { Container, Typography } from '~ui/index';
 export default function NotFoundPage() {
   return (
     <Layout title='Not Found | Andrei Chirila'>
-      <Container maxW='max-w-screen-lg'>
+      <Container maxW='max-w-screen-lg' className='min-h-screen'>
         <FadeIntoView className='flex flex-col h-full justify-center items-center py-20'>
           <Typography
             as='h1'

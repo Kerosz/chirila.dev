@@ -6,18 +6,9 @@ const moreProjectsData: IProjectData[] = [
     scope: 'UX/UI Design. Website Development',
     tags: ['gatsby', 'styled-components', 'contentful'],
     summary:
-      'Unitech Pest and Control was a full revamp of two websites for a pest control company based in Saint Louis, Missouri.',
+      'This is the main website for a pest and control company based in Saint Louis, Missouri.',
     srcName: 'unitech_mock.jpg',
     link: 'https://unitech.nectbox.com',
-  },
-  {
-    title: 'Unitech Pest Landing',
-    scope: 'UX/UI Design. Website Development',
-    tags: ['gatsby', 'material-ui'],
-    summary:
-      'Unitech Pest and Control was a full revamp of two websites for a pest control company based in Saint Louis, Missouri.',
-    srcName: 'unitech_mock.jpg',
-    link: 'http://unitech-landing.nectbox.com',
   },
   {
     title: 'Persoanl Space v1',
@@ -27,6 +18,15 @@ const moreProjectsData: IProjectData[] = [
       'First version of my personal website, it is a minimal approach to design and browsing experience.',
     srcName: 'personal_site_mock.jpg',
     link: 'https://old.chirila.dev',
+  },
+  {
+    title: 'Unitech Pest Landing',
+    scope: 'UX/UI Design. Website Development',
+    tags: ['gatsby', 'material-ui'],
+    summary:
+      'Landing page, part of a 2 websites work for a pest and control company based in Saint Louis, Missouri.',
+    srcName: 'unitech_mock.jpg',
+    link: 'http://unitech-landing.nectbox.com',
   },
   {
     title: 'Reddit Client',

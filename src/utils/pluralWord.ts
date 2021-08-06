@@ -1,7 +1,15 @@
-export default function pluralWord(count: number, word: string): string {
+export default function pluralWord(
+  count: number,
+  word: string,
+  withNumber = true
+): string {
   if (count === 1) {
-    return count + ' ' + word;
+    if (withNumber) return count + ' ' + word;
+
+    return word;
   }
 
-  return count + ' ' + word + 's';
+  if (withNumber) return count + ' ' + word + 's';
+
+  return word + 's';
 }
