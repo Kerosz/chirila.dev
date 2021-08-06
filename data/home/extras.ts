@@ -2,13 +2,22 @@ import type { IProjectData } from './projects';
 
 const moreProjectsData: IProjectData[] = [
   {
-    title: 'Unitech Pest',
+    title: 'Unitech Pest Main',
     scope: 'UX/UI Design. Website Development',
     tags: ['gatsby', 'styled-components', 'contentful'],
     summary:
       'Unitech Pest and Control was a full revamp of two websites for a pest control company based in Saint Louis, Missouri.',
     srcName: 'unitech_mock.jpg',
-    link: 'https://unitech.chirila.dev',
+    link: 'https://unitech.nectbox.com',
+  },
+  {
+    title: 'Unitech Pest Landing',
+    scope: 'UX/UI Design. Website Development',
+    tags: ['gatsby', 'material-ui'],
+    summary:
+      'Unitech Pest and Control was a full revamp of two websites for a pest control company based in Saint Louis, Missouri.',
+    srcName: 'unitech_mock.jpg',
+    link: 'http://unitech-landing.nectbox.com',
   },
   {
     title: 'Persoanl Space v1',
