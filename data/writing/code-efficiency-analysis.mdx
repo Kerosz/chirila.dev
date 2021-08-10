@@ -115,20 +115,22 @@ Let's look at some example simplifications to better understand how we can simpl
 - O(4n<sup>12</sup> + 2<sup>n</sup>) = **O(2<sup>n</sup>)**
 - O(441) = **O(1)**
 
-Now that we have seen some examples we can go ahead and define some rules:
+Now that we have seen some examples we can go ahead and *define* some rules:
 
 **Law of Multiplication**
-- used with **nested** statements
+- used with `nested` statements
 > *When Big O is the product of multiple terms, we can drop any coefficients and constants*
 
 **Law of Addition**
-- used with **sequential** statements
+- used with `sequential` statements
 > *When Big O is the sum of multiple terms, we can keep the largest term, and drop the rest*
 
 
-Finally let us look at some trivial code examples of some of these complexities:
+#### Time complexity analasys examples
 
-```js[class="line-numbers"]:examples.js
+To better understand how we can analyze the time complexity of our code and simplify our notation let's look at some trivial examples.
+
+```js[class="line-numbers"]:time-examples.js
 // We have 2 separate loops
 // O(3n + 3n) = O(n) -> addition, we keep the largest term
 function exampleOne(n) {
@@ -173,6 +175,44 @@ function exampleThree(n) {
 // calling the function with [2, 4, 6, 8] -> list of length 4
 exampleThree([2, 4, 6, 8])
 ```
+
+#### Space complexity analasys examples
+
+Until now we only talked about time but space is equally important depending on the specifications of our system. It might be the case that we have a limited memory and thus we would have to make some time complexity tradeoffs in order to gain some better space complexity.
+
+```js[class="line-numbers"]:space-examples.js
+// 3 variables created that are not dependent of the input size
+// O(3) = O(1) -> simplification of a constant term
+function avarage(list) {
+  // declaring a variable 'total'
+  let total = 0;
+  // declaring a variable 'i' once
+  for(let i = 0; i < list.length; i++) {
+    /**
+    Even though we create this variable every loop
+    at the end of each iteration it will be disposed
+    so we only ever have one variable
+    */
+    const current = list[i]
+    total += current;
+  }
+  return total / list.length;
+};
+
+// 3 variables created, one grows with the input size
+// O(2 + n) = O(n) -> addition, we keep the largest term
+function reverse(list) {
+  // variable grows with the input size
+  const reversedList = [];
+
+  for(let i = list.length - 1; i >= 0; i--) {
+    const current = list[i];
+    // pushing each element in the list in the 'reversedList' thus growing it's size
+    reversedList.push(current);
+  }
+}
+```
+
 
 ### Complexity classes
 
