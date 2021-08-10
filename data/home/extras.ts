@@ -25,7 +25,7 @@ const moreProjectsData: IProjectData[] = [
     tags: ['gatsby', 'material-ui'],
     summary:
       'Landing page, part of a 2 websites work for a pest and control company based in Saint Louis, Missouri.',
-    srcName: 'unitech_mock.jpg',
+    srcName: 'unitech_landing_mock.jpg',
     link: 'http://unitech-landing.nectbox.com',
   },
   {

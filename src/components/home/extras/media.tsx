@@ -56,7 +56,7 @@ export default function Media({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
-      src={`/images/more-work/${src}`}
+      src={`/images/extras/${src}`}
       alt={title}
       width={185}
       className={rootClass}
