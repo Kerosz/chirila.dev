@@ -19,6 +19,14 @@ Second reason, would be to understand **how the code we write, when we design or
 
 One argument that is usually given, on why you shouldn't care about it, is that computers are getting progressively faster, thus making the computations faster. But on the other hand, the data volume that is being computed gets bigger and bigger, to the point that in 2016 google announced that they are serving **130.000.000.000.000** *(130 trillion)* pages, compared to their report from 2013 when they only served around 30.000.000.000.000 (30 trillion). While computers getting faster is undoubtedly true, we can see how the data volume we are working with gets massive, so writing just a simple algorithm that goes over the whole data set isn't enough, even today.
 
+## Pre requirements
+
+To follow along with this article it would be adviced to have some previews knowladge on the following:
+
+- basic understanding of algorithms
+- basic understanding of computer science fundamentals
+- basic understanding of data structures
+
 ## Code analasys
 
 Now that we understand why writing efficient code matters, let's talk about what makes our code efficient and how do we measure the complexity of an algorithm.
@@ -106,8 +114,8 @@ At this point you might wonder how are we able to drop that 3; that's just a sim
 Let's look at some example simplifications to better understand how we can simplify our notation.
 
 - O(6 * n) = **O(n)**
-- O(14n) = **O(n)**
-- O(3891n) = **O(n)**
+- O(14n) = O(14 * n) = **O(n)**
+- O(3891n) = O(3891 * n) = **O(n)**
 - O(n / 4) = O(¼ * n) = **O(n)**
 - O(3n \* n * 322) = O(n \* n) = **O(n<sup>2</sup>)**
 - O(n<sup>2</sup> + 2n + 9) = **O(n<sup>2</sup>)**
@@ -215,4 +223,13 @@ function reverse(list) {
 
 
 ### Complexity classes
+
+There are a set of complexity classes that we will go over in an ascending order from most performant to least performant ones.
+
+#### Constant – O(1)
+
+- amount of time or steps it takes does not depend on the input size
+- can have loops or recursive functions as long as the number of iteration or calls are independent of the input size
+
+When we want to identify constant time we usually look for operations that aren't growing/scaling with the input size, typically code that doesn't iterate over the size of the input. Some operations that we consider to run in constant time are: **arithmetic operations**, **accessing an array index**, **hashmap lookups**.
 
