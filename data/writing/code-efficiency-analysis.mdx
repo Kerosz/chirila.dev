@@ -1,0 +1,178 @@
+---
+title: "Big O, code efficiency analasys"
+publishedAt: '2021-08-09'
+excerpt: 'Learn how to properly analyze your code efficiency by using algorithmic complexity principles such as Big "Oh" notation.'
+media: ''
+author: 'Andrei Chirila'
+tags: ['algorithms', 'javascript']
+---
+
+In this article I would do my best to introduce you to algorithmic complexity and a way to roughly measure it by using the Big O notation.
+
+## Why meassuring code efficiency is important
+
+First of, probably the most significant fact to **why it is important**, is because we want to reason about how the code we currently have affects our programs. We can test our code on a smaller scale, but *how are we going to predict the way our code is going to run on a bigger scale* and how the code we write is able to solve a problem of a particular size.
+
+Second reason, would be to understand **how the code we write, when we design or implement an algorithm would affect the problem at hand**. You can start taking decisions based on how certain data strcutures, or implementation details can impact the final time complexity of our program.
+
+## Why sould we care
+
+One argument that is usually given, on why you shouldn't care about it, is that computers are getting progressively faster, thus making the computations faster. But on the other hand, the data volume that is being computed gets bigger and bigger, to the point that in 2016 google announced that they are serving **130.000.000.000.000** *(130 trillion)* pages, compared to their report from 2013 when they only served around 30.000.000.000.000 (30 trillion). While computers getting faster is undoubtedly true, we can see how the data volume we are working with gets massive, so writing just a simple algorithm that goes over the whole data set isn't enough, even today.
+
+## Code analasys
+
+Now that we understand why writing efficient code matters, let's talk about what makes our code efficient and how do we measure the complexity of an algorithm.
+
+We can measure an algorithm complexity by:
+- time *(duration)*
+- space *(memory)*
+
+With this in mind, there comes a big problem, how do we **generalize and abstract** these measurements. If we are talking about time complexity, how do we measure the time our program takes to execute a piece of code. We can definetelly use timers to find out, which would be the intuitive way of doing it, in **node** we can simply record the time before and after the execution and substract those values:
+
+```js[class="line-numbers"]:avarage-test.js
+function avarage(nums) {
+  let total = 0;
+  for(let i = 0; i < nums.length; i++) {
+    total += nums[i];
+  }
+  return total / nums.length;
+};
+
+const start = new Date();
+avarage([23, 51, 88, 49, 90, 7, 64, 77, 12, 8, 96]);
+const end = new Date();
+
+console.log(`Execution time: ${end - start}ms`);
+```
+
+Doing it this particular way, exposes our measurements to inconsistency:
+- execution time, **varies between algorithms**
+- execution time, **varies between implementations**
+- execution time, **varies between systems/computers**
+- execution time, **is not predictible on lager scale**
+
+In order to *consistently* measure an algorithm we need a better alternative, that can:
+- count the amount of operations we perform without worrying of implementation details
+- focus on how the time and space complexities scale
+- measure the algorithm based on the **size of the input** and the number of steps taken
+
+### Growth of operations
+
+Let's look at a code example, that will iterate over a list of elements and return whether or not an element exists within the list:
+
+```js[class="line-numbers"]:find.js
+function find(list, element) {
+  for(let i = 0; i < list.length; i++) {
+    if(list[i] === element) return true;
+  }
+  return false
+};
+```
+
+In this scenario, what is the time complexity of our code ? Well, **it depends** on how lucky you are. It could be that the first element in the list is our element, in that case it only goes over the loop once, and it's done, this is known as **best case scenario**. But it can as well be that our element isn't within the list, in that case we have to go through the entire list and return *false*, which is the **worst case scenario**. We can also run multiple examples on this code and see how many iterations it goes through, and that will give us the **avarage case**, on avarage we are likely to look at half of the list to find our element.
+
+#### Asymptotic Notations
+
+Asymptotic notations are mathematical tools used to represent the complexities of algorithms. There are three notations that are commonly used:
+
+- `Big Omega (Ω) Notation`, gives a lower bound of an algorithm *(best case)*
+- `Big Theta (Θ) Notation`, gives an exact bound of an algorithm *(avarage case)*
+- `Big Oh (O) Notation`, gives an upper bound of an algorithm *(worst case)*
+
+Sometimes is useful to look at the avarage case to give you a rough sense of how the algorithm will perform in the long run, but when we talk about code analasys we usually talk about **worst case**, because it usually defines the bottleneck we are after.
+
+## Big O Notation
+
+Let's look at the example from before, that computes the avarage of a given list of numbers, and specifically at this line:
+
+```diff-javascript[class="line-numbers"][class="diff-highlight"]:avarage-big-o.js
+function avarage(nums) {
+  let total = 0;
++  for(let i = 0; i < nums.length; i++) {
+    total += nums[i];
+  }
+  return total / nums.length;
+};
+
+avarage([23, 51, 88]);
+```
+
+We right away notice a loop which goes from a starting point of `i = 0` to the `i < nums.length`, meaning that the time complexity of this code would be the size of the given input `nums`, in this case having a length of **3** *(elements in the list of nums)*. We can generalize the input name as `n`. Therefor we can say the complexity of our avarage function is **O(3n)**, furthermore we can drop any coefficients and constants and we are left with a complexity of **O(n)**.
+
+At this point you might wonder how are we able to drop that 3; that's just a simplification we make which is possible because Big O is only interested in how the performance of our algorithm changes in relation with the size of the input.
+
+### Simplifications
+
+Let's look at some example simplifications to better understand how we can simplify our notation.
+
+- O(6 * n) = **O(n)**
+- O(14n) = **O(n)**
+- O(3891n) = **O(n)**
+- O(n / 4) = O(¼ * n) = **O(n)**
+- O(3n \* n * 322) = O(n \* n) = **O(n<sup>2</sup>)**
+- O(n<sup>2</sup> + 2n + 9) = **O(n<sup>2</sup>)**
+- O(800 + n + n<sup>3</sup> + n<sup>2</sup>) = **O(n<sup>3</sup>)**
+- O(4n<sup>12</sup> + 2<sup>n</sup>) = **O(2<sup>n</sup>)**
+- O(441) = **O(1)**
+
+Now that we have seen some examples we can go ahead and define some rules:
+
+**Law of Multiplication**
+- used with **nested** statements
+> *When Big O is the product of multiple terms, we can drop any coefficients and constants*
+
+**Law of Addition**
+- used with **sequential** statements
+> *When Big O is the sum of multiple terms, we can keep the largest term, and drop the rest*
+
+
+Finally let us look at some trivial code examples of some of these complexities:
+
+```js[class="line-numbers"]:examples.js
+// We have 2 separate loops
+// O(3n + 3n) = O(n) -> addition, we keep the largest term
+function exampleOne(n) {
+  for(let i = 0; i < n.length; i++) {
+    // code
+  }
+  for(let j = n.length - 1; j > 0; i--) {
+    // code
+  }
+};
+// calling the function with [1, 2, 3] -> list of length 3
+exampleOne([1, 2, 3])
+
+// We have 2 separate loops, one of them being a nested loop
+// O(5n * 5n + n / 2) = O(n² + n) = O(n²) -> addition, we keep the largest term
+function exampleTwo(n) {
+  for(let i = 0; i < n.length; i++) {
+    for(let j = 0; j < n.length; j++) {
+      // code
+    }
+  }
+  for(let k = n.length / 2; k > 0; k--) {
+    // code
+  }
+};
+// calling the function with [5, 6, 7, 8, 9] -> list of length 5
+exampleTwo([5, 6, 7, 8, 9])
+
+// First outer loop, iterates a constant number of times (100), and has a nested loop
+// Second loop, iterates a constant number of times (4350)
+// O(100 * 4n + 4350) = O(n) -> addition, we keep the largest term
+function exampleThree(n) {
+  for(let i = 0; i < 100; i++) {
+    for(let j = 0; j < n.length; j++) {
+      // code
+    }
+  }
+  for(let k = 0; k < 4350; k++) {
+    // code
+  }
+};
+// calling the function with [2, 4, 6, 8] -> list of length 4
+exampleThree([2, 4, 6, 8])
+```
+
+### Complexity classes
+
