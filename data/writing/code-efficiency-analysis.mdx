@@ -1,6 +1,6 @@
 ---
 title: "Big O, code efficiency analasys"
-publishedAt: '2021-08-11'
+publishedAt: '2021-08-12'
 excerpt: 'Learn how to properly analyze your code efficiency by using algorithmic complexity principles such as Big "Oh" notation.'
 media: ''
 author: 'Andrei Chirila'
@@ -9,25 +9,25 @@ tags: ['algorithms', 'javascript']
 
 In this article I would do my best to introduce you to algorithmic complexity and a way to roughly measure it by using the Big O notation.
 
-## Why meassuring code efficiency is important
+## Why measuring code efficiency is important
 
 First of, probably the most significant fact to **why it is important**, is because we want to reason about how the code we currently have affects our programs. We can test our code on a smaller scale, but *how are we going to predict the way our code is going to run on a bigger scale* and how the code we write is able to solve a problem of a particular size.
 
-Second reason, would be to understand **how the code we write, when we design or implement an algorithm would affect the problem at hand**. You can start taking decisions based on how certain data strcutures, or implementation details can impact the final time complexity of our program.
+Second reason, would be to understand **how the code we write, when we design or implement an algorithm would affect the problem at hand**. You can start taking decisions based on how certain data structures, or implementation details can impact the final time complexity of our program.
 
-## Why sould we care
+## Why should we care
 
 One argument that is usually given, on why you shouldn't care about it, is that computers are getting progressively faster, thus making the computations faster. But on the other hand, the data volume that is being computed gets bigger and bigger, to the point that in 2016 google announced that they are serving **130.000.000.000.000** *(130 trillion)* pages, compared to their report from 2013 when they only served around 30.000.000.000.000 (30 trillion). While computers getting faster is undoubtedly true, we can see how the data volume we are working with gets massive, so writing just a simple algorithm that goes over the whole data set isn't enough, even today.
 
 ## Pre requirements
 
-To follow along with this article it would be adviced to have some previews knowladge on the following:
+To follow along with this article it would be advised to have some previews knowledge on the following:
 
 - basic understanding of algorithms
 - basic understanding of computer science fundamentals
 - basic understanding of data structures
 
-## Code analasys
+## Code analysis
 
 Now that we understand why writing efficient code matters, let's talk about what makes our code efficient and how do we measure the complexity of an algorithm.
 
@@ -35,10 +35,10 @@ We can measure an algorithm complexity by:
 - time *(duration)*
 - space *(memory)*
 
-With this in mind, there comes a big problem, how do we **generalize and abstract** these measurements. If we are talking about time complexity, how do we measure the time our program takes to execute a piece of code. We can definetelly use timers to find out, which would be the intuitive way of doing it, in **node** we can simply record the time before and after the execution and substract those values:
+With this in mind, there comes a big problem, how do we **generalize and abstract** these measurements. If we are talking about time complexity, how do we measure the time our program takes to execute a piece of code. We can definitely use timers to find out, which would be the intuitive way of doing it, in **node** we can simply record the time before and after the execution and subtract those values:
 
 ```js[class="line-numbers"]:avarage-test.js
-function avarage(nums) {
+function average(nums) {
   let total = 0;
   for(let i = 0; i < nums.length; i++) {
     total += nums[i];
@@ -47,7 +47,7 @@ function avarage(nums) {
 };
 
 const start = new Date();
-avarage([23, 51, 88, 49, 90, 7, 64, 77, 12, 8, 96]);
+average([23, 51, 88, 49, 90, 7, 64, 77, 12, 8, 96]);
 const end = new Date();
 
 console.log(`Execution time: ${end - start}ms`);
@@ -57,7 +57,7 @@ Doing it this particular way, exposes our measurements to inconsistency:
 - execution time, **varies between algorithms**
 - execution time, **varies between implementations**
 - execution time, **varies between systems/computers**
-- execution time, **is not predictible on lager scale**
+- execution time, **is not predictable on lager scale**
 
 In order to *consistently* measure an algorithm we need a better alternative, that can:
 - count the amount of operations we perform without worrying of implementation details
@@ -77,24 +77,24 @@ function find(list, element) {
 };
 ```
 
-In this scenario, what is the time complexity of our code ? Well, **it depends** on how lucky you are. It could be that the first element in the list is our element, in that case it only goes over the loop once, and it's done, this is known as **best case scenario**. But it can as well be that our element isn't within the list, in that case we have to go through the entire list and return *false*, which is the **worst case scenario**. We can also run multiple examples on this code and see how many iterations it goes through, and that will give us the **avarage case**, on avarage we are likely to look at half of the list to find our element.
+In this scenario, what is the time complexity of our code ? Well, **it depends** on how lucky you are. It could be that the first element in the list is our element, in that case it only goes over the loop once, and it's done, this is known as **best case scenario**. But it can as well be that our element isn't within the list, in that case we have to go through the entire list and return *false*, which is the **worst case scenario**. We can also run multiple examples on this code and see how many iterations it goes through, and that will give us the **average case**, on average we are likely to look at half of the list to find our element.
 
 #### Asymptotic Notations
 
 Asymptotic notations are mathematical tools used to represent the complexities of algorithms. There are three notations that are commonly used:
 
 - `Big Omega (Ω) Notation`, gives a lower bound of an algorithm *(best case)*
-- `Big Theta (Θ) Notation`, gives an exact bound of an algorithm *(avarage case)*
+- `Big Theta (Θ) Notation`, gives an exact bound of an algorithm *(average case)*
 - `Big Oh (O) Notation`, gives an upper bound of an algorithm *(worst case)*
 
-Sometimes is useful to look at the avarage case to give you a rough sense of how the algorithm will perform in the long run, but when we talk about code analasys we usually talk about **worst case**, because it usually defines the bottleneck we are after.
+Sometimes is useful to look at the average case to give you a rough sense of how the algorithm will perform in the long run, but when we talk about code analysis we usually talk about **worst case**, because it usually defines the bottleneck we are after.
 
 ## Big O Notation
 
-Let's look at the example from before, that computes the avarage of a given list of numbers, and specifically at this line:
+Let's look at the example from before, that computes the average of a given list of numbers, and specifically at this line:
 
-```diff-javascript[class="line-numbers"][class="diff-highlight"]:avarage-big-o.js
-function avarage(nums) {
+```diff-javascript[class="line-numbers"][class="diff-highlight"]:average-big-o.js
+function average(nums) {
   let total = 0;
 +  for(let i = 0; i < nums.length; i++) {
     total += nums[i];
@@ -102,10 +102,10 @@ function avarage(nums) {
   return total / nums.length;
 };
 
-avarage([23, 51, 88]);
+average([23, 51, 88]);
 ```
 
-We right away notice a loop which goes from a starting point of `i = 0` to the `i < nums.length`, meaning that the time complexity of this code would be the size of the given input `nums`, in this case having a length of **3** *(elements in the list of nums)*. We can generalize the input name as `n`. Therefor we can say the complexity of our avarage function is **O(3n)**, furthermore we can drop any coefficients and constants and we are left with a complexity of **O(n)**.
+We right away notice a loop which goes from a starting point of `i = 0` to the `i < nums.length`, meaning that the time complexity of this code would be the size of the given input `nums`, in this case having a length of **3** *(elements in the list of nums)*. We can generalize the input name as `n`. Therefor we can say the complexity of our average function is **O(3n)**, furthermore we can drop any coefficients and constants and we are left with a complexity of **O(n)**.
 
 At this point you might wonder how are we able to drop that 3; that's just a simplification we make which is possible because Big O is only interested in how the performance of our algorithm changes in relation with the size of the input.
 
@@ -134,7 +134,7 @@ Now that we have seen some examples we can go ahead and *define* some rules:
 > *When Big O is the sum of multiple terms, we can keep the largest term, and drop the rest*
 
 
-#### Time complexity analasys examples
+#### Time complexity analysis examples
 
 To better understand how we can analyze the time complexity of our code and simplify our notation let's look at some trivial examples.
 
@@ -184,14 +184,14 @@ function exampleThree(n) {
 exampleThree([2, 4, 6, 8])
 ```
 
-#### Space complexity analasys examples
+#### Space complexity analysis examples
 
 Until now we only talked about time but space is equally important depending on the specifications of our system. It might be the case that we have a limited memory and thus we would have to make some time complexity tradeoffs in order to gain some better space complexity.
 
 ```js[class="line-numbers"]:space-examples.js
 // 3 variables created that are not dependent of the input size
 // O(3) = O(1) -> simplification of a constant term
-function avarage(list) {
+function average(list) {
   // declaring a variable 'total'
   let total = 0;
   // declaring a variable 'i' once
@@ -277,7 +277,7 @@ function sumFirstAndLast(list) {
 
 - amount of time or steps it takes grows as a logarithm of the input size
 
-To better understand what this means, we need to understand what a *logarithm* is, in short a `logarithm` is the opposite of an `exponent`. If in the case of an exponent we multiply, in the case of a logarithm we **devide**
+To better understand what this means, we need to understand what a *logarithm* is, in short a `logarithm` is the opposite of an `exponent`. If in the case of an exponent we multiply, in the case of a logarithm we **divide**
 
 *Exponent*
 - **2<sup>4</sup> = 16** – 2 \* 2 \* 2 \* 2
@@ -291,7 +291,7 @@ To better understand what this means, we need to understand what a *logarithm* i
 Some algorithms that have log complexity are **binary search** and **bisection search**
 
 ```js[class="line-numbers"]:logarithmic.js
-// Time: O(log(n)) -> each iteration we devide by 2
+// Time: O(log(n)) -> each iteration we divide by 2
 // Space: O(1)
 function countDownStep(n, step = 2) {
   for(let i = n; i > 0; i /= step) {
@@ -300,7 +300,7 @@ function countDownStep(n, step = 2) {
 }
 
 // Binary search of a list
-// Time: O(log(n)) -> each iteration we devide our list by 2
+// Time: O(log(n)) -> each iteration we divide our list by 2
 // Space: O(1)
 function indexOf(list, element) {
   let start = 0;
@@ -341,7 +341,7 @@ function iterFactorial(n) {
 }
 
 // Recursive factorial
-// Time: O(n) -> number of function calls is dependet of n
+// Time: O(n) -> number of function calls is dependent of n
 // Space: O(n) -> there are always n function calls in our call stack
 function recurFactorial(n) {
   // base case
@@ -468,7 +468,7 @@ function permutations(string, char = "") {
 
 ## Conclusion
 
-We talked about why writing efficient code is important and what are some strategies we can take to measure our code efficiency. We introduced Big O Notation as a solution to generally analayze the complexities of our algorithms, and briefly mentioned the other 2 asymptotic notations. We then analyzed some code using Big O notation, and talked about the most used complexity classes and how are they scaling with the input size, giving examples to better visualize and understand the way we typically analyze our code.
+We talked about why writing efficient code is important and what are some strategies we can take to measure our code efficiency. We introduced Big O Notation as a solution to generally analyze the complexities of our algorithms, and briefly mentioned the other 2 asymptotic notations. We then analyzed some code using Big O notation, and talked about the most used complexity classes and how are they scaling with the input size, giving examples to better visualize and understand the way we typically analyze our code.
 
 ### Resources
 
