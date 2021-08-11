@@ -1,6 +1,6 @@
 ---
 title: "Big O, code efficiency analasys"
-publishedAt: '2021-08-09'
+publishedAt: '2021-08-11'
 excerpt: 'Learn how to properly analyze your code efficiency by using algorithmic complexity principles such as Big "Oh" notation.'
 media: ''
 author: 'Andrei Chirila'
@@ -226,10 +226,253 @@ function reverse(list) {
 
 There are a set of complexity classes that we will go over in an ascending order from most performant to least performant ones.
 
+<Image
+  alt="Big O Complexities"
+  src="/images/blog/code-efficiency/big-o-complexity.png"
+  width={790}
+  height={460}
+/>
+
+Let's have a look on how these classes would scale with the input size;
+
+|Class |n=10 |n=100 |n=1000 |n=1000000 |
+--- | --- | --- | --- | ---
+|O(1)|1 |1 |1 |1 |
+|O(log n)|1 |2 |3 |6 |
+|O(n)|10 |100 |1000 |1000000 |
+|O(n log(n))|10 |200 |3000 |6000000 |
+|O(n²)|100 |10000 |1000000 |1000000000000 |
+|O(2ⁿ)|1024 |1267650600228229401496703205376 |**Have fun!** |**Have fun!** |
+
 #### Constant – O(1)
 
 - amount of time or steps it takes does not depend on the input size
 - can have loops or recursive functions as long as the number of iteration or calls are independent of the input size
 
-When we want to identify constant time we usually look for operations that aren't growing/scaling with the input size, typically code that doesn't iterate over the size of the input. Some operations that we consider to run in constant time are: **arithmetic operations**, **accessing an array index**, **hashmap lookups**.
+When we want to identify constant time we usually look for operations that aren't growing/scaling with the input size, typically code that doesn't iterate over the size of the input. Some operations that we consider to run in constant time are: **arithmetic operations**, **accessing an array index**, **hashmap lookups**, **inserting a node into a linked list**.
 
+```js[class="line-numbers"]:constant.js
+// Time: O(1) -> does not depend on the input size
+// Space: O(1) -> does not grow with the input
+function isEven(n) {
+  let result;
+  if(n % 2) {
+    result = false;
+  } else {
+    result = true;
+  }
+  return result;
+}
+
+// Time: O(1)
+// Space: O(1)
+function sumFirstAndLast(list) {
+  // accessing array index and getting it's length is a constant operation
+  const result = list[0] + list[list.length - 1];
+  return result;
+}
+```
+
+#### Logarithmic – O(log(n))
+
+- amount of time or steps it takes grows as a logarithm of the input size
+
+To better understand what this means, we need to understand what a *logarithm* is, in short a `logarithm` is the opposite of an `exponent`. If in the case of an exponent we multiply, in the case of a logarithm we **devide**
+
+*Exponent*
+- **2<sup>4</sup> = 16** – 2 \* 2 \* 2 \* 2
+- we say 2 to the power of 4 is 16
+
+*Logarithm*
+- **log<sub>2</sub>16 = 4** – 16 / 2 = 8 / 2 = 4 / 2 = 2 / 2 = 1
+- we count how many times *(4 times)* we divided by *2* which is our **base**
+- we say log in base 2 of 16 is 4
+
+Some algorithms that have log complexity are **binary search** and **bisection search**
+
+```js[class="line-numbers"]:logarithmic.js
+// Time: O(log(n)) -> each iteration we devide by 2
+// Space: O(1)
+function countDownStep(n, step = 2) {
+  for(let i = n; i > 0; i /= step) {
+    console.log(i);
+  }
+}
+
+// Binary search of a list
+// Time: O(log(n)) -> each iteration we devide our list by 2
+// Space: O(1)
+function indexOf(list, element) {
+  let start = 0;
+  let end = list.length - 1;
+
+  while(start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    // if element is at the middle we return it's index
+    if(list[mid] === element) return mid;
+    // going either right or left of the list
+    if(list[mid] < element) {
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }       
+  }
+  return -1;
+}
+```
+
+#### Linear – O(n)
+
+- amount of time or steps it takes depends on the size of the input
+- iterative loops and recursive functions
+
+We have seen a lot of linear iterative complexity at this point, so let's jump into some examples where I would include an iterative and recursive linear complexity example *(if you are not familiar with recursion I would advice to research it, will write an article about it at some point and link it here)*.
+
+```js[class="line-numbers"]:linear.js
+// Iterative factorial
+// Time: O(n) -> iterating n times
+// Space: O(1) 
+function iterFactorial(n) {
+  let product = 1;
+  for(let i = 1; i <= n; i++) {
+    product *= i;
+  }
+  return product;
+}
+
+// Recursive factorial
+// Time: O(n) -> number of function calls is dependet of n
+// Space: O(n) -> there are always n function calls in our call stack
+function recurFactorial(n) {
+  // base case
+  if(n <= 1) return 1;
+
+  return n * recurFactorial(n - 1);
+}
+```
+
+If you were to time these 2 functions, you may notice that the recursive one runs slower then the iterative version, due to the function calls. You can optimize it using a `memoization` strategy, but I would talk about this in another article.
+
+#### Linearithmic – O(n log(n))
+
+- amount of time or steps it takes depends on the size of the input that grows logarithmic
+- sequential loops nested in log complexity loops
+
+Linearithmic complexity is also known as **loglinear** or **n log n**, this particular complexity class is bigger than *O(n)* but smaller than *O(n<sup>2</sup>)*. Many practical algorithms are linearithmic, most commonly used being **merge sort** and **quick sort**.
+
+```js[class="line-numbers"]:linearithmic.js
+// Time: O(n log(n)) -> sequential loop (slice method), nested into log loop
+// Space: O(1)
+function iterPrintHalf(str) {
+  for(let i = str.length; i >= 1; i /= 2) {
+    const result = str.slice(0, i);
+    console.log(result);
+  }
+}
+
+// Time: O(n log(n)) -> sequential loop (slice method), into log recursive call
+// Space: O(n) -> there are always n size function calls in our call stack
+function recurPrintHalf(str) {
+  console.log(str);
+  if(str.length <= 1) return;
+
+  const mid = Math.floor(str.length / 2);
+  const result = str.slice(0, mid);
+
+  return recurPrintHalf(result);
+}
+```
+
+#### Polynominal – O(n<sup>c</sup>)
+
+- *n* being the size of input and *c* being a constant, where `c > 1`
+- typically multiple nested loops or recursive calls
+- includes quadratic *O(n<sup>2</sup>)*, cubic *O(n<sup>3</sup>)*
+
+Most of the polynominal algorithms are quadratic and include **bubble sort**, **insertion sort**, **selection sort**, **traversing 2D arrays**
+
+```js[class="line-numbers"]:polynominal.js
+// Time: O(n²) -> 2 nested loops
+// Space: O(1)
+function bubbleSort(list) {
+  for (let i = 0; i < list.length; i++) {
+    let temp1 = list[i];
+
+    for (let j = i + 1; j < list.length; j++) {
+      let temp2 = list[j];
+
+      if(temp1 > temp2) {
+        // swap
+        list[i] = temp1;
+        list[j] = temp2;
+        // update
+        temp1 = list[i];
+        temp2 = list[j];
+      }
+    }
+  }
+  return list;
+}
+```
+
+#### Exponential – O(c<sup>n</sup>)
+
+- *n* being the size of input and *c* being a constant, where `c > 1`
+- recursive functions, where more than one call is made for each size of the input
+
+Many important problems are exponential by nature but as cost can be high it leads us to consider more approximate solutions as they provide better time complexities. Some exponential algorithms include **towers of hanoi**, **recursive fibonacci**
+
+```js[class="line-numbers"]:exponential.js
+// Time: O(2ⁿ) -> two recursive calls are made for each input
+// Space: O(n) -> we only have n calls on the call stack
+function fibonacci(n) {
+  if(n === 0) return 0;
+  if(n === 1) return 1;
+
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+```
+
+This recursive function can be optimized by using a `memoization` strategy.
+
+#### Factorial – O(n!)
+
+- recursive functions, where each call is dependent on the input size
+
+The main difference between exponential and factorial is that in exponential we make a *constant* number of recursive calls, where in factorial we are making *n* number calls. Popular algorithms that are factorial include **traveling salesman**, **permutations**
+
+```js[class="line-numbers"]:factorial.js
+// Time: O(n!) -> n recursive calls are made based on the size of the input
+// Space: O(n) -> we only have n calls on the call stack
+function trivialExample(n) {
+  if(n === 1) return 1;
+  // code
+
+  for(let i = 0; i < n; i++) {
+    trivialExample(n);
+  }
+}
+
+// Time: O(n!) -> n recursive calls are made based on the size of the input
+// Space: O(n) -> we only have n calls on the call stack
+function permutations(string, char = "") {
+  if(string.length <= 1) return [char + string];
+
+  return Array.from(string).reduce((result, char, idx) => {
+    const reminder = string.slice(0, idx) + string.slice(idx + 1);
+    result = result.concat(permutations(reminder, char));
+    return result;
+  }, []);
+}
+```
+
+## Conclusion
+
+We talked about why writing efficient code is important and what are some strategies we can take to measure our code efficiency. We introduced Big O Notation as a solution to generally analayze the complexities of our algorithms, and briefly mentioned the other 2 asymptotic notations. We then analyzed some code using Big O notation, and talked about the most used complexity classes and how are they scaling with the input size, giving examples to better visualize and understand the way we typically analyze our code.
+
+### Resources
+
+- [Big O Notation Wikipedia](https://en.wikipedia.org/wiki/Big_O_notation)
+- [Time complexity Wikipedia](https://en.wikipedia.org/wiki/Time_complexity)
+- [Big O Cheatsheet](https://www.bigocheatsheet.com/)
+- [Asymptotic Notations RICE University](http://www.stat.rice.edu/~dobelman/notes_papers/math/big_O.little_o.pdf)
