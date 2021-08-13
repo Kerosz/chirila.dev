@@ -57,14 +57,14 @@ function Contact(): JSX.Element {
             <Typography className='text-gray-400 xs:w-9/12 pb-12' resetStyles>
               I’m not really active on{' '}
               <Link
-                href={`/${config.twitter.url}`}
+                href={config.twitter.url}
                 external
                 className='text-gray-50 font-medium hover:text-cyan'>
                 Twitter
               </Link>{' '}
               but you can stay in touch with me on{' '}
               <Link
-                href={`/${config.linkedIn}`}
+                href={config.linkedIn}
                 external
                 className='text-gray-50 font-medium hover:text-cyan'>
                 Linkedin
@@ -77,7 +77,7 @@ function Contact(): JSX.Element {
               </Link>{' '}
               and some experiments and open source on{' '}
               <Link
-                href={`/${config.gitHub}`}
+                href={config.gitHub}
                 external
                 className='text-gray-50 font-medium hover:text-cyan'>
                 GitHub

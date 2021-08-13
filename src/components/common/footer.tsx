@@ -66,7 +66,7 @@ function Footer(): JSX.Element {
 
               <li className='mb-0.5'>
                 <Link
-                  href={`/${config.linkedIn}`}
+                  href={config.linkedIn}
                   external
                   className='py-4 text-gray-400 hover:text-red-800'>
                   Business related on{' '}
@@ -76,7 +76,7 @@ function Footer(): JSX.Element {
 
               <li className='mb-0.5'>
                 <Link
-                  href={`/${config.gitHub}`}
+                  href={config.gitHub}
                   external
                   className='py-4 text-gray-400 hover:text-red-800'>
                   Open source & WIPs on{' '}
@@ -86,7 +86,7 @@ function Footer(): JSX.Element {
 
               <li>
                 <Link
-                  href={`/${config.twitter.url}`}
+                  href={config.twitter.url}
                   className='py-4 text-gray-400 hover:text-red-800'
                   external>
                   Thoughts on <span className='font-medium'>Twitter</span>

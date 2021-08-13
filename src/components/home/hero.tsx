@@ -45,7 +45,7 @@ function Hero(): JSX.Element {
             <ul className='flex space-x-5 text-gray-600'>
               <li>
                 <Link
-                  href={`/${config.twitter.url}`}
+                  href={config.twitter.url}
                   className='py-2.5 hover:text-red-800'
                   external>
                   Twitter
@@ -54,7 +54,7 @@ function Hero(): JSX.Element {
 
               <li>
                 <Link
-                  href={`/${config.linkedIn}`}
+                  href={config.linkedIn}
                   className='py-2.5 hover:text-red-800'
                   external>
                   LinkedIn
@@ -63,7 +63,7 @@ function Hero(): JSX.Element {
 
               <li>
                 <Link
-                  href={`/${config.gitHub}`}
+                  href={config.gitHub}
                   className='py-2.5 hover:text-red-800'
                   external>
                   Github
