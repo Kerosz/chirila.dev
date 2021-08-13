@@ -5,15 +5,25 @@ import { isBrowser } from '~/utils/dom';
 export interface IHtmlHead {
   title?: string;
   description?: string;
+  image?: string;
+  publishedTime?: string;
+  tags?: string[];
 }
 
-export default function HtmlHead({ title, description }: IHtmlHead) {
+export default function HtmlHead({
+  title,
+  description,
+  image,
+  publishedTime,
+  tags,
+}: IHtmlHead) {
   title = title || 'Andrei Chirila';
+  image = image || 'https://www.chirila.dev/images/blog/banner.jpg';
   description =
     description ||
     'Persoanl space on the internet to share my work, my thoughts, a bit about myself and my working process, along with get in touch information.';
   const currentLocation = isBrowser ? window.location.href : null;
-  const isArticle = currentLocation?.includes('blog');
+  const isArticle = currentLocation?.includes('writing');
 
   return (
     <>
@@ -28,6 +38,18 @@ export default function HtmlHead({ title, description }: IHtmlHead) {
           title,
           description,
           site_name: 'Chirila Andrei',
+          images: [
+            {
+              url: image,
+              width: 1600,
+              height: 900,
+              alt: title,
+            },
+          ],
+          article: {
+            publishedTime,
+            tags,
+          },
         }}
         twitter={{
           handle: '@chirila_',
@@ -41,6 +63,8 @@ export default function HtmlHead({ title, description }: IHtmlHead) {
         <meta name='msapplication-TileColor' content='#171923' />
         <meta name='msapplication-starturl' content='/' />
         <meta name='msapplication-config' content='/browserconfig.xml' />
+
+        <meta name='twitter:image' content={image} />
 
         <link rel='shortcut icon' href='/favicon.ico' />
         <link rel='manifest' href='/manifest.webmanifest' />

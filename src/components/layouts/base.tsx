@@ -1,16 +1,14 @@
 // components
-import HtmlHead from '~/components/common/html-head';
 import Header from '~components/common/header';
 import Footer from '~components/common/footer';
 import Banner from '~components/common/banner';
 import Newsletter from '~components/common/newsletter';
+import HtmlHead, { IHtmlHead } from '~/components/common/html-head';
 //types
 import type { ReactNode, ReactElement } from 'react';
 
-export interface ILayout {
+export interface ILayout extends IHtmlHead {
   children: ReactNode;
-  title?: string;
-  description?: string;
 }
 
 function Layout({ children, ...customMeta }: ILayout): ReactElement {

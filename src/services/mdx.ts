@@ -18,7 +18,7 @@ export interface IFrontMatter {
   slug: string;
   title: string;
   publishedAt: string;
-  updatedAt: string | null;
+  updatedAt?: string;
   excerpt: string;
   media: string;
   author: string;
