@@ -13,6 +13,8 @@ import {
   SnippetsFrontMatterWithoutMeta,
 } from '~/services/mdx';
 import { generateTags } from '~/utils';
+// data
+import config from '~data/config';
 // types
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
 
@@ -43,7 +45,7 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
             as='h1'
             className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
             resetStyles>
-            Snippets
+            {config.snippets.name}
           </Typography>
 
           <SearchBar
@@ -64,7 +66,7 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
           {pageSnippets.map(({ slug, title, description }, idx) => (
             <Link
               key={`${title}__${idx}`}
-              href={`/snippets/${slug}`}
+              href={`/${config.snippets.path}/${slug}`}
               className='col-span-1 flex relative transition-all duration-500 items-center border-b border-gray-300 py-6  group hover:bg-light-gray'>
               <div className='ml-8 pr-14'>
                 <Typography
@@ -91,7 +93,7 @@ export const getStaticProps: GetStaticProps<IStaticProps> = async (): Promise<
   GetStaticPropsResult<IStaticProps>
 > => {
   const snippets = await getAllFilesMeta<SnippetsFrontMatterWithoutMeta>(
-    'snippets'
+    config.snippets.path
   );
   const tags = generateTags(snippets);
 

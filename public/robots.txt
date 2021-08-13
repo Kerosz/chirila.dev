@@ -1,3 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Host
+Host: https://www.chirila.dev
+
+# Sitemaps
+Sitemap: https://www.chirila.dev/sitemap.xml
+Sitemap: https://www.chirila.dev/dynamic-sitemap.xml

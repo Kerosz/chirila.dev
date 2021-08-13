@@ -11,6 +11,8 @@ import {
   IFileResult,
   ISnippetsFrontMatter,
 } from '~/services/mdx';
+// data
+import config from '~data/config';
 // types
 import type {
   GetStaticProps,
@@ -52,7 +54,7 @@ export const getStaticProps: GetStaticProps<IStaticProps, IParams> = async ({
 }): Promise<GetStaticPropsResult<IStaticProps>> => {
   const snippet = await getFileBySlug<ISnippetsFrontMatter>(
     params!.slug,
-    'snippets'
+    config.snippets.path
   );
 
   return { props: { ...snippet } };

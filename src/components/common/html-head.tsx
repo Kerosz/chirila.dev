@@ -3,6 +3,7 @@ import NextHead from 'next/head';
 import Script from 'next/script';
 import { NextSeo } from 'next-seo';
 // internals
+import config from '~data/config';
 import { isBrowser } from '~/utils/dom';
 
 export interface IHtmlHead {
@@ -20,27 +21,26 @@ export default function HtmlHead({
   publishedTime,
   tags,
 }: IHtmlHead) {
-  title = title || 'Andrei Chirila';
-  image = image || 'https://www.chirila.dev/images/blog/banner.jpg';
-  description =
-    description ||
-    'Persoanl space on the internet to share my work, my thoughts, a bit about myself and my working process, along with get in touch information.';
+  title = title || config.title;
+  image = image || config.defaultImage;
+  description = description || config.descritpion;
+
   const currentLocation = isBrowser ? window.location.href : null;
-  const isArticle = currentLocation?.includes('writing');
+  const isArticle = currentLocation?.includes(config.blog.path);
 
   return (
     <>
       <NextSeo
         title={title}
-        titleTemplate='%s – Developer, writer.'
+        titleTemplate={config.titleTemplate}
         description={description}
-        canonical='https://www.chirila.dev/'
+        canonical={config.siteUrl}
         openGraph={{
           type: isArticle ? 'article' : 'website',
-          locale: 'en_US',
+          locale: config.siteLocale,
           title,
           description,
-          site_name: 'Chirila Andrei',
+          site_name: config.siteName,
           images: [
             {
               url: image,

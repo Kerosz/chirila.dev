@@ -2,6 +2,8 @@
 import Logo from '~icons/logo';
 import Link from '~components/common/link';
 import { Container, Typography } from '../ui';
+// data
+import config from '~data/config';
 
 function Footer(): JSX.Element {
   return (
@@ -42,8 +44,7 @@ function Footer(): JSX.Element {
 
               <li className='mb-0.5'>
                 <Link
-                  href='https://blog.chirila.dev'
-                  external
+                  href={`/${config.blog.path}`}
                   className='py-4 text-gray-400 hover:text-red-800'>
                   Read my articles
                 </Link>
@@ -51,7 +52,7 @@ function Footer(): JSX.Element {
 
               <li>
                 <Link
-                  href='/snippets'
+                  href={`/${config.snippets.path}`}
                   className='py-4 text-gray-400 hover:text-red-800'>
                   Find useful snippets
                 </Link>
@@ -65,7 +66,7 @@ function Footer(): JSX.Element {
 
               <li className='mb-0.5'>
                 <Link
-                  href='https://www.linkedin.com/in/c-andrei/'
+                  href={`/${config.linkedIn}`}
                   external
                   className='py-4 text-gray-400 hover:text-red-800'>
                   Business related on{' '}
@@ -75,7 +76,7 @@ function Footer(): JSX.Element {
 
               <li className='mb-0.5'>
                 <Link
-                  href='https://github.com/Kerosz'
+                  href={`/${config.gitHub}`}
                   external
                   className='py-4 text-gray-400 hover:text-red-800'>
                   Open source & WIPs on{' '}
@@ -85,7 +86,7 @@ function Footer(): JSX.Element {
 
               <li>
                 <Link
-                  href='https://www.twitter.com/chirila_'
+                  href={`/${config.twitter.url}`}
                   className='py-4 text-gray-400 hover:text-red-800'
                   external>
                   Thoughts on <span className='font-medium'>Twitter</span>

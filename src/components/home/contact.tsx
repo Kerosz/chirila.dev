@@ -2,6 +2,8 @@
 import Link from '~components/common/link';
 import ArrowNarrowRight from '~icons/arrow-narrow-right';
 import { Container, Typography } from '../ui';
+// data
+import config from '~data/config';
 
 function Contact(): JSX.Element {
   return (
@@ -55,14 +57,14 @@ function Contact(): JSX.Element {
             <Typography className='text-gray-400 xs:w-9/12 pb-12' resetStyles>
               I’m not really active on{' '}
               <Link
-                href='https://www.twitter.com/chirila_'
+                href={`/${config.twitter.url}`}
                 external
                 className='text-gray-50 font-medium hover:text-cyan'>
                 Twitter
               </Link>{' '}
               but you can stay in touch with me on{' '}
               <Link
-                href='https://www.linkedin.com/in/c-andrei/'
+                href={`/${config.linkedIn}`}
                 external
                 className='text-gray-50 font-medium hover:text-cyan'>
                 Linkedin
@@ -75,7 +77,7 @@ function Contact(): JSX.Element {
               </Link>{' '}
               and some experiments and open source on{' '}
               <Link
-                href='https://github.com/Kerosz'
+                href={`/${config.gitHub}`}
                 external
                 className='text-gray-50 font-medium hover:text-cyan'>
                 GitHub

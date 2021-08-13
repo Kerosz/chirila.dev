@@ -4,6 +4,7 @@ import Link from '~components/common/link';
 import { Container, Typography } from '~ui/index';
 // data
 import heroData from '~data/home/hero';
+import config from '~data/config';
 
 function Hero(): JSX.Element {
   return (
@@ -44,7 +45,7 @@ function Hero(): JSX.Element {
             <ul className='flex space-x-5 text-gray-600'>
               <li>
                 <Link
-                  href='https://twitter.com/chirila_'
+                  href={`/${config.twitter.url}`}
                   className='py-2.5 hover:text-red-800'
                   external>
                   Twitter
@@ -53,7 +54,7 @@ function Hero(): JSX.Element {
 
               <li>
                 <Link
-                  href='https://www.linkedin.com/in/c-andrei'
+                  href={`/${config.linkedIn}`}
                   className='py-2.5 hover:text-red-800'
                   external>
                   LinkedIn
@@ -62,7 +63,7 @@ function Hero(): JSX.Element {
 
               <li>
                 <Link
-                  href='https://github.com/Kerosz'
+                  href={`/${config.gitHub}`}
                   className='py-2.5 hover:text-red-800'
                   external>
                   Github

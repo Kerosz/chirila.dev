@@ -10,6 +10,8 @@ import AuthorInfo from '../writing/author-info';
 import WritingRecommand from '../writing/recommand';
 import FadeIntoView from '../animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
+// data
+import config from '~data/config';
 // types
 import type { ReactNode } from 'react';
 import type { IFrontMatter, IRecommandArticles } from '~/services/mdx';
@@ -25,27 +27,24 @@ export default function PostLayout({
   frontMatter,
   recommand,
 }: IPostLayout): JSX.Element {
+  const { blog, siteUrl, twitter, defaultImage, title } = config;
+
   const publishedAt = parseISO(frontMatter.publishedAt);
   const publishedAtFormat = format(publishedAt, 'EEEE, LLLL do yyyy');
   const publishedAtToNow = formatDistanceToNowStrict(publishedAt, {
     addSuffix: true,
   });
-  const editUrl = (slug: string) =>
-    `https://github.com/Kerosz/chirila.dev/tree/main/data/writing/${slug}.mdx`;
-  const discussUrl = (slug: string) =>
-    `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://chirila.dev/writing/${slug}`
-    )}`;
+
+  const editUrl = (slug: string) => `${blog.githubEditUrl}/${slug}.mdx`;
+  const discussUrl = (slug: string) => 
+    twitter.find + encodeURIComponent(`${siteUrl}/${blog.path}/${slug}`);
 
   return (
     <>
       <ArticleJsonLd
-        url={`https://chirila.dev/writing/${frontMatter.slug}`}
+        url={`${siteUrl}/${blog.path}/${frontMatter.slug}`}
         title={frontMatter.title}
-        images={[
-          frontMatter.media,
-          'https://www.chirila.dev/images/blog/banner.jpg',
-        ]}
+        images={[frontMatter.media, defaultImage]}
         datePublished={frontMatter.publishedAt}
         dateModified={frontMatter.updatedAt}
         authorName={frontMatter.author}
@@ -54,7 +53,7 @@ export default function PostLayout({
         description={frontMatter.excerpt}
       />
       <Layout
-        title={`Writing – ${frontMatter.title} – Andrei Chirila`}
+        title={`${blog.name} – ${frontMatter.title} – ${title}`}
         description={frontMatter.excerpt}
         image={frontMatter.media}
         publishedTime={frontMatter.publishedAt}
@@ -81,7 +80,7 @@ export default function PostLayout({
 
               <div className='flex items-center mt-4'>
                 <Image
-                  alt='Andrei Chirila'
+                  alt={title}
                   height={34}
                   width={34}
                   src='/images/blog/avatar.png'
@@ -93,10 +92,10 @@ export default function PostLayout({
                     {frontMatter.author}
                   </p>
                   <Link
-                    href='https://twitter.com/chirila_'
+                    href={twitter.url}
                     className='text-blue-600 text-xs -mt-0.5'
                     external>
-                    @chirila_
+                    {twitter.handle}
                   </Link>
                 </div>
               </div>

@@ -1,13 +1,15 @@
 // components
 import Link from '../common/link';
 import { pluralWord } from '~utils/index';
+// data
+import config from '~data/config';
 
 export interface ITags {
   data: string[];
   path: string;
 }
 
-export default function Tags({ data, path = 'writing' }: ITags) {
+export default function Tags({ data, path = config.blog.path }: ITags) {
   return (
     <div className='mt-8 flex items-center flex-wrap'>
       <span className='font-medium text-gray-500 mr-3'>

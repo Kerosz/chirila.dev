@@ -5,6 +5,8 @@ import Link from '~/components/common/link';
 import ArrowRight from '~/assets/icons/arrow-right';
 import ArrowLeft from '~/assets/icons/arrow-left';
 import { Typography } from '~/components/ui';
+// data
+import config from '~data/config';
 // types
 import type { FrontMatterWithoutMeta } from '~/services/mdx';
 
@@ -36,7 +38,7 @@ export default function WritingRecommand({
   });
 
   return (
-    <Link href={`/writing/${slug}`} className={rootClass}>
+    <Link href={`/${config.blog.path}/${slug}`} className={rootClass}>
       {isNext ? (
         <ArrowRight className='text-gray-400 max-w-[1.5rem] w-full' />
       ) : (

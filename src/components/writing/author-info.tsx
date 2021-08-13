@@ -3,6 +3,8 @@ import Image from 'next/image';
 // components
 import Link from '../common/link';
 import { Container, Typography } from '~ui/index';
+// data
+import config from '~data/config';
 
 export default function AuthorInfo() {
   return (
@@ -29,21 +31,21 @@ export default function AuthorInfo() {
 
           <div className='flex space-x-3.5 text-gray-800 font-medium'>
             <Link
-              href='https://www.twitter.com/chirila_'
+              href={config.twitter.url}
               className='py-4 hover:text-red-800'
               external>
               Twitter
             </Link>
 
             <Link
-              href='https://www.linkedin.com/in/c-andrei/'
+              href={config.linkedIn}
               external
               className='py-4 hover:text-red-800'>
               LinkedIn
             </Link>
 
             <Link
-              href='https://github.com/Kerosz'
+              href={config.gitHub}
               external
               className='py-4 hover:text-red-800'>
               GitHub
@@ -53,7 +55,7 @@ export default function AuthorInfo() {
 
         <div className='sm:w-2/6 sm:mt-0 mt-6 flex items-center justify-center min-w-max'>
           <Image
-            alt='Andrei Chirila'
+            alt={config.title}
             height={200}
             width={200}
             src='/images/blog/avatar-full.jpg'

@@ -4,6 +4,8 @@ import Link from '../common/link';
 import Tags from '../writing/tags';
 import FadeIntoView from '../animations/fade-into-view';
 import { Container, Typography } from '~ui/index';
+// data
+import config from '~data/config';
 // types
 import type { ReactNode } from 'react';
 import type { ISnippetsFrontMatter } from '~/services/mdx';
@@ -17,12 +19,13 @@ export default function SnippetLayout({
   children,
   frontMatter,
 }: ISnippetLayout): JSX.Element {
-  const editUrl = (slug: string) =>
-    `https://github.com/Kerosz/chirila.dev/tree/main/data/snippets/${slug}.mdx`;
+  const { snippets, title } = config;
+
+  const editUrl = (slug: string) => `${snippets.githubEditUrl}/${slug}.mdx`;
 
   return (
     <Layout
-      title={`Snippets – ${frontMatter.title} – Andrei Chirila`}
+      title={`${snippets.name} – ${frontMatter.title} – ${title}`}
       description={frontMatter.description}>
       <FadeIntoView>
         <Container as='article' maxW='max-w-[848px]' className='py-10'>

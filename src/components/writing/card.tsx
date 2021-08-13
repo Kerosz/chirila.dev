@@ -6,6 +6,7 @@ import ArrowRight from '~/assets/icons/arrow-right';
 import { Typography } from '~/components/ui';
 // types
 import type { FrontMatterWithoutMeta } from '~/services/mdx';
+import config from '~data/config';
 
 export interface IWritingCard extends FrontMatterWithoutMeta {}
 
@@ -19,7 +20,7 @@ export default function WritingCard({
 
   return (
     <Link
-      href={`/writing/${slug}`}
+      href={`/${config.blog.path}/${slug}`}
       className='flex items-center justify-between transition-all duration-500 py-12 group hover:bg-light-gray border-b border-gray-300'>
       <div className='flex items-center transform-gpu duration-300 sm:group-hover:translate-x-8 group-hover:translate-x-4'>
         <time

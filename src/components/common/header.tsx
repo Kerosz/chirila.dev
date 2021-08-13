@@ -22,9 +22,9 @@ export interface IHeader {
 }
 
 function Header({ preHeader }: IHeader): JSX.Element {
-  const headerRef = useRef<HTMLDivElement | null>(null);
   const [localAnimationComplete, setLocalAnimationComplete] =
     useState<boolean>(false);
+  const headerRef = useRef<HTMLDivElement | null>(null);
   const { introComplete, bodyColorChangePaths } = useStore();
   const { y, prevY } = useScrollPosition();
   const router = useRouter();

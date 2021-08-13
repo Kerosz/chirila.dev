@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { parseISO } from 'date-fns';
 // components
+import config from '~data/config';
 import Layout from '~/components/layouts/base';
 import Filter from '~/components/common/filter';
 import WritingCard from '~/components/writing/card';
@@ -31,7 +32,7 @@ export default function WritingPage({ articles, tags, total }: IStaticProps) {
   };
 
   return (
-    <Layout title='Writting | Andrei Chirila'>
+    <Layout title={`${config.blog.name} | ${config.title}`}>
       <FadeIntoView
         as={Container}
         className='text-black-tone pt-28 pb-20 min-h-screen'>
@@ -40,7 +41,7 @@ export default function WritingPage({ articles, tags, total }: IStaticProps) {
             as='h1'
             className='text-7xl font-bold md:mr-14 mb-10 md:mb-0'
             resetStyles>
-            Writing
+            {config.blog.name}
           </Typography>
 
           <SearchBar
