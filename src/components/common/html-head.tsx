@@ -1,5 +1,8 @@
+// packages
 import NextHead from 'next/head';
+import Script from 'next/script';
 import { NextSeo } from 'next-seo';
+// internals
 import { isBrowser } from '~/utils/dom';
 
 export interface IHtmlHead {
@@ -92,6 +95,15 @@ export default function HtmlHead({
           color='#171923'
         />
       </NextHead>
+      <Script
+        strategy='lazyOnload'
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+      />
+      <Script strategy='lazyOnload'>{`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');`}</Script>
     </>
   );
 }
