@@ -138,3 +138,7 @@ pre[class*="language-"].line-numbers > code {
 .prose *:hover > .autolink {
   @apply visible no-underline;
 }
+
+.prose tbody td {
+  word-break: break-word;
+}

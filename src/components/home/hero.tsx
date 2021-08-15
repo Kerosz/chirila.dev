@@ -2,6 +2,7 @@
 import FadeIntoView from '~animations/fade-into-view';
 import Link from '~components/common/link';
 import { Container, Typography } from '~ui/index';
+import { SBTrack } from '~/lib/splitbee';
 // data
 import heroData from '~data/home/hero';
 import config from '~data/config';
@@ -47,7 +48,8 @@ function Hero(): JSX.Element {
                 <Link
                   href={config.twitter.url}
                   className='py-2.5 hover:text-red-800'
-                  external>
+                  external
+                  sbTrack={SBTrack.Twitter}>
                   Twitter
                 </Link>
               </li>
@@ -56,7 +58,8 @@ function Hero(): JSX.Element {
                 <Link
                   href={config.linkedIn}
                   className='py-2.5 hover:text-red-800'
-                  external>
+                  external
+                  sbTrack={SBTrack.LinkedIn}>
                   LinkedIn
                 </Link>
               </li>
@@ -65,7 +68,8 @@ function Hero(): JSX.Element {
                 <Link
                   href={config.gitHub}
                   className='py-2.5 hover:text-red-800'
-                  external>
+                  external
+                  sbTrack={SBTrack.GitHub}>
                   Github
                 </Link>
               </li>

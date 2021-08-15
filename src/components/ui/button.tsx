@@ -5,6 +5,7 @@ import { forwardRef } from 'react';
 import { useStore } from '~/store';
 // types
 import type { ComponentProps, JSXElementConstructor } from 'react';
+import type { SBTrackEvent } from '~/lib/splitbee';
 
 export interface IButton extends ComponentProps<'button'> {
   label?: string;
@@ -15,6 +16,7 @@ export interface IButton extends ComponentProps<'button'> {
   loading?: boolean;
   external?: boolean;
   reset?: boolean;
+  sbTrack?: SBTrackEvent;
 }
 
 const Button = forwardRef<HTMLButtonElement, IButton>((props, ref) => {
@@ -29,6 +31,7 @@ const Button = forwardRef<HTMLButtonElement, IButton>((props, ref) => {
     children,
     loading,
     reset = false,
+    sbTrack,
     ...rest
   } = props;
 
@@ -72,6 +75,7 @@ const Button = forwardRef<HTMLButtonElement, IButton>((props, ref) => {
       disabled={disabled}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      data-splitbee-event={sbTrack}
       {...rest}>
       {loading ? 'Loading...' : label || children}
     </Element>

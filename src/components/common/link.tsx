@@ -7,12 +7,14 @@ import { useStore } from '~/store';
 // types
 import type { LinkProps as NextLinkProps } from 'next/link';
 import type { AnchorHTMLAttributes } from 'react';
+import type { SBTrackEvent } from '~/lib/splitbee';
 
 interface ILink
   extends NextLinkProps,
     Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   external?: boolean;
   fixPosition?: boolean;
+  sbTrack?: SBTrackEvent;
 }
 
 const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
@@ -25,6 +27,7 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
     fixPosition = false,
     onMouseEnter,
     onMouseLeave,
+    sbTrack,
     ...rest
   } = props;
 
@@ -54,6 +57,7 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
         target='_blank'
         onMouseEnter={onMouseEnter || handleMouseEnter}
         onMouseLeave={onMouseLeave || handleMouseLeave}
+        data-splitbee-event={sbTrack}
         {...rest}>
         {children}
       </a>
@@ -67,6 +71,7 @@ const Link = forwardRef<HTMLAnchorElement, ILink>((props, ref): JSX.Element => {
         className={rootClass}
         onMouseEnter={onMouseEnter || handleMouseEnter}
         onMouseLeave={onMouseLeave || handleMouseLeave}
+        data-splitbee-event={sbTrack}
         {...rest}>
         {children}
       </a>

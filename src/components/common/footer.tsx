@@ -2,6 +2,7 @@
 import Logo from '~icons/logo';
 import Link from '~components/common/link';
 import { Container, Typography } from '../ui';
+import { SBTrack } from '~/lib/splitbee';
 // data
 import config from '~data/config';
 
@@ -68,7 +69,8 @@ function Footer(): JSX.Element {
                 <Link
                   href={config.linkedIn}
                   external
-                  className='py-4 text-gray-400 hover:text-red-800'>
+                  className='py-4 text-gray-400 hover:text-red-800'
+                  sbTrack={SBTrack.LinkedIn}>
                   Business related on{' '}
                   <span className='font-medium'>LinkedIn</span>
                 </Link>
@@ -78,7 +80,8 @@ function Footer(): JSX.Element {
                 <Link
                   href={config.gitHub}
                   external
-                  className='py-4 text-gray-400 hover:text-red-800'>
+                  className='py-4 text-gray-400 hover:text-red-800'
+                  sbTrack={SBTrack.GitHub}>
                   Open source & WIPs on{' '}
                   <span className='font-medium'>GitHub</span>
                 </Link>
@@ -87,8 +90,9 @@ function Footer(): JSX.Element {
               <li>
                 <Link
                   href={config.twitter.url}
+                  external
                   className='py-4 text-gray-400 hover:text-red-800'
-                  external>
+                  sbTrack={SBTrack.Twitter}>
                   Thoughts on <span className='font-medium'>Twitter</span>
                 </Link>
               </li>

@@ -6,6 +6,7 @@ import { useStore } from '~/store';
 // types
 import type { Dispatch, SetStateAction } from 'react';
 import type { IProjectData } from '~data/home/projects';
+import { SBTrack } from '~/lib/splitbee';
 
 export interface IProject extends IProjectData {
   index: number;
@@ -17,6 +18,7 @@ function Project({
   link,
   tags,
   summary,
+  trackLabel,
   index,
   setActiveIndex,
 }: IProject): JSX.Element {
@@ -39,7 +41,8 @@ function Project({
       external
       className='group'
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+      onMouseLeave={handleMouseLeave}
+      sbTrack={SBTrack[trackLabel as keyof typeof SBTrack]}>
       <header className='flex justify-between mb-1 pt-10'>
         <Typography
           className='xs:text-4xl text-3xl font-seri text-white'

@@ -2,6 +2,7 @@
 import Link from '~components/common/link';
 import ArrowNarrowRight from '~icons/arrow-narrow-right';
 import { Container, Typography } from '../ui';
+import { SBTrack } from '~/lib/splitbee';
 // data
 import config from '~data/config';
 
@@ -59,14 +60,16 @@ function Contact(): JSX.Element {
               <Link
                 href={config.twitter.url}
                 external
-                className='text-gray-50 font-medium hover:text-cyan'>
+                className='text-gray-50 font-medium hover:text-cyan'
+                sbTrack={SBTrack.Twitter}>
                 Twitter
               </Link>{' '}
               but you can stay in touch with me on{' '}
               <Link
                 href={config.linkedIn}
                 external
-                className='text-gray-50 font-medium hover:text-cyan'>
+                className='text-gray-50 font-medium hover:text-cyan'
+                sbTrack={SBTrack.LinkedIn}>
                 Linkedin
               </Link>
               . I post some articles on my{' '}
@@ -79,7 +82,8 @@ function Contact(): JSX.Element {
               <Link
                 href={config.gitHub}
                 external
-                className='text-gray-50 font-medium hover:text-cyan'>
+                className='text-gray-50 font-medium hover:text-cyan'
+                sbTrack={SBTrack.GitHub}>
                 GitHub
               </Link>
               .

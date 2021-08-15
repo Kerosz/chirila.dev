@@ -10,6 +10,7 @@ import useSafeLayoutEffect from '~hooks/use-safe-layout-effect';
 import { Typography, Badge } from '~ui/index';
 // types
 import type { IProjectData } from '~data/home/projects';
+import { SBTrack } from '~/lib/splitbee';
 
 export interface IProject extends IProjectData {
   index: number;
@@ -109,7 +110,8 @@ export default function Project({
         <Link
           href={link}
           className='flex uppercase text-gray-500 hover:text-red-800 text-lg font-medium max-w-max link-animation group'
-          ref={exploreRef}>
+          ref={exploreRef}
+          sbTrack={SBTrack[title as keyof typeof SBTrack]}>
           <Typography className='pr-2'>Explore project</Typography>
           <ArrowNarrowRight
             className='w-9 -mt-1.5 group-hover:transform-gpu group-hover:translate-x-3 transition-all duration-150'
@@ -119,7 +121,7 @@ export default function Project({
       </div>
 
       <div className='xl:w-7/12' ref={imgContainer}>
-        <Link href={link}>
+        <Link href={link} sbTrack={SBTrack[title as keyof typeof SBTrack]}>
           <Image
             src={require(`../../../assets/images/${srcName}`)}
             alt={title}

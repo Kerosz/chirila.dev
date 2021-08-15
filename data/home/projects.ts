@@ -5,6 +5,7 @@ export interface IProjectData {
   summary: string;
   srcName: string;
   link: string;
+  trackLabel?: string;
 }
 
 const projectData: IProjectData[] = [

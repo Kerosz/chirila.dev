@@ -1,6 +1,5 @@
 // packages
 import NextHead from 'next/head';
-import Script from 'next/script';
 import { NextSeo } from 'next-seo';
 // internals
 import config from '~data/config';
@@ -60,6 +59,7 @@ export default function HtmlHead({
           cardType: 'summary_large_image',
         }}
       />
+
       <NextHead>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='theme-color' content='#171923' />
@@ -95,15 +95,6 @@ export default function HtmlHead({
           color='#171923'
         />
       </NextHead>
-      <Script
-        strategy='lazyOnload'
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-      />
-      <Script strategy='lazyOnload'>{`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');`}</Script>
     </>
   );
 }
