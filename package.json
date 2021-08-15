@@ -12,6 +12,7 @@
   "dependencies": {
     "@mdx-js/react": "^1.6.22",
     "@mdx-js/runtime": "^1.6.22",
+    "@sentry/nextjs": "^6.11.0",
     "@splitbee/web": "^0.2.4",
     "date-fns": "^2.23.0",
     "fuse.js": "^6.4.6",

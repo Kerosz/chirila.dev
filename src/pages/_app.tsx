@@ -1,6 +1,7 @@
 // components
-import Preloader from '~/components/common/preloader';
 import Cursor from '~/components/common/cursor';
+import Preloader from '~/components/common/preloader';
+import ErrorBoundary from '~/components/common/error-boundary';
 import useRouterControl from '~/hooks/use-router-control';
 // types
 import type { AppProps } from 'next/app';
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Preloader />
       <Cursor />
-      <Component {...pageProps} />
+      <ErrorBoundary>
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </>
   );
 }
