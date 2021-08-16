@@ -66,29 +66,26 @@ export default function Filter<T>({
   }, [query]);
 
   return (
-    <div className='bg-gray-100 px-5 py-4 flex flex-col flex-wrap border border-gray-200 shadow-sm mb-1.5'>
+    <div className='bg-gray-100 sm:px-5 px-2.5 py-4 flex flex-col flex-wrap border border-gray-200 shadow-sm mb-1.5'>
       <span className='font-medium pb-2'>Filter by tag</span>
 
-      <div className='flex space-x-4'>
+      <div className='flex flex-wrap'>
         {filterByData.map((filterLabel, index) => {
           const isSelected = selectedFilters.includes(filterLabel);
 
           return (
-            <div key={index} className='flex items-center'>
-              <label
-                htmlFor={`filter__${filterLabel}__${index}`}
-                className='mr-2'>
-                {filterLabel}
-              </label>
-              ‍
+            <div key={index} className='flex items-center mr-4 py-1'>
               <input
                 id={`filter__${filterLabel}__${index}`}
-                className='focus:ring-red-800 text-red-800'
+                className='focus:ring-red-800 text-red-800 mr-2'
                 type='checkbox'
                 checked={isSelected}
                 onChange={() => handleSelected(filterLabel)}
               />
-              ‍ ‍
+              <label htmlFor={`filter__${filterLabel}__${index}`}>
+                {filterLabel}
+              </label>
+              ‍
             </div>
           );
         })}

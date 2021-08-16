@@ -1,7 +1,18 @@
 {
-  "name": "personal-website",
-  "version": "0.1.0",
+  "name": "personal-space",
+  "description": "Personal space on the internet to share my work, my thoughts, a bit about myself and my working process, along with get in touch information.",
+  "version": "1.1.0",
+  "author": {
+    "name": "Andrei Chirila",
+    "email": "andrei@chirila.dev",
+    "url": "https://www.chirila.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kerosz/chirila.dev.git"
+  },
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

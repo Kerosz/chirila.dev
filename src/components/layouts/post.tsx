@@ -1,5 +1,6 @@
 // packages
 import Image from 'next/image';
+import { memo } from 'react';
 import { formatDistanceToNowStrict, format, parseISO } from 'date-fns';
 import { ArticleJsonLd } from 'next-seo';
 // components
@@ -22,7 +23,7 @@ export interface IPostLayout {
   recommand: IRecommandArticles;
 }
 
-export default function PostLayout({
+function PostLayout({
   children,
   frontMatter,
   recommand,
@@ -36,7 +37,7 @@ export default function PostLayout({
   });
 
   const editUrl = (slug: string) => `${blog.githubEditUrl}/${slug}.mdx`;
-  const discussUrl = (slug: string) => 
+  const discussUrl = (slug: string) =>
     twitter.find + encodeURIComponent(`${siteUrl}/${blog.path}/${slug}`);
 
   return (
@@ -133,3 +134,5 @@ export default function PostLayout({
     </>
   );
 }
+
+export default memo(PostLayout);

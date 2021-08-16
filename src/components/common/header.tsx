@@ -1,6 +1,6 @@
 // packages
 import cn from 'classnames';
-import { useRef, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useRouter } from 'next/router';
 // components
@@ -113,4 +113,4 @@ function Header({ preHeader }: IHeader): JSX.Element {
   );
 }
 
-export default Header;
+export default memo(Header);

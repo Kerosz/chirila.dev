@@ -1,4 +1,5 @@
 // components
+import ToTop from '~components/common/to-top';
 import Header from '~components/common/header';
 import Footer from '~components/common/footer';
 import Banner from '~components/common/banner';
@@ -29,6 +30,7 @@ function Layout({ children, ...customMeta }: ILayout): ReactElement {
       <main className='bg-gray-100'>{children}</main>
       <Newsletter />
       <Footer />
+      <ToTop />
     </>
   );
 }

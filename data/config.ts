@@ -5,7 +5,7 @@ const config = {
   title: 'Andrei Chirila',
   titleTemplate: '%s – Developer, writer.',
   descritpion:
-    'Persoanl space on the internet to share my work, my thoughts, a bit about myself and my working process, along with get in touch information.',
+    'Personal space on the internet to share my work, my thoughts, a bit about myself and my working process, along with get in touch information.',
   defaultImage: 'https://www.chirila.dev/images/blog/banner.jpg',
   blog: {
     name: 'Writing',
