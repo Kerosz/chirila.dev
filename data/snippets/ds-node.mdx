@@ -1,0 +1,41 @@
+---
+title: 'Node'
+description: 'Implementation of the Node class used in many data structures.'
+tags: ['data-structure', 'typescript']
+---
+
+## Overview
+
+A node is a basic data structure which contain data and one or more pointers/links to other nodes. Nodes are the fundamental building blocks of many computer science data structures. They form the basis for linked lists, stacks, queues, trees and more.
+
+## Implementation
+
+The node for a singly linked list has 2 bits, a data part and a link part. The data part will contain any kind of value and the link will contain the address of next node and is initialized to null.
+
+```tsx[class="line-numbers"]:single-pointer-node.tsx
+class Node<T> {
+  public data: T;
+  public next: Node<T> | null;
+
+  constructor(data: T) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+The node for a doubly linked list has 3, a data part and 2 link parts *(previous and next)*. This particular node is useful for backtracking but it takes double memory size compared to the single pointer Node.
+
+```tsx[class="line-numbers"]:double-pointer-node.tsx
+class Node<T> {
+  public data: T;
+  public prev: Node<T> | null;
+  public next: Node<T> | null;
+
+  constructor(data: T) {
+    this.data = data;
+    this.prev = null;
+    this.next = null;
+  }
+}
+```

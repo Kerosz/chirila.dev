@@ -25,7 +25,13 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(_: Error, errorInfo: ErrorInfo) {
-    Sentry.captureException(errorInfo);
+    if (process.env.NODE_ENV === 'production') {
+      Sentry.captureException(errorInfo);
+      return;
+    }
+
+    console.error(errorInfo);
+    
   }
 
   public render() {

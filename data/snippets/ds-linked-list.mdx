@@ -1,0 +1,401 @@
+---
+title: 'Linked List'
+description: 'Implementation of the Linked List data structure.'
+tags: ['data-structure', 'typescript']
+---
+
+## Overview
+
+A linked list is a linear data structure where elements are linked using pointers and not stored at contiguous location. Data is stored in nodes and each node is linked to the next and, optionally, to the previous. Each node in a list consists of the following parts:
+
+- data
+- pointer (reference) to the next node
+- optionally, a pointer to the previous node
+
+Types
+- Singly linked list
+- Doubly linked list
+- Circularly linked list
+
+We are going to use the [Node class, you can find it here](/snippets/ds-node)
+
+## Implementation
+
+```tsx[class="line-numbers"]:single-pointer-node.tsx
+import Node from './node';
+
+class LinkedList<T> implements Iterable<T> {
+  private head: Node<T> | null;
+  private tail: Node<T> | null;
+  private size: number;
+
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+
+  /**
+   * Method to get the size of the list - O(1)
+   * @returns {number} the size of the list
+   */
+  public length(): number {
+    return this.size;
+  }
+  /**
+   * Method to get whether or not the list is empty - O(1)
+   * @returns {boolean} true or false
+   */
+  public isEmpty(): boolean {
+    return !this.head;
+  }
+
+  /****************************************************
+   * INSERTING
+   ****************************************************/
+
+  /**
+   * Adding a new node at the end of the list - O(1)
+   * @param data New data to be added
+   * @returns {boolean} true or false
+   */
+  public add(data: T): boolean {
+    const newNode: Node<T> = new Node(data);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.size++;
+      return true;
+    }
+    // Point old tail next to the new tail
+    this!.tail!.next = newNode;
+    // Point the new tail prev to the old tail
+    newNode.prev = this.tail;
+
+    this.tail = newNode;
+    this.size++;
+
+    return true;
+  }
+
+  /**
+   * Adding a new node at the beginning of the list - O(1)
+   * @param data New data to be added
+   * @returns {boolean} true or false
+   */
+  public addFront(data: T): boolean {
+    const newNode: Node<T> = new Node(data);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.size++;
+      return true;
+    }
+
+    // Point the curr head prev to the new head
+    this.head.prev = newNode;
+    // Point the new head next to the old head
+    newNode.next = this.head;
+
+    this.head = newNode;
+    this.size++;
+
+    return true;
+  }
+
+  /**
+   * Adding a new node at a specified location - O(n)
+   * @param index The index of the node
+   * @param data New data to be added
+   * @returns {boolean} true or false
+   */
+  public addAt(index: number, data: T): boolean {
+    if (index === 0) return this.addFront(data);
+    if (index === this.size) return this.add(data);
+
+    if (index < 0 || index > this.size || !this.head) return false;
+
+    // One before the node position
+    let curr: Node<T> = this.head;
+    for (let i = 0; i < index - 1; i++) {
+      if (!curr.next) return false;
+
+      curr = curr.next;
+    }
+
+    const newNode: Node<T> = new Node(data);
+
+    // Link next node to newNode
+    newNode.next = curr.next;
+    curr.next!.prev = newNode;
+    // Link prev node to newNode
+    newNode.prev = curr;
+    curr.next = newNode;
+
+    this.size++;
+
+    return true;
+  }
+
+  /****************************************************
+   * ACCESSING
+   ****************************************************/
+
+  /**
+   * Gets the data from the first node in the list - O(1)
+   * @returns {T | null} data of the first node or null
+   */
+  public printFirst(): T | null {
+    if (!this.head) return null;
+
+    return this.head.data;
+  }
+
+  /**
+   * Gets the data from the last node in the list - O(1)
+   * @returns {T | null} data of the last node or null
+   */
+  public printLast(): T | null {
+    if (!this.tail) return null;
+
+    return this.tail.data;
+  }
+
+  /**
+   * Method used to print out list data - O(n)
+   * @returns {string | null} string containing all the list data
+   */
+  public print(): string | null {
+    if (!this.head) return null;
+
+    let curr: Node<T> | null = this.head;
+    let listData: string = '';
+
+    while (curr !== null) {
+      listData += curr.data + '->';
+      curr = curr.next;
+    }
+
+    return listData;
+  }
+
+  /**
+   * It gets the data from a specified node - O(n)
+   * @param index The index of the node
+   * @returns {T | null} data of the specified node or null
+   */
+  public get(index: number): T | null {
+    if (index < 0 || index > this.size || !this.head) return null;
+
+    let curr: Node<T> = this.head;
+    for (let i = 0; i < index; i++) {
+      if (!curr.next) return null;
+
+      curr = curr.next;
+    }
+
+    return curr.data;
+  }
+
+  /****************************************************
+   * SEARCHING
+   ****************************************************/
+
+  /**
+   * Gets the index of the specified element, and -1 if it doesn't exist - O(n)
+   * @param data Data to be searched for
+   * @returns {number} index of element or -1
+   */
+  public indexOf(data: T): number {
+    if (!this.head) return -1;
+
+    let curr: Node<T> = this.head;
+    let i: number = 0;
+
+    while (curr.data !== data) {
+      // we reached the end
+      if (curr.next === null) return -1;
+
+      curr = curr.next;
+      i++;
+    }
+
+    return i;
+  }
+
+  /**
+   * Checks if the data is in the list
+   * @param data Data to be searched for
+   * @returns {boolean} true or false
+   */
+  has(data: T): boolean {
+    const nodeIndex = this.indexOf(data);
+
+    return nodeIndex !== -1;
+  }
+
+  /****************************************************
+   * DELETING
+   ****************************************************/
+
+  /**
+   * Removes the first node in the list - O(1)
+   * @returns {T | null} data of the removed node or null
+   */
+  public removeFirst(): T | null {
+    if (!this.head) return null;
+
+    const data: T = this.head.data;
+    const nextNode: Node<T> | null = this.head.next;
+
+    if (nextNode) {
+      // set the next prev to null
+      nextNode.prev = null;
+      // update the head with the next node
+      this.head = nextNode;
+
+      this.size--;
+    } else {
+      // list is size 1, we clear it
+      this.clear();
+    }
+
+    return data;
+  }
+
+  /**
+   * Removes the last node in the list - O(1)
+   * @returns {T | null} data of the removed node or null
+   */
+  public removeLast(): T | null {
+    if (!this.head || !this.tail) return null;
+
+    const data: T = this.tail.data;
+    const prevNode: Node<T> | null = this.tail.prev;
+
+    if (prevNode) {
+      // set the prev node next to null
+      prevNode.next = null;
+      // update the tail to the prevNode
+      this.tail = prevNode;
+      this.size--;
+    } else {
+      // list is size 1, we we clear it
+      this.clear();
+    }
+
+    return data;
+  }
+
+  /**
+   * Removes the node that has specified data - O(n)
+   * @param data Data to be removed
+   * @returns {T | null} data of the removed node or null
+   */
+  public remove(data: T): T | null {
+    if (!this.head) return null;
+
+    if (this.head.data === data) return this.removeFirst();
+    if (this.tail!.data === data) return this.removeLast();
+
+    let curr: Node<T> = this.head;
+    while (curr.data !== data) {
+      if (!curr.next) return null;
+
+      curr = curr.next;
+    }
+
+    // delete the node
+    curr.prev!.next = curr.next;
+    curr.next!.prev = curr.prev;
+
+    this.size--;
+
+    return curr.data;
+  }
+
+  /**
+   * @param index The index of the node to be removed - O(n)
+   * @returns {T | null} data of the removed node or null
+   */
+  public removeAt(index: number): T | null {
+    if (index < 0 || index > this.size || !this.head) return null;
+
+    if (index === 0) return this.removeFirst();
+    if (index === this.size) return this.removeLast();
+
+    let curr: Node<T> = this.head;
+    for (let i = 0; i < index; i++) {
+      if (!curr.next) return null;
+
+      curr = curr.next;
+    }
+
+    // delete the node
+    curr.prev!.next = curr.next;
+    curr.next!.prev = curr.prev;
+
+    this.size--;
+
+    return curr.data;
+  }
+
+  /****************************************************
+   * HELPERS
+   ****************************************************/
+
+  /**
+   * Removes all nodes - O(1)
+   */
+  public clear(): void {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+
+  /**
+   * It reverses the list nodes - O(n)
+   */
+  public reverse(): void {
+    let curr: Node<T> | null = this.head;
+    let temp: Node<T> | null = null;
+
+    while (curr !== null) {
+      temp = curr.prev;
+      curr.prev = curr.next;
+      curr.next = temp;
+
+      curr = curr.prev;
+    }
+
+    if (temp != null) {
+      this.head = temp.prev;
+    }
+  }
+
+  /**
+   * Adds all elements from an array into the list - O(n)
+   * @param array Dataset to be added into the list
+   * @returns {LinkedList<T>} - The entire list
+   */
+  public fromArray(array: T[]): LinkedList<T> {
+    for (const element of array) {
+      this.add(element);
+    }
+
+    return this;
+  }
+
+  *[Symbol.iterator](): Iterator<T> {
+    if (!this.head) return;
+
+    let curr: Node<T> | null;
+
+    for (curr = this.head; curr != null; curr = curr.next) {
+      yield curr.data;
+    }
+  }
+}
+```

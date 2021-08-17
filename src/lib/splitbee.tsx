@@ -15,12 +15,15 @@ export enum SBTrack {
 
 export type SBTrackEvent = `${SBTrack}`;
 
-splitbee.init({
-  token: process.env.NEXT_PUBLIC_SB_TOKEN,
-  disableCookie: false,
-  scriptUrl: '/_analytics',
-  apiUrl: '/_hive',
-});
+if (process.env.NODE_ENV === 'production') {
+  splitbee.init({
+    token: process.env.NEXT_PUBLIC_SB_TOKEN,
+    disableCookie: false,
+    scriptUrl: '/_analytics',
+    apiUrl: '/_hive',
+  });
+}
+
 
 /**
  * Removing custom tracking for now

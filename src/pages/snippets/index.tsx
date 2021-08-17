@@ -62,7 +62,7 @@ export default function SnippetsPage({ snippets, tags }: IStaticProps) {
           filterByData={tags}
         />
 
-        <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-20 lg:gap-14 gap-8'>
+        <div className='grid lg:grid-cols-2 grid-cols-1 xl:gap-x-16 lg:gap-x-14 gap-x-8 gap-y-3'>
           {pageSnippets.map(({ slug, title, description }, idx) => (
             <Link
               key={`${title}__${idx}`}
