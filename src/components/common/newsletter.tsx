@@ -28,7 +28,7 @@ export default function Newsletter({ background = 'dark' }: INewsletter) {
           resetStyles>
           Get updates on what I do web development related. Early access to
           articles, easy-to-follow guides & tutorials, challenges, along with
-          some other artciles I&apos;m reading and other stuff I think
+          some other resources I&apos;m reading and other stuff I think
           you&apos;d enjoy...
         </Typography>
 

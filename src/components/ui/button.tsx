@@ -38,8 +38,6 @@ const Button = forwardRef<HTMLButtonElement, IButton>((props, ref) => {
   const { setCursor } = useStore();
 
   const handleMouseEnter = () => {
-    console.log('enter');
-
     if (disabled) {
       setCursor('none');
     } else {

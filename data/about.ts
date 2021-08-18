@@ -47,7 +47,7 @@ const aboutData = {
       ],
       hobbies: [
         'Hobbies',
-        "I'm a huge football fan, from just enjoying a good game with some pizza and cips to getting out in the field and having some fun with the ball. Also I am a kickboxing enthusiast, trying always to not miss any of the big matches. Occasionally hiking.",
+        "I'm a huge football fan, from just enjoying a good game with some pizza and chips to getting out in the field and having some fun with the ball. Also I am a kickboxing enthusiast, trying always to not miss any of the big matches. Occasionally hiking.",
       ],
       mantra: [
         'Mantra',
