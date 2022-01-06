@@ -12,7 +12,7 @@ const moreProjectsData: IProjectData[] = [
     trackLabel: 'Unitech_Main',
   },
   {
-    title: 'Persoanl Space v1',
+    title: 'Personal Space v1',
     scope: 'UX/UI Design. Website Development',
     tags: ['nextjs', 'styled-components', 'typescript'],
     summary:
