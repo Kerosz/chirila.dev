@@ -6,13 +6,13 @@
 
 ## Introduction
 
-Being a web developer without a persoanl website is being like a business man without a business card, so I took action and got myself a little something right here.
+Being a web developer without a personal website is being like a business man without a business card, so I took action and got myself a little something right here.
 
 ## Codebase
 
 ### Technologies
 
-The entire codebase consists in **Javascript**
+The entire codebase consists in **Typescript**
 
 Here is a list of technologies used:
 
