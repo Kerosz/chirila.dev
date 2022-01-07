@@ -22,7 +22,7 @@ Here is a list of technologies used:
 
 ```sh
 personal-website/
-├── components     # Reusabble parts
+├── components     # Reusable parts
 ├── constants      # Static data
 ├── lib            # External helpers
 ├── pages          # Application views
