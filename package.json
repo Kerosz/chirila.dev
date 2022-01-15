@@ -1,7 +1,7 @@
 {
   "name": "personal-space",
   "description": "Personal space on the internet to share my work, my thoughts, a bit about myself and my working process, along with get in touch information.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "Andrei Chirila",
     "email": "andrei@chirila.dev",
@@ -29,7 +29,7 @@
     "fuse.js": "^6.4.6",
     "gray-matter": "^4.0.3",
     "gsap": "^3.7.0",
-    "next": "^11.0.2-canary.16",
+    "next": "^12.0.8",
     "next-mdx-remote": "^3.0.4",
     "next-seo": "^4.26.0",
     "react": "17.0.2",
