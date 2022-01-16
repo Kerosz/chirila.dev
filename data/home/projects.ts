@@ -16,7 +16,7 @@ const projectData: IProjectData[] = [
     summary:
       'Combine all your online content into one short, easy Biolink. You can also create Biolink pages for things like blogs, merch, multimedia and so much more.',
     srcName: 'biolnk-preview.png',
-    link: 'https://biolnk.me/',
+    link: '/writing/biolnk',
   },
   {
     title: 'Margatsni',

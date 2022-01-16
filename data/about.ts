@@ -11,7 +11,7 @@ const aboutData = {
       'Every project is a new story, yet some things never change. I picked a set of tools for each story we might get the oportunity to tell.',
     process: [
       {
-        title: 'Build',
+        title: 'Empathize',
         description:
           'You have an idea for a digital product - but you don’t know if it’s worth investing your time and resources. Does it solve a real problem? Is anyone willing to buy it? I would help answer these questions and more while gaining an understanding of your users and your market.',
       },
