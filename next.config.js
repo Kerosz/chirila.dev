@@ -1,37 +1,3 @@
-const { withSentryConfig } = require('@sentry/nextjs');
-
-const defaultConfigs = {
-  reactStrictMode: true,
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: customHeaders,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/_analytics',
-        destination: 'https://cdn.splitbee.io/sb.js',
-      },
-      {
-        source: '/_hive/:slug',
-        destination: 'https://hive.splitbee.io/:slug',
-      },
-    ];
-  },
-};
-
-const SentryWebpackPluginOptions = {
-  /**
-   * For all available options, see:
-   * @see https://github.com/getsentry/sentry-webpack-plugin#options.
-   */
-  silent: true,
-};
-
 const customHeaders = [
   /**
    * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
@@ -79,4 +45,26 @@ const customHeaders = [
   },
 ];
 
-module.exports = withSentryConfig(defaultConfigs, SentryWebpackPluginOptions);
+module.exports = {
+  reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: customHeaders,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/_analytics',
+        destination: 'https://cdn.splitbee.io/sb.js',
+      },
+      {
+        source: '/_hive/:slug',
+        destination: 'https://hive.splitbee.io/:slug',
+      },
+    ];
+  },
+};

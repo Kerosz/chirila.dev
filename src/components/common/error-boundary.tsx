@@ -1,5 +1,4 @@
 // packages
-import * as Sentry from '@sentry/nextjs';
 import { Component, ErrorInfo, ReactNode } from 'react';
 // components
 import Link from '~components/common/link';
@@ -26,7 +25,6 @@ class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(_: Error, errorInfo: ErrorInfo) {
     if (process.env.NODE_ENV === 'production') {
-      Sentry.captureException(errorInfo);
       return;
     }
 
